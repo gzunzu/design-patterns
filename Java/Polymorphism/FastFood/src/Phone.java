@@ -13,13 +13,12 @@ class Phone extends TelematicChannel {
     }
 
     @Override
-    protected void serveCustomer() {
-        this.answerCall();
-        this.confirmShipment();
+    protected String getName() {
+        return Phone.CHANNEL_NAME;
     }
 
     @Override
-    protected String getName() {
-        return Phone.CHANNEL_NAME;
+    void getCommand() {
+        this.answerCall();
     }
 }

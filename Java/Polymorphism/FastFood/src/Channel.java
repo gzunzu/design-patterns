@@ -11,13 +11,20 @@ abstract class Channel {
     
     protected void attend() {
         this.welcome();
-        this.serveCustomer();
+        this.checkPromos();
+        this.serveClient();
     };
     
     protected void welcome() {
         System.out.println("\n¡Bienvenida/o a nuestro servicio de comida rápida!\nTu pedido es el número " + 
                 Channel.getOrdersGlobalCount() + " del día y el " + this.getOrdersCountByChannel() + ".º del canal " 
                 + this.getName() + ".");
+    }
+    
+    private void checkPromos() {
+        if (this instanceof Promo) {
+            ((Promo) this).announcePromo();
+        }
     }
     
     private int getOrdersCountByChannel() {
@@ -28,7 +35,7 @@ abstract class Channel {
         return ORDERS_COUNT.values().stream().mapToInt(Integer::intValue).sum();
     }
     
-    protected abstract void serveCustomer();
+    protected abstract void serveClient();
     
     protected abstract String getName();
 }

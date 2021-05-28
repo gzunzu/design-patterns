@@ -12,8 +12,7 @@ class Store extends Channel implements Promo {
     }
 
     @Override
-    protected void serveCustomer() {
-        this.announcePromo();
+    protected void serveClient() {
         this.takeNote();
     }
 

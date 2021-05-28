@@ -13,13 +13,6 @@ class Web extends TelematicChannel implements Promo {
     }
 
     @Override
-    protected void serveCustomer() {
-        this.announcePromo();
-        this.readForm();
-        this.confirmShipment();
-    }
-
-    @Override
     public void announcePromo() {
         System.out.println("¡Hoy tenemos promoción en pizzas!");
     }
@@ -27,5 +20,10 @@ class Web extends TelematicChannel implements Promo {
     @Override
     protected String getName() {
         return Web.CHANNEL_NAME;
+    }
+
+    @Override
+    void getCommand() {
+        this.readForm();
     }
 }
