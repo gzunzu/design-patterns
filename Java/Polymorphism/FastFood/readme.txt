@@ -1,0 +1,1 @@
+Ejemplo de uso de inyección de dependencias.
