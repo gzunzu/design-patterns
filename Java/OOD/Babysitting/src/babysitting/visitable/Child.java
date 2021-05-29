@@ -1,25 +1,25 @@
 package babysitting.visitable;
 
-import babysitting.ext.Sex;
+import babysitting.ext.Gender;
 import babysitting.visitor.Visitor;
 
 public abstract class Child implements Visitable {
     
     protected final String NAME;
-    protected final Sex SEX;
+    protected final Gender GENDER;
 
-    Child(String name, Sex sex) {
+    Child(String name, Gender gender) {
         this.NAME = name;
-        this.SEX = sex;
+        this.GENDER = gender;
     }
-
-    public Sex getSEX() {
-        return SEX;
+    
+    public String getGenderReference() {
+        return this.GENDER.getArticledReference();
     }
 
     @Override
     public String toString() {
-        return this.NAME + " es " + this.SEX.DETERMINER + " " + this.SEX.NAME;
+        return this.NAME + " es " + this.GENDER.getDeterminedReference();
     }
     
     @Override

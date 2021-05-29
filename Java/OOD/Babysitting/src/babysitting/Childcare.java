@@ -1,6 +1,6 @@
 package babysitting;
 
-import babysitting.ext.Sex;
+import babysitting.ext.Gender;
 import babysitting.visitable.Baby;
 import babysitting.visitable.Child;
 import babysitting.visitable.Preschooler;
@@ -25,9 +25,9 @@ class Childcare {
     public static void main(String[] args) {
         Childcare childcare = new Childcare();
         
-        childcare.CHILDREN.add(new Baby("Emma", Sex.F, 3));
-        childcare.CHILDREN.add(new Toddler("Víctor", Sex.M, 8));
-        childcare.CHILDREN.add(new Preschooler("Paula", Sex.F, 100));
+        childcare.CHILDREN.add(new Baby("Emma", Gender.F, 3));
+        childcare.CHILDREN.add(new Toddler("Víctor", Gender.M, 8));
+        childcare.CHILDREN.add(new Preschooler("Paula", Gender.F, 100));
         
         childcare.takeCare();
     }

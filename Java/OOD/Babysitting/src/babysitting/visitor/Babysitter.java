@@ -14,14 +14,14 @@ public class Babysitter implements Visitor {
 
     @Override
     public void visit(Toddler toddler) {
-        System.out.println(toddler.toString() + "\n[BABYSITTER] Al bebé le duelen los dientes. Le daré el chupete.");
+        System.out.println(toddler.toString() + "\n[BABYSITTER] Al bebé le duelen los dientes. Le daré un chupete.");
         toddler.suckPacifier();
     }
 
     @Override
     public void visit(Preschooler preescholer) {
-        System.out.println(preescholer.toString() + "\n[BABYSITTER] Parece que " + preescholer.getSEX().ARTICLE
-                + " " + preescholer.getSEX().LETTER + " se aburre. Le daré un juego.");
+        System.out.println(preescholer.toString() + "\n[BABYSITTER] Parece que " + preescholer.getGenderReference()
+                + " se aburre. Le daré un juego.");
         preescholer.play();
     }
 }

@@ -1,14 +1,14 @@
 package babysitting.visitable;
 
-import babysitting.ext.Sex;
+import babysitting.ext.Gender;
 import babysitting.visitor.Visitor;
 
 public class Toddler extends Child {
     
     private final int TEETH_COUNT;
 
-    public Toddler(String name, Sex sex, int teethCount) {
-        super(name, sex);
+    public Toddler(String name, Gender gender, int teethCount) {
+        super(name, gender);
         this.TEETH_COUNT = teethCount;
     }
 

@@ -1,14 +1,14 @@
 package babysitting.visitable;
 
-import babysitting.ext.Sex;
+import babysitting.ext.Gender;
 import babysitting.visitor.Visitor;
 
 public class Preschooler extends Child {
     
     private final int NUMBERS_KNOWN;
 
-    public Preschooler(String name, Sex sex, int numbersKnown) {
-        super(name, sex);
+    public Preschooler(String name, Gender gender, int numbersKnown) {
+        super(name, gender);
         this.NUMBERS_KNOWN = numbersKnown;
     }
 
