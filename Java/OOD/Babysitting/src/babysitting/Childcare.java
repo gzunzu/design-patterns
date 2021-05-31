@@ -22,12 +22,16 @@ class Childcare {
         this.CHILDREN.forEach((child) -> child.accept(this.BABYSITTER));
     }
     
+    void addChildren(Child child) {
+        this.CHILDREN.add(child);
+    }
+    
     public static void main(String[] args) {
         Childcare childcare = new Childcare();
         
-        childcare.CHILDREN.add(new Baby("Emma", Gender.F, 3));
-        childcare.CHILDREN.add(new Toddler("Víctor", Gender.M, 8));
-        childcare.CHILDREN.add(new Preschooler("Paula", Gender.F, 100));
+        childcare.addChildren(new Baby("Emma", Gender.F, 3));
+        childcare.addChildren(new Toddler("Víctor", Gender.M, 8));
+        childcare.addChildren(new Preschooler("Paula", Gender.F, 100));
         
         childcare.takeCare();
     }
