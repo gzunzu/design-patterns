@@ -1,26 +1,29 @@
 package babysitting.ext;
 
 public enum Gender {
-    M("el", "un", 'o'),
-    F("la", "una", 'a');
+    MALE("el", "un", 'o'),
+    FEMALE("la", "una", 'a');
 
-    public final String ARTICLE;
-    public final String DETERMINER;
+    private static final String INCOMPLETE_REFERENCE = "niñ";
+    private final String ARTICLE;
+    private final String DETERMINER;
     public final char LETTER;
-    public final String NAME;
 
     private Gender(String article, String determiner, char letter) {
         this.ARTICLE = article;
         this.DETERMINER = determiner;
         this.LETTER = letter;
-        this.NAME = "niñ" + this.LETTER;
+    }
+    
+    private String getReference() {
+        return Gender.INCOMPLETE_REFERENCE + this.LETTER;
     }
     
     public String getArticledReference() {
-        return this.ARTICLE + " " + this.NAME;
+        return this.ARTICLE + " " + this.getReference();
     }
     
     public String getDeterminedReference() {
-        return this.DETERMINER + " " + this.NAME;
+        return this.DETERMINER + " " + this.getReference();
     }
 }

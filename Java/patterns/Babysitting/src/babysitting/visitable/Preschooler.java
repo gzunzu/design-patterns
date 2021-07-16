@@ -18,7 +18,7 @@ public class Preschooler extends Child {
     }
     
     public void play() {
-        System.out.println(this.NAME + " disfruta jugando.");
+        System.out.println(this.NAME + " se divierte jugando.");
     }
 
     @Override

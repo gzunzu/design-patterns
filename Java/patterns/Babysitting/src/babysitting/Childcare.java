@@ -1,38 +1,31 @@
 package babysitting;
 
 import babysitting.ext.Gender;
-import babysitting.visitable.Baby;
-import babysitting.visitable.Child;
-import babysitting.visitable.Preschooler;
-import babysitting.visitable.Toddler;
+import babysitting.visitable.*;
 import babysitting.visitor.Babysitter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 class Childcare {
 
-    private final Babysitter BABYSITTER;
-    private final ArrayList<Child> CHILDREN;
+    private final Babysitter BABYSITTER = new Babysitter();
+    private final ArrayList<Child> CHILDREN = new ArrayList<>();
     
-    Childcare() {
-        this.BABYSITTER = new Babysitter();
-        this.CHILDREN = new ArrayList<>();
+    void addChildren(Child ...children) {
+        Arrays.asList(children).forEach(child ->this.CHILDREN.add(child));
     }
     
     void takeCare() {
         this.CHILDREN.forEach((child) -> child.accept(this.BABYSITTER));
     }
     
-    void addChildren(Child child) {
-        this.CHILDREN.add(child);
-    }
-    
     public static void main(String[] args) {
         Childcare childcare = new Childcare();
-        
-        childcare.addChildren(new Baby("Emma", Gender.F, 3));
-        childcare.addChildren(new Toddler("Víctor", Gender.M, 8));
-        childcare.addChildren(new Preschooler("Paula", Gender.F, 100));
-        
+        childcare.addChildren(
+                new Baby("Emma", Gender.FEMALE, 3), 
+                new Toddler("Víctor", Gender.MALE, 8), 
+                new Preschooler("Paula", Gender.FEMALE, 100)
+        );
         childcare.takeCare();
     }
 }
