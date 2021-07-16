@@ -1,3 +1,5 @@
+package fastFood;
+
 abstract class TelematicChannel extends Channel {
     
     protected String location;
