@@ -6,14 +6,14 @@ import java.util.Collections;
 
 class Service {
 
-    private final ArrayList<Order> ORDERS = new ArrayList<>();
+    private final ArrayList<Order> orders = new ArrayList<>();
 
     void addOrders(Channel... channels) {
-        Arrays.asList(channels).forEach(channel -> this.ORDERS.add(new Order(channel)));
+        Arrays.asList(channels).forEach(channel -> this.orders.add(new Order(channel)));
     }
 
     void processOrders() {
-        this.ORDERS.forEach(Order::process);
+        this.orders.forEach(Order::process);
     }
 
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ class Service {
 
         Service today = new Service();
         today.addOrders(web1, phone1, phone2, store1, phone3, store2, web2);
-        Collections.shuffle(today.ORDERS);
+        Collections.shuffle(today.orders);
         today.processOrders();
     }
 }

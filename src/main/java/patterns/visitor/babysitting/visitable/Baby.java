@@ -6,11 +6,11 @@ import patterns.visitor.babysitting.visitor.Visitor;
 
 public class Baby extends Child {
 
-    private final int WEEKS;
+    private final int weeks;
 
     public Baby(String name, Gender gender, int weeks) {
         super(name, gender);
-        this.WEEKS = weeks;
+        this.weeks = weeks;
     }
 
     @Override
@@ -19,11 +19,11 @@ public class Baby extends Child {
     }
 
     public void cradle() {
-        System.out.println("A " + this.NAME + " le encanta que l" + this.GENDER.LETTER + " acunen.");
+        System.out.println("A " + this.name + " le encanta que l" + this.gender.letter + " acunen.");
     }
 
     @Override
     public String toString() {
-        return super.toString() + " recién nacid" + this.GENDER.LETTER + ". Solo tiene " + this.WEEKS + " semanas.";
+        return super.toString() + " recién nacid" + this.gender.letter + ". Solo tiene " + this.weeks + " semanas.";
     }
 }

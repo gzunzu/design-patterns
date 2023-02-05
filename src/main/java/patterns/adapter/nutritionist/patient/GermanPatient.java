@@ -1,7 +1,7 @@
 package patterns.adapter.nutritionist.patient;
 
 
-import patterns.adapter.nutritionist.ext.Helper;
+import patterns.adapter.nutritionist.ext.RandomWeightHelper;
 
 public class GermanPatient extends Patient implements MetricUnitsUser {
 
@@ -9,7 +9,7 @@ public class GermanPatient extends Patient implements MetricUnitsUser {
 
     public GermanPatient(String name) {
         super(name, "alemán/a");
-        this.kilograms = Helper.getRandomKilogramsWeight();
+        this.kilograms = RandomWeightHelper.KILOGRAMS.getWeight();
     }
 
     @Override

@@ -2,8 +2,9 @@ package patterns.dependencyinjection.fastfood;
 
 class Web extends TelematicChannel implements Promo {
 
-    private final String email;
     private static final String CHANNEL_NAME = "web";
+
+    private final String email;
 
     Web(String location, String email) {
         super(location);
@@ -21,7 +22,7 @@ class Web extends TelematicChannel implements Promo {
 
     @Override
     protected String getName() {
-        return Web.CHANNEL_NAME;
+        return CHANNEL_NAME;
     }
 
     @Override

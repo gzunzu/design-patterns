@@ -7,14 +7,14 @@ import patterns.adapter.nutritionist.patient.MetricUnitsUser;
 class MetricUsersAdapter implements ImperialUnitsUser {
 
     private static final float CONVERSION_FACTOR = 2.20462f;
-    private final float KILOGRAMS;
+    private final float kilograms;
 
     MetricUsersAdapter(MetricUnitsUser metricUnitsUser) {
-        this.KILOGRAMS = metricUnitsUser.getWeightInKilograms();
+        this.kilograms = metricUnitsUser.getWeightInKilograms();
     }
 
     @Override
-    public float getWeigthInPounds() {
-        return this.KILOGRAMS * MetricUsersAdapter.CONVERSION_FACTOR;
+    public float getWeightInPounds() {
+        return this.kilograms * CONVERSION_FACTOR;
     }
 }

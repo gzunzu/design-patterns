@@ -5,22 +5,22 @@ import java.util.Collections;
 
 class Nanny {
 
-    private final ArrayList<Baby> BABIES = new ArrayList<>();
+    private final ArrayList<Baby> babies = new ArrayList<>();
 
     private void addBabies(Baby... babies) {
-        Collections.addAll(this.BABIES, babies);
+        Collections.addAll(this.babies, babies);
     }
 
     private void takeToBathroom() {
-        this.BABIES.forEach(baby -> System.out.println(baby.pee()));
+        this.babies.forEach(baby -> System.out.println(baby.pee()));
     }
 
     private void letBoysSing() {
-        this.BABIES.stream().filter(baby -> baby.getGender() == Gender.BOY).forEach(baby -> System.out.println(((Boy) baby).sing()));
+        this.babies.stream().filter(baby -> baby.getGender() == Gender.BOY).forEach(baby -> System.out.println(((Boy) baby).sing()));
     }
 
     private void letGirlsDraw() {
-        this.BABIES.stream().filter(baby -> baby.getGender() == Gender.GIRL).forEach(baby -> System.out.println(((Girl) baby).draw()));
+        this.babies.stream().filter(baby -> baby.getGender() == Gender.GIRL).forEach(baby -> System.out.println(((Girl) baby).draw()));
     }
 
     public static void main(String[] args) {

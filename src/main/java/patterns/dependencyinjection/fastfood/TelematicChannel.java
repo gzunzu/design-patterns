@@ -1,12 +1,13 @@
 package patterns.dependencyinjection.fastfood;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
 abstract class TelematicChannel extends Channel {
 
-    protected final String location;
-
-    TelematicChannel(String location) {
-        this.location = location;
-    }
+    protected String location;
 
     @Override
     protected void serveClient() {

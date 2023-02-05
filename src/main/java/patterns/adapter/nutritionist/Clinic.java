@@ -8,29 +8,29 @@ import patterns.adapter.nutritionist.patient.PatientFactory;
 
 class Clinic {
 
-    private final Nutritionist NUTRITIONIST = new Nutritionist();
+    private final Nutritionist nutritionist = new Nutritionist();
 
     private void getNewPatient(Patient patient) {
-        System.out.println("[Recepcionista] ¡Siguiente! Adelante, " + patient.getNAME() + ".");
+        System.out.println("[Recepcionista] ¡Siguiente! Adelante, " + patient.getName() + ".");
         System.out.println(patient.getIntroduction());
         this.acceptPatient(patient);
-        System.out.println(this.NUTRITIONIST.getPatientWeight() + "\n");
+        System.out.println(this.nutritionist.getPatientWeight() + "\n");
     }
 
     private void acceptPatient(Patient patient) {
-        if (patient instanceof ImperialUnitsUser) {
-            this.admitPatient((ImperialUnitsUser) patient);
-        } else if (patient instanceof MetricUnitsUser) {
-            this.admitPatient((MetricUnitsUser) patient);
+        if (patient instanceof ImperialUnitsUser imperialUnitsUser) {
+            this.admitPatient(imperialUnitsUser);
+        } else if (patient instanceof MetricUnitsUser metricUnitsUser) {
+            this.admitPatient(metricUnitsUser);
         }
     }
 
     private void admitPatient(ImperialUnitsUser patient) {
-        this.NUTRITIONIST.setPatient(patient);
+        this.nutritionist.setPatient(patient);
     }
 
     private void admitPatient(MetricUnitsUser patient) {
-        this.NUTRITIONIST.setPatient(new MetricUsersAdapter(patient));
+        this.nutritionist.setPatient(new MetricUsersAdapter(patient));
     }
 
     public static void main(String[] args) {

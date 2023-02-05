@@ -1,7 +1,7 @@
 package patterns.adapter.nutritionist.patient;
 
 
-import patterns.adapter.nutritionist.ext.Helper;
+import patterns.adapter.nutritionist.ext.RandomWeightHelper;
 
 public class AustralianPatient extends Patient implements ImperialUnitsUser {
 
@@ -9,11 +9,11 @@ public class AustralianPatient extends Patient implements ImperialUnitsUser {
 
     public AustralianPatient(String name) {
         super(name, "australiana/o");
-        this.pounds = Helper.getRandomKilogramsWeight();
+        this.pounds = RandomWeightHelper.KILOGRAMS.getWeight();
     }
 
     @Override
-    public float getWeigthInPounds() {
+    public float getWeightInPounds() {
         return this.pounds;
     }
 

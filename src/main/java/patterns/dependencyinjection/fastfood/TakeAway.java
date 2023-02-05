@@ -1,16 +1,16 @@
 package patterns.dependencyinjection.fastfood;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 class TakeAway extends Channel implements Promo {
 
-    private final String CLIENT_NAME;
     private static final String CHANNEL_NAME = "presencial";
 
-    TakeAway(String clientName) {
-        this.CLIENT_NAME = clientName;
-    }
+    private String clientName;
 
     private void takeNote() {
-        System.out.println("Te avisamos enseguida para venir al mostrador, " + this.CLIENT_NAME + ".");
+        System.out.println("Te avisamos enseguida para venir al mostrador, " + this.clientName + ".");
     }
 
     @Override
@@ -20,11 +20,11 @@ class TakeAway extends Channel implements Promo {
 
     @Override
     public void announcePromo() {
-        System.out.println("¡Hoy tenemos promoción en hamburgesas!");
+        System.out.println("¡Hoy tenemos promoción en hamburguesas!");
     }
 
     @Override
     protected String getName() {
-        return TakeAway.CHANNEL_NAME;
+        return CHANNEL_NAME;
     }
 }

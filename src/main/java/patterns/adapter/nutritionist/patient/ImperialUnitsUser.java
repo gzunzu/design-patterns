@@ -2,5 +2,5 @@ package patterns.adapter.nutritionist.patient;
 
 public interface ImperialUnitsUser {
 
-    float getWeigthInPounds();
+    float getWeightInPounds();
 }

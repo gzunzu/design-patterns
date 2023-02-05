@@ -12,15 +12,15 @@ import java.util.Collections;
 
 class Childcare {
 
-    private final Babysitter BABYSITTER = new Babysitter();
-    private final ArrayList<Child> CHILDREN = new ArrayList<>();
+    private final Babysitter babysitter = new Babysitter();
+    private final ArrayList<Child> children = new ArrayList<>();
 
     void addChildren(Child... children) {
-        Collections.addAll(this.CHILDREN, children);
+        Collections.addAll(this.children, children);
     }
 
     void takeCare() {
-        this.CHILDREN.forEach((child) -> child.accept(this.BABYSITTER));
+        this.children.forEach(child -> child.accept(this.babysitter));
     }
 
     public static void main(String[] args) {

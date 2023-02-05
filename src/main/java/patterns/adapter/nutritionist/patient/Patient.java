@@ -7,16 +7,16 @@ import lombok.Data;
 @Data
 public abstract class Patient {
 
-    private final String NAME;
-    private String citizenship;
+    private final String name;
+    private final String citizenship;
 
     @Override
     public String toString() {
-        return this.NAME;
+        return this.name;
     }
 
     public String getIntroduction() {
-        return "[Paciente] Me llamo " + this.NAME + ", soy " + this.citizenship + " y peso " + this.getWeightAndUnit() + ".";
+        return "[Paciente] Me llamo " + this.name + ", soy " + this.citizenship + " y peso " + this.getWeightAndUnit() + ".";
     }
 
     public abstract String getWeightAndUnit();

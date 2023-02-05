@@ -14,8 +14,8 @@ abstract class Channel {
     }
 
     private void checkPromos() {
-        if (this instanceof Promo) {
-            ((Promo) this).announcePromo();
+        if (this instanceof Promo promo) {
+            promo.announcePromo();
         }
     }
 

@@ -5,25 +5,25 @@ public enum Gender {
     FEMALE("la", "una", 'a');
 
     private static final String INCOMPLETE_REFERENCE = "niñ";
-    private final String ARTICLE;
-    private final String DETERMINER;
-    public final char LETTER;
+    private final String article;
+    private final String determiner;
+    public final char letter;
 
     Gender(String article, String determiner, char letter) {
-        this.ARTICLE = article;
-        this.DETERMINER = determiner;
-        this.LETTER = letter;
+        this.article = article;
+        this.determiner = determiner;
+        this.letter = letter;
     }
-    
+
     private String getReference() {
-        return Gender.INCOMPLETE_REFERENCE + this.LETTER;
+        return INCOMPLETE_REFERENCE + this.letter;
     }
-    
+
     public String getArticledReference() {
-        return this.ARTICLE + " " + this.getReference();
+        return this.article + " " + this.getReference();
     }
-    
+
     public String getDeterminedReference() {
-        return this.DETERMINER + " " + this.getReference();
+        return this.determiner + " " + this.getReference();
     }
 }
