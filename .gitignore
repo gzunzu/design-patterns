@@ -10,5 +10,9 @@
 # Target directory
 /target/
 
-# Sonarlint files.
+# .idea files.
 .idea/sonarlint/
+.idea/libraries/
+.idea/*.xml
+*.iml
+
