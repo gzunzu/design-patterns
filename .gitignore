@@ -1,21 +1,8 @@
-/Java/OOD/Baabysitting/nbproject/private/
-/Java/OOD/Baabysitting/build/
-/Java/OOD/Babysitting/nbproject/private/
-/Java/OOD/Babysitting/build/
-/Java/OOD/Nanny/nbproject/private/
-/Java/patterns/Babysitting/build/
-/Java/patterns/Babysitting/nbproject/private/
-/Java/patterns/FastFood/build/
-/Java/patterns/FastFood/dist/
-/Java/patterns/FastFood/nbproject/private/
-/Java/patterns/GuessQuote/build/
-/Java/patterns/GuessQuote/dist/
-/Java/patterns/GuessQuote/nbproject/private/
-/Java/patterns/Library/nbproject/private/
-/Java/patterns/Nanny/nbproject/private/
-/Java/patterns/Visitor/nbproject/private/
-/Java/patterns/FactoryMethod/nbproject/private/
-/Java/patterns/DependencyInjection/nbproject/private/
-/Java/patterns/Adapter/nbproject/private/
-/Java/patterns/Adapter/build/
-/Java/patterns/ChainOfResponsability/nbproject/private/
+# Compiled class file
+*.class
+
+# Private directories
+/private/
+
+# Build directories
+/build/
