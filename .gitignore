@@ -7,5 +7,5 @@
 # Build directories
 /build/
 
-# JetBrains files
-.idea/
+# Target directory
+/target/
