@@ -5,20 +5,20 @@ import patterns.adapter.nutritionist.ext.Helper;
 
 public class EnglishPatient extends Patient implements ImperialUnitsUser {
 
-    private final float POUNDS;
+    private final float pounds;
 
     public EnglishPatient(String name) {
         super(name, "inglés/a");
-        this.POUNDS = Helper.getRandomPoundsWeight();
+        this.pounds = Helper.getRandomPoundsWeight();
     }
 
     @Override
     public float getWeigthInPounds() {
-        return this.POUNDS;
+        return this.pounds;
     }
 
     @Override
     public String getWeightAndUnit() {
-        return String.format("%.2f", this.POUNDS) + " libras";
+        return String.format("%.2f", this.pounds) + " libras";
     }
 }

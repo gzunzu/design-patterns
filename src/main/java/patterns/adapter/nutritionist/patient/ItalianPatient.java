@@ -5,20 +5,20 @@ import patterns.adapter.nutritionist.ext.Helper;
 
 public class ItalianPatient extends Patient implements MetricUnitsUser {
 
-    private final float KILOGRAMS;
+    private final float kilograms;
 
     public ItalianPatient(String name) {
         super(name, "italiano/a");
-        this.KILOGRAMS = Helper.getRandomKilogramsWeight();
+        this.kilograms = Helper.getRandomKilogramsWeight();
     }
 
     @Override
     public float getWeightInKilograms() {
-        return this.KILOGRAMS;
+        return this.kilograms;
     }
 
     @Override
     public String getWeightAndUnit() {
-        return String.format("%.2f", this.KILOGRAMS) + " kilos";
+        return String.format("%.2f", this.kilograms) + " kilos";
     }
 }
