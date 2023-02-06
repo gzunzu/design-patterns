@@ -1,8 +1,7 @@
-package patterns.adapter.nutritionist;
+package others;
 
-
-import patterns.adapter.nutritionist.patient.ImperialUnitsUser;
-import patterns.adapter.nutritionist.patient.MetricUnitsUser;
+import patient.ImperialUnitsUser;
+import patient.MetricUnitsUser;
 
 class MetricUsersAdapter implements ImperialUnitsUser {
 

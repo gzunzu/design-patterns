@@ -1,4 +1,4 @@
-package patterns.adapter.nutritionist.ext;
+package ext;
 
 import lombok.AllArgsConstructor;
 

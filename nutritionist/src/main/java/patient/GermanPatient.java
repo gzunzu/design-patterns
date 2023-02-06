@@ -1,14 +1,13 @@
-package patterns.adapter.nutritionist.patient;
+package patient;
 
+import ext.RandomWeightHelper;
 
-import patterns.adapter.nutritionist.ext.RandomWeightHelper;
-
-public class ItalianPatient extends Patient implements MetricUnitsUser {
+public class GermanPatient extends Patient implements MetricUnitsUser {
 
     private final float kilograms;
 
-    public ItalianPatient(String name) {
-        super(name, "italiano/a");
+    public GermanPatient(String name) {
+        super(name, "alemán/a");
         this.kilograms = RandomWeightHelper.KILOGRAMS.getWeight();
     }
 

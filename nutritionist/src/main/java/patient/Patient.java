@@ -1,4 +1,4 @@
-package patterns.adapter.nutritionist.patient;
+package patient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

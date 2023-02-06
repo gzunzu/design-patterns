@@ -1,8 +1,7 @@
-package patterns.adapter.nutritionist;
-
+package others;
 
 import lombok.Setter;
-import patterns.adapter.nutritionist.patient.ImperialUnitsUser;
+import patient.ImperialUnitsUser;
 
 /**
  * Suponemos que el nutricionista solo tiene preparadas sus herramientas para trabajar con

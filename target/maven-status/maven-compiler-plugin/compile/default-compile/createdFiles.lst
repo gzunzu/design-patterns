@@ -12,8 +12,8 @@ patterns\factorymethod\nursery\Boy.class
 patterns\adapter\nutritionist\patient\AustralianPatient.class
 patterns\adapter\nutritionist\patient\ImperialUnitsUser.class
 patterns\factorymethod\nursery\BabyFactory.class
-patterns\adapter\nutritionist\Clinic.class
-patterns\adapter\nutritionist\MetricUsersAdapter.class
+patterns\adapter\nutritionist\others.Clinic.class
+patterns\adapter\nutritionist\others.MetricUsersAdapter.class
 patterns\adapter\nutritionist\patient\ItalianPatient.class
 patterns\dependencyinjection\fastfood\TelematicChannel.class
 patterns\dependencyinjection\fastfood\Web.class
@@ -24,7 +24,7 @@ patterns\visitor\babysitting\visitor\Babysitter.class
 patterns\visitor\babysitting\visitable\Baby.class
 patterns\factorymethod\nursery\Baby.class
 patterns\visitor\babysitting\visitable\Toddler.class
-patterns\adapter\nutritionist\Nutritionist.class
+patterns\adapter\nutritionist\others.Nutritionist.class
 patterns\adapter\nutritionist\patient\MetricUnitsUser.class
 patterns\visitor\babysitting\ext\Gender.class
 patterns\adapter\nutritionist\ext\Helper.class

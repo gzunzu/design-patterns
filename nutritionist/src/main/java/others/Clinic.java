@@ -1,10 +1,10 @@
-package patterns.adapter.nutritionist;
+package others;
 
 
-import patterns.adapter.nutritionist.patient.ImperialUnitsUser;
-import patterns.adapter.nutritionist.patient.MetricUnitsUser;
-import patterns.adapter.nutritionist.patient.Patient;
-import patterns.adapter.nutritionist.patient.PatientFactory;
+import patient.ImperialUnitsUser;
+import patient.MetricUnitsUser;
+import patient.Patient;
+import patient.PatientFactory;
 
 class Clinic {
 

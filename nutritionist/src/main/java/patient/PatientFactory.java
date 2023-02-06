@@ -1,4 +1,4 @@
-package patterns.adapter.nutritionist.patient;
+package patient;
 
 public class PatientFactory {
 

@@ -1,7 +1,7 @@
-package patterns.adapter.nutritionist.patient;
+package patient;
 
 
-import patterns.adapter.nutritionist.ext.RandomWeightHelper;
+import ext.RandomWeightHelper;
 
 public class EnglishPatient extends Patient implements ImperialUnitsUser {
 
