@@ -10,6 +10,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>nutritionist</module>
+        <module>fastfood</module>
+        <module>nursery</module>
+        <module>babysitting</module>
     </modules>
 
     <properties>

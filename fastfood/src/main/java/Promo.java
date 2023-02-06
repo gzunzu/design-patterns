@@ -1,0 +1,4 @@
+interface Promo {
+
+    void announcePromo();
+}
