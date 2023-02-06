@@ -1,3 +1,5 @@
+package temporal;
+
 class Phone extends TelematicChannel {
 
     private static final String CHANNEL_NAME = "telefónico";

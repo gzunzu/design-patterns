@@ -1,7 +1,7 @@
 package patient;
 
 
-import ext.RandomWeightHelper;
+import temporal.ext.RandomWeightHelper;
 
 public class EnglishPatient extends Patient implements ImperialUnitsUser {
 

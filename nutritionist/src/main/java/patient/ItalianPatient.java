@@ -1,6 +1,6 @@
 package patient;
 
-import ext.RandomWeightHelper;
+import temporal.ext.RandomWeightHelper;
 
 public class ItalianPatient extends Patient implements MetricUnitsUser {
 

@@ -1,3 +1,5 @@
+package temporal;
+
 class Web extends TelematicChannel implements Promo {
 
     private static final String CHANNEL_NAME = "web";

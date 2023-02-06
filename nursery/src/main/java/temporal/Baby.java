@@ -1,3 +1,5 @@
+package temporal;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

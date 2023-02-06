@@ -1,3 +1,5 @@
+package temporal;
+
 abstract class Channel {
 
     protected void attend(int globalOrderId, int channelOrderId) {

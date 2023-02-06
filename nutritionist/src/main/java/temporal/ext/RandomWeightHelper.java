@@ -1,4 +1,4 @@
-package ext;
+package temporal.ext;
 
 import lombok.AllArgsConstructor;
 
