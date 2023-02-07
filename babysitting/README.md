@@ -18,7 +18,7 @@ and that is what allows our babysitter to take care of each type of child in dif
 Also, every type of child must implement the [`Visitable`](src/main/java/visitable/Visitable.java) interface.
 This is because all these types must have their own `accept` method, whose implementation is always the same
 whichever their class is: they receive a [`Visitor`](src/main/java/visitor/Visitor.java) instance as argument,
-and they use it to invoke the `visit` method and passing its own instance as param (`this`):
+and they use it to invoke the `visit` method passing its own instance as param (`this`):
 
 ```
 class AnyClass implements Visitable {
@@ -33,12 +33,12 @@ class AnyClass implements Visitable {
 ```
 
 At this point, you can see that **implementations of Visitable** have the same implementation
-for the `accept` method, but apart from that they are **isolated from each other**, and they could be completely different.
+for the `accept` method, but apart from that similarity they are **isolated from each other**, and they could be completely different, in fact.
 In this example, they all inherit from a Child [`Child`](src/main/java/visitable/Child.java) class, but keep in mind that this is unnecessary and not
 referred from the Visitable class in any way, it's just for giving a common context to the example.
 We could have a Dog class implementing the [`Visitable`](src/main/java/visitable/Visitable.java) interface.
-Just keep in mind that in that case, your Babysitter would be forced to take care of animals, because
-she'd be required to have an implementation the `visit(Dog dog)` method as long as you declare on
+Just keep in mind that in that case, you have to reach an agreement with your Babysitter in order to take care of animals, because
+she'd be forced to have an implementation of the `visit(Dog dog)` method as long as you declare it on
 [`Visitor`](src/main/java/visitor/Visitor.java). Also, **Visitor
 implementation operations** for each [`Visitable`](src/main/java/visitable/Visitable.java) implementation
 **are independent of each other**.
