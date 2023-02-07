@@ -5,5 +5,5 @@ import visitor.Visitor;
 public interface Visitable {
 
     @SuppressWarnings("unused")
-    void accept(Visitor visitor);
+    String accept(Visitor visitor);
 }

@@ -14,17 +14,17 @@ public class Baby extends Child {
     }
 
     @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public String accept(Visitor visitor) {
+        return visitor.visit(this);
     }
 
-    public void cradle() {
-        System.out.println(this.name + " loves being cradled.");
+    public String cradle() {
+        return this.name + " loves being cradled.";
     }
 
     @Override
     public String toString() {
-        return super.toString() + " " + StringUtils.capitalize(this.getPronoun())
+        return super.toString() + " " + StringUtils.capitalize(this.gender.getSubjectivePronoun())
                 + " is just a(n) " + this.weeks + " weeks old newborn.";
     }
 }

@@ -9,14 +9,24 @@
     <artifactId>babysitting</artifactId>
     <name>Archetype - babysitting</name>
     <url>http://maven.apache.org</url>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>app.Childcare</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.0</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
         <dependency>
             <groupId>com.ibm.icu</groupId>

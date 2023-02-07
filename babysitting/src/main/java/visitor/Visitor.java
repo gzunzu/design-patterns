@@ -5,10 +5,10 @@ import visitable.Preschooler;
 import visitable.Toddler;
 
 public interface Visitor {
+    
+    String visit(Baby baby);
 
-    void visit(Baby baby);
+    String visit(Toddler toddler);
 
-    void visit(Toddler toddler);
-
-    void visit(Preschooler preschooler);
+    String visit(Preschooler preschooler);
 }

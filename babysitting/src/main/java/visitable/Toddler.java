@@ -17,20 +17,20 @@ public class Toddler extends Child {
     }
 
     @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public String accept(Visitor visitor) {
+        return visitor.visit(this);
     }
 
-    public void suckPacifier() {
-        System.out.println(this.name + " is calming down while sucking the pacifier.");
+    public String suckPacifier() {
+        return this.name + " is calming down while sucking the pacifier.";
     }
 
     @Override
     public String toString() {
         RuleBasedNumberFormat formatter
                 = new RuleBasedNumberFormat(Locale.ENGLISH, RuleBasedNumberFormat.SPELLOUT);
-        return super.toString() + " " + StringUtils.capitalize(this.getPronoun())
-                + " is a toddler and " + this.getPossessivePronoun() + " "
+        return super.toString() + " " + StringUtils.capitalize(this.gender.getSubjectivePronoun())
+                + " is a toddler and " + this.gender.getPossessivePronoun() + " "
                 + formatter.format(this.teethCount, "%spellout-ordinal") + " tooth is coming out.";
     }
 }

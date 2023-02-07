@@ -14,17 +14,17 @@ public class Preschooler extends Child {
     }
 
     @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public String accept(Visitor visitor) {
+        return visitor.visit(this);
     }
 
-    public void play() {
-        System.out.println(this.name + " is now having fun playing.");
+    public String play() {
+        return this.name + " is now having fun playing.";
     }
 
     @Override
     public String toString() {
-        return super.toString() + " " + StringUtils.capitalize(this.getPronoun())
+        return super.toString() + " " + StringUtils.capitalize(this.gender.getSubjectivePronoun())
                 + " is a preschooler who already knows how to count up to " + this.numbersKnown + ".";
     }
 }

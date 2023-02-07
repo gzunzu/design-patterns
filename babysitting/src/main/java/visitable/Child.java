@@ -1,26 +1,16 @@
 package visitable;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import utils.Gender;
 
 @AllArgsConstructor
+@Getter
 public abstract class Child implements Visitable {
 
     protected final String name;
 
     protected final Gender gender;
-
-    public String getPronoun() {
-        return this.gender.getPronoun();
-    }
-
-    public String getPossessivePronoun() {
-        return this.gender.getPossessivePronoun();
-    }
-
-    public String getThirdPronoun() {
-        return this.gender.getThirdPronoun();
-    }
 
     @Override
     public String toString() {
