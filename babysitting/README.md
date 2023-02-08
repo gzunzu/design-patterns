@@ -1,6 +1,6 @@
 ## Babysitting \[Visitor pattern\]
 
-#### Explanation
+#### Description
 
 Module **Babysitting** is a simple implementation of the Visitor pattern, which allows
 us to add new operations to an existing object without modifying or even knowing about
