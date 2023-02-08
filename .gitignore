@@ -8,7 +8,7 @@
 /build/
 
 # Target directory
-/target/
+target/
 
 # .idea files.
 .idea/sonarlint/

@@ -6,6 +6,7 @@ import visitable.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Data
 public class Babysitter implements Visitor {
@@ -16,7 +17,11 @@ public class Babysitter implements Visitor {
         this.visitables = new ArrayList<>();
     }
 
-    public void admit(Visitable... visitables) {
+    public <T extends Visitable> void admit(List<T> visitables) {
+        this.visitables.addAll(visitables);
+    }
+
+    public <T extends Visitable> void admit(T... visitables) {
         Collections.addAll(this.visitables, visitables);
     }
 

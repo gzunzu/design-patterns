@@ -1,26 +1,23 @@
 package utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
+import java.nio.file.NoSuchFileException;
 
-public class JsonHelper {
+@Slf4j
+public abstract class JsonHelper {
 
-    public ObjectMapper readJson(String filePath) {
-        ObjectMapper objectMapper = null;
+    public static Object readJsonFile(String filePath, Class clazz) {
         try {
-            byte[] mapData = Files.readAllBytes(Paths.get("babysitting/exampledata.json"));
-            Map<String, String> myMap = new HashMap<String, String>();
-
-            objectMapper = new ObjectMapper();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            return new ObjectMapper().readValue(new File(filePath), clazz);
+        } catch (NoSuchFileException nsfe) {
+            log.error(nsfe.getMessage());
+        } catch (IOException ioe) {
+            log.error(ioe.getMessage());
         }
-        return objectMapper;
+        return null;
     }
 }
