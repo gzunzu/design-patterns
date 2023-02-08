@@ -1,12 +1,18 @@
 package visitable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import utils.Gender;
 import visitor.Visitor;
 
+@NoArgsConstructor
+@Data
 public class Baby extends Child {
 
-    private final int weeks;
+    @JsonProperty("weeks")
+    private int weeks;
 
     public Baby(String name, Gender gender, int weeks) {
         super(name, gender);

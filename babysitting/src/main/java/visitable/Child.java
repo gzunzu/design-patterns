@@ -1,16 +1,21 @@
 package visitable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import utils.Gender;
 
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
+@Data
 public abstract class Child implements Visitable {
 
-    protected final String name;
+    @JsonProperty("name")
+    protected String name;
 
-    protected final Gender gender;
+    @JsonProperty("gender")
+    protected Gender gender;
 
     @Override
     public String toString() {
