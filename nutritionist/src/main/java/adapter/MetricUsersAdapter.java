@@ -1,14 +1,14 @@
-package others;
+package adapter;
 
 import patient.ImperialUnitsUser;
 import patient.MetricUnitsUser;
 
-class MetricUsersAdapter implements ImperialUnitsUser {
+public class MetricUsersAdapter implements ImperialUnitsUser {
 
     private static final float CONVERSION_FACTOR = 2.20462f;
     private final float kilograms;
 
-    MetricUsersAdapter(MetricUnitsUser metricUnitsUser) {
+    public MetricUsersAdapter(MetricUnitsUser metricUnitsUser) {
         this.kilograms = metricUnitsUser.getWeightInKilograms();
     }
 

@@ -1,13 +1,16 @@
-package patient;
+package patient.impl;
 
-import temporal.ext.RandomWeightHelper;
+import com.neovisionaries.i18n.CountryCode;
+import patient.MetricUnitsUser;
+import patient.Patient;
+import utils.RandomWeightHelper;
 
 public class GermanPatient extends Patient implements MetricUnitsUser {
 
     private final float kilograms;
 
     public GermanPatient(String name) {
-        super(name, "alemán/a");
+        super(name, CountryCode.DE);
         this.kilograms = RandomWeightHelper.KILOGRAMS.getWeight();
     }
 
@@ -18,6 +21,6 @@ public class GermanPatient extends Patient implements MetricUnitsUser {
 
     @Override
     public String getWeightAndUnit() {
-        return String.format("%.2f", this.kilograms) + " kilos";
+        return String.format("%.2f", this.kilograms) + " kilograms";
     }
 }

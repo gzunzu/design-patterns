@@ -1,7 +1,6 @@
-package dto;
+package dto.babysitting;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import visitable.Baby;
@@ -12,10 +11,9 @@ import visitable.Toddler;
 import java.io.Serializable;
 import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class BabysitterDTO implements Serializable {
+public class VisitableDTO implements Serializable {
 
     @JsonProperty("babies")
     private List<Baby> babies;

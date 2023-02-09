@@ -18,13 +18,19 @@
     <dependencies>
         <dependency>
             <groupId>com.gzunzu.oop-learning</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.gzunzu.oop-learning</groupId>
             <artifactId>babysitting</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.gzunzu.oop-learning</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>nutritionist</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>

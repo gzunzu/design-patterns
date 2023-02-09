@@ -1,22 +1,25 @@
 package patient;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.neovisionaries.i18n.CountryCode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import utils.Salute;
 
 @AllArgsConstructor
 @Data
 public abstract class Patient {
 
+    @JsonProperty("name")
     private final String name;
-    private final String citizenship;
 
-    @Override
-    public String toString() {
-        return this.name;
-    }
+    @JsonProperty("citizenship")
+    private final CountryCode citizenship;
 
     public String getIntroduction() {
-        return "[Paciente] Me llamo " + this.name + ", soy " + this.citizenship + " y peso " + this.getWeightAndUnit() + ".";
+        return "[PATIENT] " + Salute.random().getText()
+                + ". My name is " + this.name + ", I'm from " + this.citizenship.getName()
+                + " and my weight might be around " + this.getWeightAndUnit() + ".";
     }
 
     public abstract String getWeightAndUnit();

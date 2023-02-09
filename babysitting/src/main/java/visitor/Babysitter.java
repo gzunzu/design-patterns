@@ -29,6 +29,10 @@ public class Babysitter implements Visitor {
         this.visitables.removeAll(Arrays.asList(visitables));
     }
 
+    public void shuffle() {
+        Collections.shuffle(this.visitables);
+    }
+
     public void finishWork() {
         this.visitables.clear();
     }
