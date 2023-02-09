@@ -1,7 +1,7 @@
 package clinic;
 
 
-import adapter.MetricUsersAdapter;
+import adapter.MetricUserAdapter;
 import patient.ImperialUnitsUser;
 import patient.MetricUnitsUser;
 import patient.Patient;
@@ -46,7 +46,7 @@ public class Clinic {
         String diagnosises = "\n";
         for (Patient patient : this.patients) {
             this.acceptPatient(patient);
-            diagnosises += "[RECEPTIONIST] Next! Welcome to our clinic.\n"
+            diagnosises += "[RECEPTIONIST] Next! Welcome to our clinic Tell me about you.\n"
                     + patient.getIntroduction() + "\n"
                     + this.nutritionist.measureWeight()
                     + "\n";
@@ -58,7 +58,7 @@ public class Clinic {
         if (patient instanceof ImperialUnitsUser imperialUnitsUser) {
             this.nutritionist.setPatient(imperialUnitsUser);
         } else if (patient instanceof MetricUnitsUser metricUnitsUser) {
-            this.nutritionist.setPatient(new MetricUsersAdapter(metricUnitsUser));
+            this.nutritionist.setPatient(new MetricUserAdapter(metricUnitsUser));
         }
     }
 }
