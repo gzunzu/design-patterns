@@ -11,12 +11,12 @@
     <name>${project.artifactId}-${project.version}</name>
 
     <modules>
-        <module>nutritionist</module>
         <module>fastfood</module>
         <module>nursery</module>
         <module>babysitting</module>
         <module>application</module>
         <module>common</module>
+        <module>vendingmachine</module>
     </modules>
 
     <properties>

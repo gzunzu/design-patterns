@@ -10,10 +10,14 @@
 # Target directory
 target/
 
-# .idea files.
-.idea/sonarlint/
-.idea/libraries/
-.idea/shelf
-.idea/*.xml
+# IntelliJ files.
+.idea/
 *.iml
 
+# Eclipse files
+*.project
+*.classpath
+.settings/
+
+# Output directory
+out/

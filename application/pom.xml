@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>com.gzunzu.oop-learning</groupId>
-            <artifactId>nutritionist</artifactId>
+            <artifactId>vendingmachine</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>

@@ -2,7 +2,7 @@
 
 #### Description
 
-This is a multi-module didactic project in which each module contains a sample implementation
+This is a multimodule didactic project in which each module contains a sample implementation
 for an **Object-Oriented Programming design pattern**.
 
 Design patterns are clever solutions commonly known among the software developers for many usual challenges we face
@@ -14,12 +14,12 @@ you will find at the root directory of every module.
 
 #### Index
 
-|                 Module                 |        Design pattern         |
-|:--------------------------------------:|:-----------------------------:|
-|  [Babysitting](babysitting/README.md)  |            Visitor            |
-|    [Fast food](fastfood/README.md)     |     Dependency injection      |
-|      [Nursery](nursery/README.md)      |        Factory method         |
-| [Nutritionist](nutritionist/README.md) | Adapter &vert; Factory method |
+|                   Module                    |    Design pattern    |
+|:-------------------------------------------:|:--------------------:|
+|    [Babysitting](babysitting/README.md)     |       Visitor        |
+|       [Fast food](fastfood/README.md)       | Dependency injection |
+|        [Nursery](nursery/README.md)         |    Factory method    |
+| [Vending machine](vendingmachine/README.md) |       Adapter        |
 
 [Common](common/README.md) module is just a bunch of modularized methods and classes which
 may come in handy and are abstracted from the logic of the modules where they are being used;

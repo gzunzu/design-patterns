@@ -1,11 +1,15 @@
 package app;
 
-import clinic.Clinic;
+import adapter.MoneyConverter;
 import dto.babysitting.VisitableDTO;
-import dto.nutritionist.PatientFactoryDTO;
+import dto.vendingmachine.PaymentMethodsDTO;
 import lombok.extern.slf4j.Slf4j;
+import machine.Product;
+import machine.VendingMachine;
+import org.apache.commons.lang3.StringUtils;
+import payment.ElectronicPayment;
+import payment.NonElectronicPayment;
 import utils.JsonHelper;
-import utils.PatientFactory;
 import visitor.Babysitter;
 
 import java.util.List;
@@ -31,21 +35,32 @@ public class OopLearningApplication {
         babysitter.finishWork();
     }
 
-    private static void executeNutritionistExample() {
-        log.info("\n\n---An example execution of the Nutritionist module---\n ");
+    private static void executeVendingMachineExample() {
+        log.info("\n\n---An example execution of the Vending machine module---\n ");
+        String output = StringUtils.EMPTY;
 
-        List<PatientFactoryDTO> patientFactoryDTOList =
-                JsonHelper.readJsonArrayFile(BASE_RESOURCES_PATH + "nutritionist/patients.json", PatientFactoryDTO.class);
+        PaymentMethodsDTO patientFactoryDTOList =
+                JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "vendingmachine/payments.json", PaymentMethodsDTO.class);
 
-        final Clinic clinic = new Clinic();
-        patientFactoryDTOList.stream().forEach(dto -> clinic.admit(PatientFactory.getPatient(dto.getName(), dto.getIsoCode())));
-        clinic.shuffle();
-        log.info(clinic.seePatients());
-        clinic.finishWork();
+
+        VendingMachine vendingMachine = new VendingMachine();
+        streamPaymentMethodsList(patientFactoryDTOList.getBankCheques(), vendingMachine);
+        streamPaymentMethodsList(patientFactoryDTOList.getDebitCards(), vendingMachine);
+        streamPaymentMethodsList(patientFactoryDTOList.getCashes(), vendingMachine);
+    }
+
+    private static void streamPaymentMethodsList(List list, VendingMachine vendingMachine) {
+        list.stream().forEach(element -> {
+            if (element instanceof ElectronicPayment electronicPayment) {
+                log.info(vendingMachine.buy(Product.getRandomProduct(), electronicPayment));
+            } else if (element instanceof NonElectronicPayment nonElectronicPayment) {
+                log.info(vendingMachine.buy(Product.getRandomProduct(), new MoneyConverter(nonElectronicPayment)));
+            }
+        });
     }
 
     public static void main(String[] args) {
         executeBabysittingExample();
-        executeNutritionistExample();
+        executeVendingMachineExample();
     }
 }
