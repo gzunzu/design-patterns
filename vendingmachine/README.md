@@ -21,21 +21,22 @@ public class VendingMachine {
 ````
 
 The receptionist, who is popular and friendly with all co-workers and whose working place is close to the machine,
-offered to act as a [`money converter`](src/main/java/patient/ImperialUnitsUser.java) for
+offered to act as a [`money converter`](src/main/java/adapter/MoneyConverter.java) for
 the [`non-electronic payers`](src/main/java/payment/NonElectronicPayment.java).
 So everytime some [`non-electronic payer`](src/main/java/payment/NonElectronicPayment.java) want to buy something,
-he interferes asking them for the money, whatever type is; and then he goes making
+he interferes asking them for the money, whichever type it is; and then he goes making
 the [`electronic payment`](src/main/java/payment/ElectronicPayment.java)
 through the machine online system.
 
-So, what the [`money converter`](src/main/java/patient/ImperialUnitsUser.java) class does is to act as a «translator»
+So, what the [`money converter`](src/main/java/adapter/MoneyConverter.java) class does is to act as a «translator»
 or a bridge: it is an [`electronic payer`](src/main/java/payment/ElectronicPayment.java), so it is able to pay through
 the [`machine`](src/main/java/machine/VendingMachine.java) system;
-and it also «wraps» the [`non-electronic payer`](src/main/java/payment/NonElectronicPayment.java) method of a partner
-in order to ask take the money when the [`machine`](src/main/java/machine/VendingMachine.java) asks for it,
+and it also «wraps» the [`non-electronic payer`](src/main/java/payment/NonElectronicPayment.java) payment method of a partner
+in order to take the same amount of money when the [`machine`](src/main/java/machine/VendingMachine.java) asks for it,
 using the methods the [`machine`](src/main/java/machine/VendingMachine.java) is not
 built to understand, because it does not know how to interact
-with [`non-electronic payers`](src/main/java/payment/NonElectronicPayment.java).
+with [`non-electronic payers`](src/main/java/payment/NonElectronicPayment.java). Fortunately, he understands how
+both parts work.
 
 #### Subjects, technologies and contents
 
