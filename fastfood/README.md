@@ -1,5 +1,7 @@
 ## Fast food \[Dependency injection]
 
+#### Description
+
 Module Fast food is an example of the Dependency injection pattern. This is for sure onw of the most
 common patterns used in OOP programming, because it helps us to reduce coupling dependencies to minimums.
 
