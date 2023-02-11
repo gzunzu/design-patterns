@@ -1,4 +1,4 @@
-package machine;
+package office;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

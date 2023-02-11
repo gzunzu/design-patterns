@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.gzunzu.oop-learning</groupId>
+    <groupId>${parent.groupId}</groupId>
     <artifactId>fastfood</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>

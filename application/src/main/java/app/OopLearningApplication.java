@@ -1,26 +1,21 @@
 package app;
 
-import adapter.MoneyConverter;
 import dto.babysitting.VisitableDTO;
 import dto.vendingmachine.PaymentMethodsDTO;
-import lombok.extern.slf4j.Slf4j;
-import machine.Product;
-import machine.VendingMachine;
-import org.apache.commons.lang3.StringUtils;
-import payment.ElectronicPayment;
-import payment.NonElectronicPayment;
+import lombok.extern.log4j.Log4j2;
+import office.Receptionist;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import utils.JsonHelper;
 import visitor.Babysitter;
 
-import java.util.List;
-
-@Slf4j
+@SpringBootApplication
+@Log4j2
 public class OopLearningApplication {
 
     private static final String BASE_RESOURCES_PATH = "application/src/main/resources/";
 
     private static void executeBabysittingExample() {
-        log.info("\n\n---An example execution of the Babysitter module---\n ");
+        log.info("\n---An example execution of the Babysitter module---\n ");
 
         VisitableDTO visitableDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "babysitting/visitables.json", VisitableDTO.class);
@@ -36,27 +31,18 @@ public class OopLearningApplication {
     }
 
     private static void executeVendingMachineExample() {
-        log.info("\n\n---An example execution of the Vending machine module---\n ");
-        String output = StringUtils.EMPTY;
+        log.info("\n---An example execution of the Vending machine module---\n ");
 
         PaymentMethodsDTO patientFactoryDTOList =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "vendingmachine/payments.json", PaymentMethodsDTO.class);
 
-
-        VendingMachine vendingMachine = new VendingMachine();
-        streamPaymentMethodsList(patientFactoryDTOList.getBankCheques(), vendingMachine);
-        streamPaymentMethodsList(patientFactoryDTOList.getDebitCards(), vendingMachine);
-        streamPaymentMethodsList(patientFactoryDTOList.getCashes(), vendingMachine);
-    }
-
-    private static void streamPaymentMethodsList(List list, VendingMachine vendingMachine) {
-        list.stream().forEach(element -> {
-            if (element instanceof ElectronicPayment electronicPayment) {
-                log.info(vendingMachine.buy(Product.getRandomProduct(), electronicPayment));
-            } else if (element instanceof NonElectronicPayment nonElectronicPayment) {
-                log.info(vendingMachine.buy(Product.getRandomProduct(), new MoneyConverter(nonElectronicPayment)));
-            }
-        });
+        final Receptionist receptionist = new Receptionist();
+        receptionist.add(patientFactoryDTOList.getBankCheques());
+        receptionist.add(patientFactoryDTOList.getDebitCards());
+        receptionist.add(patientFactoryDTOList.getCashes());
+        receptionist.shuffle();
+        log.info(receptionist.assistCoworkers());
+        receptionist.finishWork();
     }
 
     public static void main(String[] args) {

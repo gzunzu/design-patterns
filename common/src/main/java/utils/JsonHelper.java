@@ -2,14 +2,14 @@ package utils;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.util.List;
 
-@Slf4j
+@Log4j2
 public abstract class JsonHelper {
 
     private final static ObjectMapper MAPPER = new ObjectMapper()
