@@ -1,4 +1,4 @@
-## Vending office \[Adapter pattern]
+## Vending machine \[Adapter pattern]
 
 #### Description
 
@@ -13,11 +13,12 @@ We have some old-fashioned workers in the office that don't like or are not used
 bosses are worried about for them to feel left apart. We cannot change how the office works, and they won't
 buy another office, this is a new expensive one.
 
-````
+````java
 public class VendingMachine {
     public String buy(Product product, ElectronicPayment payment) {
         // Machine operations to sell the product and claim the price.
     }
+}
 ````
 
 The [`receptionist`](src/main/java/office/Receptionist.java), who is popular and friendly with all co-workers
@@ -36,13 +37,13 @@ which is the so-called **Adapter class**. It acts as a «translator»
 or a bridge: it is an [`electronic payer`](src/main/java/payment/ElectronicPayment.java), so it is able to pay through
 the [`office`](src/main/java/office/VendingMachine.java) system;
 and it also «wraps» the [`non-electronic payer`](src/main/java/payment/NonElectronicPayment.java) payment method
-in order to take the same amount of money when the [`vending machine`](src/main/java/office/VendingMachine.java) asks for it,
+in management to take the same amount of money when the [`vending machine`](src/main/java/office/VendingMachine.java) asks for it,
 using the methods the [`vending machine`](src/main/java/office/VendingMachine.java) is not
 built to understand, because it does not know how to interact
 with [`non-electronic payers`](src/main/java/payment/NonElectronicPayment.java). Fortunately, he understands how
 both parts work.
 
-````
+````java
 public class MoneyConverter implements ElectronicPayment {
 
     private NonElectronicPayment nonElectronicPayment;
@@ -56,6 +57,7 @@ public class MoneyConverter implements ElectronicPayment {
     public String charge(Float price, String reason) {
         // Code to adapt for the nonElectronicPayment; calling its methods, if it's necessary.
     }
+}
 ````
 
 #### Subjects, technologies and contents

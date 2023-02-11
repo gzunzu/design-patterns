@@ -13,16 +13,16 @@ should have different behaviours based on the type of object given as argument. 
 our example, we can guess that our babysitter should not attend the same way a newborn
 baby and a preschooler.
 
-```
+```java
 public class Babysitter implements Visitor {
-    
+
     // Previous attributes and methods.
 
     @Override
     public String visit(Baby baby) {
         // Actions to do for taking care of a baby.
     }
-    
+
     @Override
     public String visit(Preschooler preschooler) {
         // Actions to do for taking care of a preschooler.
@@ -38,7 +38,7 @@ This is because all these types must have their own `accept` method, whose imple
 whichever their class is: they receive a [`Visitor`](src/main/java/visitor/Visitor.java) instance as argument,
 and they use it to invoke the `visit` method passing its own instance as param (`this`):
 
-```
+```java
 class AnyClass implements Visitable {
 
     // Attributes and other methods declarations.
@@ -81,9 +81,9 @@ of the Open/Closed SOLID principle. The code is easily expandable for adding ope
 Indeed, another possible scenario could be to amplify the example by adding an operation for
 teenagers. How do yu feel about it? Go try!
 
-```
+```java
 public interface Visitor {
-    
+
     // Previous visit method declarations.
 
     String visit(Teenager teenager);

@@ -13,7 +13,7 @@ public class VendingMachine {
                     , product.getPrice(), product.getName());
         } else {
             response = String.format("%n[MACHINE] Unable to charge %.2f €. Please, check your founds " +
-                            "and make sure your electronic payment method is enabled.."
+                            "and make sure your electronic payment method is enabled."
                     , product.getPrice());
         }
         return response + "\n";

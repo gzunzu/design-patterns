@@ -1,8 +1,10 @@
 package app;
 
 import dto.babysitting.VisitableDTO;
+import dto.fastfood.OrdersDTO;
 import dto.vendingmachine.PaymentMethodsDTO;
 import lombok.extern.log4j.Log4j2;
+import management.Service;
 import office.Receptionist;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import utils.JsonHelper;
@@ -30,6 +32,21 @@ public class OopLearningApplication {
         babysitter.finishWork();
     }
 
+    private static void executeFastFoodExample() {
+        log.info("\n---An example execution of the Fast food module---\n ");
+
+        OrdersDTO ordersDTO =
+                JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "fastfood/orders.json", OrdersDTO.class);
+
+        final Service service = new Service();
+        service.addOrders(ordersDTO.getWebOrders());
+        service.addOrders(ordersDTO.getPhoneOrders());
+        service.addOrders(ordersDTO.getTakeawayOrders());
+        service.shuffle();
+        log.info(service.processOrders());
+        service.finishWork();
+    }
+
     private static void executeVendingMachineExample() {
         log.info("\n---An example execution of the Vending machine module---\n ");
 
@@ -47,6 +64,7 @@ public class OopLearningApplication {
 
     public static void main(String[] args) {
         executeBabysittingExample();
+        executeFastFoodExample();
         executeVendingMachineExample();
     }
 }

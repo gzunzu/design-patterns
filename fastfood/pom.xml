@@ -15,4 +15,13 @@
     <packaging>jar</packaging>
     <name>${project.artifactId}-${project.version}</name>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>72.1</version>
+        </dependency>
+    </dependencies>
+
 </project>

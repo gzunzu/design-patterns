@@ -1,0 +1,33 @@
+{
+  "web": [
+    {
+      "location": "121st avenue, Little Guyana",
+      "email": "whyisittakingsolog@imhungry.com"
+    },
+    {
+      "location": "Jamaica avenue, Woodhaven",
+      "email": "pleasedontsendmespam@youspammer.us"
+    }
+  ],
+  "takeaway": [
+    {
+      "clientName": "Paula"
+    },
+    {
+      "clientName": "Gill"
+    },
+    {
+      "clientName": "Ethan"
+    }
+  ],
+  "phone": [
+    {
+      "location": "Glenmore avenue, Cypress hills",
+      "phoneNumber": "(212) 509-6995"
+    },
+    {
+      "location": "10th avenue, Hell's kitchen",
+      "phoneNumber": "(205) 666-0000"
+    }
+  ]
+}
