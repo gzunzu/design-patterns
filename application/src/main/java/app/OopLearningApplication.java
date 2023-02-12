@@ -1,15 +1,19 @@
 package app;
 
-import dto.babysitting.VisitableDTO;
-import dto.fastfood.OrdersDTO;
-import dto.vendingmachine.PaymentMethodsDTO;
+import business.Store;
+import dto.OrdersDTO;
+import dto.PaymentMethodsDTO;
+import dto.VisitableDTO;
 import lombok.extern.log4j.Log4j2;
 import management.Service;
 import office.Receptionist;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import utils.JsonHelper;
+import vehicle.Model;
 import visitor.Babysitter;
 
+import java.util.List;
 import java.util.Objects;
 
 @SpringBootApplication
@@ -33,6 +37,19 @@ public class OopLearningApplication {
         babysitter.shuffle();
         log.info(babysitter.takeCare());
         babysitter.finishWork();
+    }
+
+    private static void executeCarDealershipExample() {
+        log.info("\n---An example execution of the Car dealership module---\n ");
+
+        List<Model> modelList =
+                JsonHelper.readJsonArrayFile(BASE_RESOURCES_PATH + "cardealership/models.json", Model.class);
+        assert CollectionUtils.isNotEmpty(modelList);
+
+        Store store = new Store();
+        store.createModels(modelList);
+        log.info(store.showAvailableModels());
+        store.deleteModels();
     }
 
     private static void executeFastFoodExample() {
@@ -69,6 +86,7 @@ public class OopLearningApplication {
 
     public static void main(String[] args) {
         executeBabysittingExample();
+        executeCarDealershipExample();
         executeFastFoodExample();
         executeVendingMachineExample();
     }

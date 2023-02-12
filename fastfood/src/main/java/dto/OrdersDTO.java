@@ -1,4 +1,4 @@
-package dto.fastfood;
+package dto;
 
 import channels.Takeaway;
 import channels.Telephone;

@@ -57,14 +57,12 @@ public class Order {
 
     public String process() {
         this.updateOrdersCounter();
-        return new StringBuilder()
-                .append(this.channel.welcome())
-                .append(this.channel instanceof Promoted promo && promo.isActive() ? promo.announcePromo() : StringUtils.EMPTY) // Checking promos
-                .append(this.getOrderNumber())
-                .append(this.channel.serveClient())
-                .append(this.channel.farewell())
-                .append(SystemUtils.LINE_SEPARATOR)
-                .toString();
+        return this.channel.welcome()
+                .concat(this.channel instanceof Promoted promo && promo.isActive() ? promo.announcePromo() : StringUtils.EMPTY) // Checking promos
+                .concat(this.getOrderNumber())
+                .concat(String.format("%n[...]%n%s", this.channel.serveClient()))
+                .concat(this.channel.farewell())
+                .concat(SystemUtils.LINE_SEPARATOR);
     }
 }
 

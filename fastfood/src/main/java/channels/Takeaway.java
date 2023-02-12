@@ -22,7 +22,7 @@ public class Takeaway implements Channel, Promoted {
     @Override
     public String welcome() {
         return String.format("%s! Welcome to our restaurant. I'll write down your command.%n",
-                Salute.random());
+                Salute.random().getText());
     }
 
     @Override

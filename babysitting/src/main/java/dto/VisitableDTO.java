@@ -1,4 +1,4 @@
-package dto.babysitting;
+package dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

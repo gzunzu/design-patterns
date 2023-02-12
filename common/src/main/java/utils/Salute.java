@@ -1,6 +1,5 @@
 package utils;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -15,7 +14,6 @@ public enum Salute {
     GOOD_MORNING("Good morning"),
     GOOD_AFTERNOON("Good afternoon");
 
-    @Getter(AccessLevel.NONE)
     private static final Random RANDOM = new Random();
 
     private final String text;

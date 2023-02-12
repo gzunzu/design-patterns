@@ -53,7 +53,7 @@ public class Order {
         return this.channel.welcome()
                 .concat(this.channel instanceof Promoted promo && promo.isActive() ? promo.announcePromo() : StringUtils.EMPTY)
                 .concat(this.getOrderNumber())
-                .concat(this.channel.serveClient())
+                .concat(String.format("[...]%n%s", this.channel.serveClient()))
                 .concat(this.channel.farewell())
                 .concat(SystemUtils.LINE_SEPARATOR);
     }
