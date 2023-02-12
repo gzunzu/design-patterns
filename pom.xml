@@ -9,6 +9,14 @@
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <app.name>OOP-learning-app</app.name>
+        <sonar.exclusions>
+            **/sonar/*,
+            **/configuration/*,
+            **/target/*,
+            *.properties,
+            *.json,
+
+        </sonar.exclusions>
     </properties>
 
     <groupId>com.gzunzu.oop-learning</groupId>
@@ -81,7 +89,7 @@
             <artifactId>commons-collections4</artifactId>
             <version>4.4</version>
         </dependency>
-        
+
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

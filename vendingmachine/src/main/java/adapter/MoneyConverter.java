@@ -10,7 +10,7 @@ public class MoneyConverter implements ElectronicPayment {
     private NonElectronicPayment nonElectronicPayment;
 
     @Override
-    public Boolean isChargeable(Float price) {
+    public boolean isChargeable(Float price) {
         return this.nonElectronicPayment.hasEnoughFounds(price);
     }
 

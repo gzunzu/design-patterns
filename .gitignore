@@ -10,6 +10,9 @@
 # Target directory
 target/
 
+# GitHub files
+.github/
+
 # IntelliJ files.
 .idea/
 *.iml

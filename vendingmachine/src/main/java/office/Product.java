@@ -1,5 +1,6 @@
 package office;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -12,11 +13,12 @@ public enum Product {
     SODA("soda", 1.2f),
     SNACK("snack", 2.3f);
 
-    private String name;
-
-    private Float price;
+    @Getter(AccessLevel.NONE)
+    private static final Random RANDOM = new Random();
+    private final String name;
+    private final Float price;
 
     public static Product getRandomProduct() {
-        return Product.values()[new Random().nextInt(values().length)];
+        return Product.values()[RANDOM.nextInt(values().length)];
     }
 }

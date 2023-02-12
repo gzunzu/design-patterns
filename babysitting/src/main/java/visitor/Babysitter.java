@@ -1,6 +1,8 @@
 package visitor;
 
 import lombok.Data;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.SystemUtils;
 import visitable.*;
 
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@SuppressWarnings("unused")
 @Data
 public class Babysitter implements Visitor {
 
@@ -18,10 +21,12 @@ public class Babysitter implements Visitor {
     }
 
     public <T extends Visitable> void admit(List<T> visitables) {
-        this.visitables.addAll(visitables);
+        if (CollectionUtils.isNotEmpty(visitables)) {
+            this.visitables.addAll(visitables);
+        }
     }
 
-    public <T extends Visitable> void admit(T... visitables) {
+    public void admit(Visitable... visitables) {
         Collections.addAll(this.visitables, visitables);
     }
 
@@ -38,53 +43,53 @@ public class Babysitter implements Visitor {
     }
 
     public String takeCare() {
-        String result = "\n";
+        StringBuilder result = new StringBuilder(SystemUtils.LINE_SEPARATOR);
         for (Visitable visitable : visitables) {
-            result += visitable.accept(this);
+            result.append(visitable.accept(this))
+                    .append(SystemUtils.LINE_SEPARATOR);
         }
-        return result;
+        return result.toString();
     }
 
     @Override
     public String visit(Baby baby) {
-        return baby.toString()
-                + "\n[BABYSITTER] The baby is crying. I'll cradle "
-                + baby.getGender().getObjectivePronoun() + ".\n"
-                + baby.cradle()
-                + "\n";
+        return String.format("%s%n[BABYSITTER] The baby is crying. I'll cradle %s.%n%s%n",
+                baby.toString(),
+                baby.getGender().getObjectivePronoun(),
+                baby.cradle());
     }
 
     @Override
     public String visit(Toddler toddler) {
-        return toddler.toString()
-                + "\n[BABYSITTER] The toddler teeth hurt. I'll give "
-                + toddler.getGender().getObjectivePronoun() + " a pacifier.\n"
-                + toddler.suckPacifier()
-                + "\n";
+        return String.format("%s%n[BABYSITTER] The toddler teeth hurt. I'll give %s a pacifier.%n%s%n",
+                toddler.toString(),
+                toddler.getGender().getObjectivePronoun(),
+                toddler.suckPacifier());
     }
 
     @Override
     public String visit(Preschooler preschooler) {
-        return preschooler.toString()
-                + "\n[BABYSITTER] The preschooler is bored. I'll bring "
-                + preschooler.getGender().getObjectivePronoun() + " a game.\n"
-                + preschooler.play()
-                + "\n";
+        return String.format("%s%n[BABYSITTER] The preschooler is bored. I'll bring %s a game.%n%s%n",
+                preschooler.toString(),
+                preschooler.getGender().getObjectivePronoun(),
+                preschooler.play());
     }
 
     @Override
     public String visit(Dog dog) {
-        String result = dog.toString()
-                + "\n[BABYSITTER] The dog is ";
+        StringBuilder result = new StringBuilder(dog.toString())
+                .append(SystemUtils.LINE_SEPARATOR)
+                .append("[BABYSITTER] The dog is ");
 
         if (dog.isClean()) {
-            result += "clean. Let's go for a walk.\n" + dog.walk();
+            result.append(String.format("clean. Let's go for a walk.%n%s", dog.walk()));
         } else {
-            result += "dirty. Let's have a bath.\n";
             dog.bath();
-            result += dog.bark();
+            result.append(String.format("dirty. Let's have a bath.%n%s", dog.bark()));
         }
 
-        return result + "\n";
+        return result
+                .append(SystemUtils.LINE_SEPARATOR)
+                .toString();
     }
 }

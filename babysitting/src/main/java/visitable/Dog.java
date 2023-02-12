@@ -1,12 +1,11 @@
 package visitable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import visitor.Visitor;
 
-@AllArgsConstructor
+@SuppressWarnings("unused")
 @NoArgsConstructor
 @Data
 public class Dog implements Visitable {

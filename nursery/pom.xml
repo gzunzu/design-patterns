@@ -8,7 +8,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>${parent.groupId}</groupId>
     <artifactId>nursery</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>

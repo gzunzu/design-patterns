@@ -1,14 +1,20 @@
 package management;
 
 import channels.Channel;
-import lombok.extern.log4j.Log4j2;
+import channels.Promoted;
+import com.ibm.icu.text.RuleBasedNumberFormat;
+import lombok.AccessLevel;
+import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.SystemUtils;
 
 import java.util.HashMap;
+import java.util.Locale;
 
-@Log4j2
 public class Order {
 
     private static final HashMap<String, Integer> ORDERS_COUNTER = new HashMap<>();
+    @Getter(AccessLevel.PACKAGE)
     private final Channel channel;
     private int globalOrderId;
     private int channelOrderId;
@@ -32,8 +38,23 @@ public class Order {
         this.globalOrderId = getGlobalOrdersCount();
     }
 
+    private String getOrderNumber() {
+        final RuleBasedNumberFormat formatter
+                = new RuleBasedNumberFormat(Locale.ENGLISH, RuleBasedNumberFormat.SPELLOUT);
+        return String.format("Your order will be the %s of the %s sales channel and %sthe %s of the day.%n",
+                formatter.format(this.channelOrderId, "%spellout-ordinal"),
+                this.channel.getChannelName(),
+                this.globalOrderId == this.channelOrderId ? "also " : StringUtils.EMPTY,
+                formatter.format(this.globalOrderId, "%spellout-ordinal"));
+    }
+
     public String process() {
         this.updateOrdersCounter();
-        return this.channel.attend(this.globalOrderId, this.channelOrderId);
+        return this.channel.welcome()
+                .concat(this.channel instanceof Promoted promo && promo.isActive() ? promo.announcePromo() : StringUtils.EMPTY)
+                .concat(this.getOrderNumber())
+                .concat(this.channel.serveClient())
+                .concat(this.channel.farewell())
+                .concat(SystemUtils.LINE_SEPARATOR);
     }
 }

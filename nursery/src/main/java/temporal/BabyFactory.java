@@ -1,5 +1,9 @@
 package temporal;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 class BabyFactory {
 
     static Baby getBaby(String gender, String name) {

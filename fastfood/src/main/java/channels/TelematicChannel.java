@@ -8,19 +8,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-abstract class TelematicChannel extends Channel {
+abstract class TelematicChannel implements Channel {
 
     @JsonProperty("location")
     protected String location;
 
     @Override
-    protected String serveClient() {
-        return String.format("%n%s%n%s%n", this.confirmShipment(), this.getCommand());
+    public String serveClient() {
+        return this.getCommand().concat(this.confirmShipment());
     }
 
     abstract String getCommand();
 
     String confirmShipment() {
-        return "Your order will be sent to " + this.location + ".";
+        return String.format("Your order will be sent to %s.%n", this.location);
     }
 }

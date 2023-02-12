@@ -11,6 +11,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
+@SuppressWarnings("java:S1948")
 public class PaymentMethodsDTO {
 
     @JsonProperty("bankCheques")

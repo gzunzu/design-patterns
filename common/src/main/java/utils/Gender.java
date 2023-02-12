@@ -10,11 +10,11 @@ public enum Gender {
     FEMALE("girl", "she", "her", "her"),
     NON_BINARY("kid", "ze", "hir", "hir");
 
-    private String name;
+    private final String name;
 
-    private String subjectivePronoun;
+    private final String subjectivePronoun;
 
-    private String objectivePronoun;
+    private final String objectivePronoun;
 
-    private String possessivePronoun;
+    private final String possessivePronoun;
 }

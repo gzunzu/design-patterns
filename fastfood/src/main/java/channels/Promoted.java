@@ -1,8 +1,8 @@
 package channels;
 
-interface Promoted {
+public interface Promoted {
 
-    boolean isPromoActive();
+    boolean isActive();
 
     String announcePromo();
 }

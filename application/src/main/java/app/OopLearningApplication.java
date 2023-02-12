@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import utils.JsonHelper;
 import visitor.Babysitter;
 
+import java.util.Objects;
+
 @SpringBootApplication
 @Log4j2
 public class OopLearningApplication {
@@ -21,6 +23,7 @@ public class OopLearningApplication {
 
         VisitableDTO visitableDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "babysitting/visitables.json", VisitableDTO.class);
+        assert Objects.nonNull(visitableDTO);
 
         final Babysitter babysitter = new Babysitter();
         babysitter.admit(visitableDTO.getBabies());
@@ -37,10 +40,11 @@ public class OopLearningApplication {
 
         OrdersDTO ordersDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "fastfood/orders.json", OrdersDTO.class);
+        assert Objects.nonNull(ordersDTO);
 
         final Service service = new Service();
         service.addOrders(ordersDTO.getWebOrders());
-        service.addOrders(ordersDTO.getPhoneOrders());
+        service.addOrders(ordersDTO.getTelephoneOrders());
         service.addOrders(ordersDTO.getTakeawayOrders());
         service.shuffle();
         log.info(service.processOrders());
@@ -50,13 +54,14 @@ public class OopLearningApplication {
     private static void executeVendingMachineExample() {
         log.info("\n---An example execution of the Vending machine module---\n ");
 
-        PaymentMethodsDTO patientFactoryDTOList =
+        PaymentMethodsDTO paymentMethodsDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "vendingmachine/payments.json", PaymentMethodsDTO.class);
+        assert Objects.nonNull(paymentMethodsDTO);
 
         final Receptionist receptionist = new Receptionist();
-        receptionist.add(patientFactoryDTOList.getBankCheques());
-        receptionist.add(patientFactoryDTOList.getDebitCards());
-        receptionist.add(patientFactoryDTOList.getCashes());
+        receptionist.add(paymentMethodsDTO.getBankCheques());
+        receptionist.add(paymentMethodsDTO.getDebitCards());
+        receptionist.add(paymentMethodsDTO.getCashes());
         receptionist.shuffle();
         log.info(receptionist.assistCoworkers());
         receptionist.finishWork();

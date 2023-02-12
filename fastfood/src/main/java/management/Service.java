@@ -1,7 +1,7 @@
 package management;
 
 import channels.Channel;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,16 +16,20 @@ public class Service {
         this.orders = new ArrayList<>();
     }
 
+    @SuppressWarnings("unused")
     public void addOrders(Channel... channels) {
         Arrays.asList(channels).forEach(channel -> this.orders.add(new Order(channel)));
     }
 
     public <T extends Channel> void addOrders(List<T> chanelList) {
-        chanelList.stream().forEach(channel -> this.orders.add(new Order(channel)));
+        if (CollectionUtils.isNotEmpty(chanelList)) {
+            chanelList.forEach(channel -> this.orders.add(new Order(channel)));
+        }
     }
 
-    public void reject(Channel... channels) {
-        this.orders.removeAll(Arrays.asList(channels));
+    @SuppressWarnings("unused")
+    public void reject(Order... orders) {
+        this.orders.removeAll(Arrays.asList(orders));
     }
 
     public void shuffle() {
@@ -37,10 +41,10 @@ public class Service {
     }
 
     public String processOrders() {
-        String result = StringUtils.EMPTY;
+        StringBuilder result = new StringBuilder();
         for (Order order : this.orders) {
-            result += order.process();
+            result.append(order.process());
         }
-        return result;
+        return result.toString();
     }
 }
