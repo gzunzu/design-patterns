@@ -11,7 +11,7 @@
 target/
 
 # GitHub files
-.github/
+# .github/
 
 # IntelliJ files.
 .idea/
