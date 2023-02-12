@@ -147,5 +147,68 @@
       "MIDDLE_HIGH",
       "HIGH"
     ]
+  },
+  {
+    "name": "Hard Labourer",
+    "style": "CARGO",
+    "basePrice": 14250,
+    "availableColours": [
+      "BLACK",
+      "GREY",
+      "WHITE"
+    ],
+    "availableDoorsCount": [
+      "STANDARD",
+      "MULTI"
+    ],
+    "availableExtras": [
+      "AUTO_PILOT",
+      "EMERGENCY_BREAKING",
+      "NAVIGATION",
+      "PARKING_ASSISTANCE"
+    ],
+    "availableFuels": [
+      "DIESEL",
+      "HYBRID"
+    ],
+    "availableHorsePowers": [
+      "STANDARD",
+      "MIDDLE_HIGH"
+    ]
+  },
+  {
+    "name": "Urban Family",
+    "style": "SUV",
+    "basePrice": 12600,
+    "availableColours": [
+      "BLACK",
+      "BLUE",
+      "GREEN",
+      "ORANGE",
+      "RED",
+      "WHITE",
+      "YELLOW"
+    ],
+    "availableDoorsCount": [
+      "STANDARD",
+      "MULTI"
+    ],
+    "availableExtras": [
+      "AUTO_PILOT",
+      "EMERGENCY_BREAKING",
+      "NAVIGATION",
+      "PARKING_ASSISTANCE",
+      "STEREO"
+    ],
+    "availableFuels": [
+      "DIESEL",
+      "HYBRID",
+      "ELECTRIC"
+    ],
+    "availableHorsePowers": [
+      "BASIC",
+      "STANDARD",
+      "MIDDLE_HIGH"
+    ]
   }
 ]

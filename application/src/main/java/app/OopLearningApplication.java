@@ -1,6 +1,7 @@
 package app;
 
 import business.Store;
+import business.VehicleFactory;
 import dto.OrdersDTO;
 import dto.PaymentMethodsDTO;
 import dto.VisitableDTO;
@@ -39,16 +40,25 @@ public class OopLearningApplication {
         babysitter.finishWork();
     }
 
-    private static void executeCarDealershipExample() {
-        log.info("\n---An example execution of the Car dealership module---\n ");
+    private static void executeVehiclesExample() {
+        log.info("\n---An example execution of the Vehicle module---\n ");
 
         List<Model> modelList =
-                JsonHelper.readJsonArrayFile(BASE_RESOURCES_PATH + "cardealership/models.json", Model.class);
+                JsonHelper.readJsonArrayFile(BASE_RESOURCES_PATH + "vehicles/models.json", Model.class);
         assert CollectionUtils.isNotEmpty(modelList);
 
         Store store = new Store();
         store.createModels(modelList);
-        log.info(store.showAvailableModels());
+        VehicleFactory factory = new VehicleFactory(store);
+
+        store.addVehicles(
+                factory.getVehicle("common familiar", "BLUE"),
+                factory.getVehicle("practical workers", "GREY"),
+                factory.getVehicle("cool sports", "RED")
+        );
+
+        log.info(new String(store.showAvailableModels()).concat(store.showVehicles()));
+        store.deleteVehicles();
         store.deleteModels();
     }
 
@@ -85,9 +95,9 @@ public class OopLearningApplication {
     }
 
     public static void main(String[] args) {
-        executeBabysittingExample();
-        executeCarDealershipExample();
-        executeFastFoodExample();
-        executeVendingMachineExample();
+        //executeBabysittingExample();
+        executeVehiclesExample();
+        //executeFastFoodExample();
+        //executeVendingMachineExample();
     }
 }

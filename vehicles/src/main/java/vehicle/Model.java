@@ -1,7 +1,7 @@
 package vehicle;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import features.*;
+import feature.*;
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 import utils.Printer;

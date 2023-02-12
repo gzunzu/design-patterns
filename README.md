@@ -1,6 +1,6 @@
-## OOP learning
+# OOP learning
 
-#### Description
+## Description
 
 This is a multimodule didactic project in which each module contains a sample implementation
 for an **Object-Oriented Programming design pattern**.
@@ -12,14 +12,15 @@ principles of OOP, such as SOLID rules.
 You can read a brief explanation of each pattern and the individual implementation regarding these examples in the README.md file
 you will find at the root directory of every module.
 
-#### Index
+## Index
 
-|                   Module                   |    Design pattern    |
-|:------------------------------------------:|:--------------------:|
-|    [Babysitting](babysitting/README.md)    |       Visitor        |
-|      [Fast food](fastfood/README.md)       | Dependency injection |
-|        [Nursery](nursery/README.md)        |    Factory method    |
-| [Vending office](vendingmachine/README.md) |       Adapter        |
+|                   Module                   |        Design pattern         |
+|:------------------------------------------:|:-----------------------------:|
+|    [Babysitting](babysitting/README.md)    |            Visitor            |
+|   [Car dealership](cardealing/README.md)   | Builder &#124; Factory method |
+|      [Fast food](fastfood/README.md)       |     Dependency injection      |
+|        [Nursery](nursery/README.md)        |        Factory method         |
+| [Vending office](vendingmachine/README.md) |            Adapter            |
 
 [Common](common/README.md) module is just a bunch of modularized methods and classes which
 may come in handy and are abstracted from the logic of the modules where they are being used;

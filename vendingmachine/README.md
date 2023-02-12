@@ -1,6 +1,6 @@
-## Vending machine \[Adapter pattern]
+# Vending machine \[Adapter pattern]
 
-#### Description
+## Description
 
 Module Vending machine is a simple implementation of the Adapter pattern. This is one of the most simple
 design patterns: it acts as a bridge between two incompatible interfaces.
@@ -60,7 +60,7 @@ public class MoneyConverter implements ElectronicPayment {
 }
 ````
 
-#### Subjects, technologies and contents
+## Subjects, technologies and contents
 
 - Single Responsibility Principle (S from SOLID).
 - Open/Closed principle (O from SOLID).

@@ -1,4 +1,4 @@
-package features;
+package feature;
 
 @SuppressWarnings("unused")
 public interface Feature {

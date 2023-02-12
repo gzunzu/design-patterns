@@ -32,7 +32,7 @@
         <module>application</module>
         <module>common</module>
         <module>vendingmachine</module>
-        <module>cardealership</module>
+        <module>vehicles</module>
     </modules>
 
     <dependencies>

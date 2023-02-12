@@ -1,4 +1,4 @@
-package features;
+package feature;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-## Fast food \[Dependency injection]
+# Fast food \[Dependency injection]
 
-#### Description
+## Description
 
 Module Fast food is an example of the Dependency injection pattern. This is for sure one of the most
 common patterns used in OOP programming, because it helps us to reach a high level of **decoupling**.
@@ -83,7 +83,7 @@ the channel in the constructor –injected dependency– makes it possible to st
 every order whichever channel it came from. This is the key of this **Dependency injection pattern** and a sign of
 well planned structured and **low coupled code**.
 
-#### Subjects, technologies and contents
+## Subjects, technologies and contents
 
 - Single Responsibility Principle (S from SOLID).
 - Open/Closed principle (O from SOLID).
