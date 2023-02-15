@@ -1,20 +1,17 @@
 package app;
 
 import business.Store;
-import business.VehicleFactory;
 import dto.OrdersDTO;
 import dto.PaymentMethodsDTO;
 import dto.VisitableDTO;
 import lombok.extern.log4j.Log4j2;
 import management.Service;
 import office.Receptionist;
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import utils.JsonHelper;
-import vehicle.Model;
+import vehicle.VehicleFactory;
 import visitor.Babysitter;
 
-import java.util.List;
 import java.util.Objects;
 
 @SpringBootApplication
@@ -43,23 +40,17 @@ public class OopLearningApplication {
     private static void executeVehiclesExample() {
         log.info("\n---An example execution of the Vehicle module---\n ");
 
-        List<Model> modelList =
-                JsonHelper.readJsonArrayFile(BASE_RESOURCES_PATH + "vehicles/models.json", Model.class);
-        assert CollectionUtils.isNotEmpty(modelList);
-
         Store store = new Store();
-        store.createModels(modelList);
-        VehicleFactory factory = new VehicleFactory(store);
 
         store.addVehicles(
-                factory.getVehicle("common familiar", "BLUE"),
-                factory.getVehicle("practical workers", "GREY"),
-                factory.getVehicle("cool sports", "RED")
+                VehicleFactory.getVehicle(VehicleFactory.VehiclePackage.COMMON_FAMILIAR, "BLUE"),
+                VehicleFactory.getVehicle(VehicleFactory.VehiclePackage.PRACTICAL_WORKERS, "GREY"),
+                VehicleFactory.getVehicle(VehicleFactory.VehiclePackage.COOL_SPORTS, "RED")
         );
 
-        log.info(new String(store.showAvailableModels()).concat(store.showVehicles()));
+        log.info(Store.showAvailableModels().concat(store.showVehicles()));
         store.deleteVehicles();
-        store.deleteModels();
+        Store.deleteModels();
     }
 
     private static void executeFastFoodExample() {
@@ -95,9 +86,9 @@ public class OopLearningApplication {
     }
 
     public static void main(String[] args) {
-        //executeBabysittingExample();
+        executeBabysittingExample();
         executeVehiclesExample();
-        //executeFastFoodExample();
-        //executeVendingMachineExample();
+        executeFastFoodExample();
+        executeVendingMachineExample();
     }
 }

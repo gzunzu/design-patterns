@@ -1,6 +1,7 @@
 package business;
 
 import org.apache.commons.lang3.SystemUtils;
+import utils.JsonHelper;
 import vehicle.Model;
 import vehicle.Vehicle;
 
@@ -11,20 +12,26 @@ import java.util.Optional;
 
 public class Store {
 
-    private final ArrayList<Model> availableModels;
+    private static final String BASE_RESOURCES_PATH = "vehicles/src/main/resources/";
+
+    private static final ArrayList<Model> AVAILABLE_MODELS;
+
+    static {
+        AVAILABLE_MODELS = new ArrayList<>();
+        createModels(JsonHelper.readJsonArrayFile(BASE_RESOURCES_PATH + "models.json", Model.class));
+    }
 
     private final ArrayList<Vehicle> vehicles;
 
     public Store() {
-        this.availableModels = new ArrayList<>();
         this.vehicles = new ArrayList<>();
     }
 
 
-    public void createModels(List<Model> modelList) {
+    public static void createModels(List<Model> modelList) {
 
         modelList.forEach(model ->
-                this.availableModels.add(new Model.ModelBuilder(model.getName(), model.getStyle(), model.getBasePrice())
+                AVAILABLE_MODELS.add(new Model.ModelBuilder(model.getName(), model.getStyle(), model.getBasePrice())
                         .setAvailableColours(model.getAvailableColours())
                         .setAvailableDoorsCount(model.getAvailableDoorsCount())
                         .setAvailableExtras(model.getAvailableExtras())
@@ -35,18 +42,18 @@ public class Store {
         );
     }
 
-    public void deleteModels() {
-        this.availableModels.clear();
+    public static void deleteModels() {
+        AVAILABLE_MODELS.clear();
     }
 
-    public Model getModelByName(String name) {
-        Optional<Model> optionalModel = this.availableModels.stream().filter(model -> model.getName().equalsIgnoreCase(name)).findFirst();
+    public static Model getModelByName(String name) {
+        Optional<Model> optionalModel = AVAILABLE_MODELS.stream().filter(model -> model.getName().equalsIgnoreCase(name)).findFirst();
         return optionalModel.orElseThrow();
     }
 
-    public String showAvailableModels() {
+    public static String showAvailableModels() {
         StringBuilder stringBuilder = new StringBuilder("These are our available models:\n\n");
-        this.availableModels.forEach(model -> stringBuilder.append(model.toString()).append(SystemUtils.LINE_SEPARATOR));
+        AVAILABLE_MODELS.forEach(model -> stringBuilder.append(model.toString()).append(SystemUtils.LINE_SEPARATOR));
         return stringBuilder.toString();
     }
 
@@ -63,7 +70,7 @@ public class Store {
     }
 
     public String showVehicles() {
-        StringBuilder stringBuilder = new StringBuilder("These are some standardized configuration vehicles sold:\n\n");
+        StringBuilder stringBuilder = new StringBuilder("These are some standardized configuration vehicles on sale:\n\n");
         this.vehicles.forEach(vehicle -> stringBuilder.append(vehicle.toString()).append(SystemUtils.LINE_SEPARATOR));
         return stringBuilder.toString();
     }

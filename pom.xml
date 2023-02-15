@@ -15,7 +15,7 @@
             **/target/*,
             *.properties,
             *.json,
-
+            *.md
         </sonar.exclusions>
     </properties>
 
@@ -27,7 +27,6 @@
 
     <modules>
         <module>fastfood</module>
-        <module>nursery</module>
         <module>babysitting</module>
         <module>application</module>
         <module>common</module>
@@ -55,11 +54,11 @@
             <version>3.0.2</version>
         </dependency>
 
-        <!--https://projectlombok.org/setup/maven -->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
+            <version>1.18.26</version>
             <scope>provided</scope>
         </dependency>
 

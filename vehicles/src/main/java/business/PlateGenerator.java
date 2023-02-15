@@ -1,13 +1,17 @@
 package business;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class PlateGenerator {
+@NoArgsConstructor(access = AccessLevel.NONE)
+public abstract class PlateGenerator {
 
-    private final static Random RANDOM = new Random();
+    private static final Random RANDOM = new Random();
 
-    private final static String PLATE_AVAILABLE_LETTERS = "BCDFGHJKLMNPQRSTVWXYZ";
+    private static final String PLATE_AVAILABLE_LETTERS = "BCDFGHJKLMNPQRSTVWXYZ";
 
     public static String generateRandomPlateId() {
         StringBuilder result = new StringBuilder();
