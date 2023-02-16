@@ -1,17 +1,23 @@
-# Compiled class file
+# Compiled class files
 *.class
 
 # Private directories
-/private/
+private/
 
 # Build directories
-/build/
+build/
+
+# Binary files
+bin/
 
 # Target directory
 target/
 
 # GitHub files
-# .github/
+.github/
+
+# Sonarlint files
+sonarlint/
 
 # IntelliJ files.
 .idea/
@@ -24,3 +30,7 @@ target/
 
 # Output directory
 out/
+
+# Log directories and files
+logs/
+*.log
