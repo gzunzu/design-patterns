@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.collections4.ComparatorUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Printer {
         StringBuilder result = new StringBuilder();
         boolean firstElement = true;
         for (Object element : list) {
+            Assert.notNull(element, String.format("Null %s from a list cannot be written as String.", element.getClass().getName()));
             if (firstElement) {
                 result.append(StringUtils.capitalize(element.toString()));
                 firstElement = false;

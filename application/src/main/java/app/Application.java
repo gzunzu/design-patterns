@@ -16,7 +16,7 @@ import java.util.Objects;
 
 @SpringBootApplication
 @Log4j2
-public class OopLearningApplication {
+public class Application {
 
     private static final String BASE_RESOURCES_PATH = "application/src/main/resources/";
 

@@ -24,7 +24,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>app.OopLearningApplication</mainClass>
+                            <mainClass>app.Application</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

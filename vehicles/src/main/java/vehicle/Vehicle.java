@@ -14,19 +14,19 @@ import java.util.List;
 public abstract class Vehicle {
 
     @NotBlank
-    private String plateId;
+    private final String plateId;
 
-    private Model model;
+    private final Model model;
 
-    private Colour colour;
+    private final Colour colour;
 
-    private DoorsCount doors;
+    private final DoorsCount doors;
 
-    private List<Extra> extras;
+    private final List<Extra> extras;
 
-    private Fuel fuel;
+    private final Fuel fuel;
 
-    private HorsePower horsePower;
+    private final HorsePower horsePower;
 
     protected Vehicle(
             Model model,
@@ -44,38 +44,21 @@ public abstract class Vehicle {
                 horsePower
         );
         this.plateId = PlateGenerator.generateRandomPlateId();
-        this.model = model;
         this.colour = Colour.valueOf(colour.toUpperCase());
         this.doors = doorsCount;
+        this.extras = new ArrayList<>();
         this.configureExtras(extras);
         this.fuel = fuel;
         this.horsePower = horsePower;
     }
 
-    protected void configureExtras(Extra... extras) {
+    private void configureExtras(Extra... extras) {
         this.configureExtras(Arrays.asList(extras));
     }
 
-    protected void configureExtras(List<Extra> extrasList) {
-        this.extras = new ArrayList<>(extrasList);
-    }
-
-    private float getSalesPrice() {
-        return this.model.getBasePrice()
-                + this.model.getStyle().getPrice()
-                + this.colour.getPrice()
-                + this.doors.getPrice()
-                + this.getExtrasPrice()
-                + this.fuel.getPrice()
-                + this.horsePower.getPrice();
-    }
-
-    private float getExtrasPrice() {
-        float extrasTotalPrice = 0f;
-        for (Extra extra : this.extras) {
-            extrasTotalPrice += extra.getPrice();
-        }
-        return extrasTotalPrice;
+    private void configureExtras(List<Extra> extrasList) {
+        this.extras.clear();
+        this.extras.addAll(extrasList);
     }
 
     protected abstract String getFeaturesConfigurationPackName();
@@ -96,7 +79,7 @@ public abstract class Vehicle {
     private void validateColour(Colour colour) {
         Assert.isTrue(this.model.getAvailableColours().contains(colour),
                 String.format("Colour %s is not among %s model available colours: %s",
-                        colour,
+                        StringUtils.capitalize(colour.toString()),
                         this.model.getName(),
                         Printer.getAsString(this.model.getAvailableColours()
                         )
@@ -107,7 +90,7 @@ public abstract class Vehicle {
     private void validateDoorsCount(DoorsCount doorsCount) {
         Assert.isTrue(this.model.getAvailableDoorsCount().contains(doorsCount),
                 String.format("%s door set is not among %s model door sets available: %s",
-                        doorsCount,
+                        StringUtils.capitalize(doorsCount.toString()),
                         this.model.getName(),
                         Printer.getAsString(this.model.getAvailableDoorsCount()
                         )
@@ -119,7 +102,7 @@ public abstract class Vehicle {
         Arrays.stream(extras).forEach(extra ->
                 Assert.isTrue(this.model.getAvailableExtras().contains(extra),
                         String.format("Extra %s is not among %s model available extras: %s",
-                                extra,
+                                StringUtils.capitalize(extra.toString()),
                                 this.model.getName(),
                                 Printer.getAsString(this.model.getAvailableExtras()
                                 )
@@ -131,7 +114,7 @@ public abstract class Vehicle {
     private void validateFuel(Fuel fuel) {
         Assert.isTrue(this.model.getAvailableFuels().contains(fuel),
                 String.format("Fuel %s is not among %s model available fuels: %s",
-                        fuel,
+                        StringUtils.capitalize(fuel.toString()),
                         this.model.getName(),
                         Printer.getAsString(this.model.getAvailableFuels()
                         )
@@ -150,9 +133,28 @@ public abstract class Vehicle {
         );
     }
 
+    private float getSalesPrice() {
+        return this.model.getBasePrice()
+                + this.model.getStyle().getPrice()
+                + this.colour.getPrice()
+                + this.doors.getPrice()
+                + this.getExtrasPrice()
+                + this.fuel.getPrice()
+                + this.horsePower.getPrice();
+    }
+
+    private float getExtrasPrice() {
+        float extrasTotalPrice = 0f;
+        for (Extra extra : this.extras) {
+            extrasTotalPrice += extra.getPrice();
+        }
+        return extrasTotalPrice;
+    }
+
+    @SuppressWarnings("MalformedFormatString")
     @Override
     public String toString() {
-        return String.format("VEHICLE:%n%-20%s%n%-20s%s%n%-20s%s%n%-15s%s [%s]%n%-15s%s%n"
+        return String.format("VEHICLE:%n%-20s%s%n%-20s%s%n%-20s%s%n%-15s%s [%s]%n%-15s%s%n"
                         + "%-15s%s%n%-15s%s%n%-15s%s%n%-15s%s%n",
                 "Plate ID:",
                 this.plateId,

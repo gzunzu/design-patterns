@@ -2,7 +2,6 @@ package feature;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
@@ -27,6 +26,6 @@ public enum DoorsCount implements Feature {
 
     @Override
     public String toString() {
-        return String.format("%s [%d]", StringUtils.capitalize(this.name), this.doors);
+        return String.format("%s [%d]", this.name, this.doors);
     }
 }

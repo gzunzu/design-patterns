@@ -29,7 +29,6 @@ public abstract class JsonHelper {
         return null;
     }
 
-    @SuppressWarnings("unused")
     public static <T> List<T> readJsonArrayFile(String filePath, Class<T> clazz) {
         try {
             return MAPPER.readValue(new File(filePath),
