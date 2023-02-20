@@ -16,18 +16,21 @@ public class VehicleFactory {
     public static Vehicle getVehicle(@NotNull VehiclePackage vehiclePackage, @NotBlank String colour) {
 
         try {
-            Constructor<?> constructor = Class.forName(vehiclePackage.getClazz().getName()).getConstructor(Model.class, String.class);
+            Constructor<?> constructor = Class.forName(vehiclePackage.getClazz().getName()).getConstructor(
+                    Model.class,
+                    String.class
+            );
             return (Vehicle) constructor.newInstance(Store.getModelByName(vehiclePackage.getModelName()), colour);
         } catch (NoSuchMethodException e) {
-            log.error("Unrecognized constructor for {} class.", vehiclePackage.getClazz().getName());
+            log.error("Unrecognized constructor for {} class.", vehiclePackage.getClazz().getName(), e);
         } catch (ClassNotFoundException e) {
-            log.error("Unrecognized class {}.", vehiclePackage.getClazz().getName());
+            log.error("Unrecognized class {}.", vehiclePackage.getClazz().getName(), e);
         } catch (InvocationTargetException e) {
-            log.error("Error while trying to invoke constructor for class {}.", vehiclePackage.getClazz().getName());
+            log.error("Error while trying to invoke constructor for class {}: {}", vehiclePackage.getClazz().getName(), e.getCause(), e);
         } catch (InstantiationException e) {
-            log.error("Error while trying to create an instance of class {}.", vehiclePackage.getClazz().getName());
+            log.error("Error while trying to create an instance of class {}: {}.", vehiclePackage.getClazz().getName(), e.getCause(), e);
         } catch (IllegalAccessException e) {
-            log.error("Illegal access to {} class constructor.", vehiclePackage.getClazz().getName());
+            log.error("Illegal access to {} class constructor: {}", vehiclePackage.getClazz().getName(), e.getCause(), e);
         }
         return null;
     }

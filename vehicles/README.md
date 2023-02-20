@@ -134,3 +134,4 @@ the switch loop and the enum class.
 ## Subjects, technologies and contents
 
 - Single Responsibility Principle (S from SOLID).
+- Use of `Assert` class's methods for Vehicle features validation throughout instantiation process.

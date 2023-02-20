@@ -12,11 +12,13 @@ public class CoolSportsVehicle extends Vehicle {
     private static final String PACK_NAME = "cool sports";
 
     public CoolSportsVehicle(Model model, String colour) {
-        super(model, colour);
-        this.doors = DoorsCount.STANDARD;
-        this.configureExtras(Extra.NAVIGATION, Extra.STEREO);
-        this.fuel = Fuel.DIESEL;
-        this.horsePower = HorsePower.STANDARD;
+        super(model,
+                colour,
+                DoorsCount.NO_TRUNK_DOOR,
+                new Extra[]{Extra.NAVIGATION, Extra.STEREO},
+                Fuel.DIESEL,
+                HorsePower.SUPER
+        );
     }
 
     @Override

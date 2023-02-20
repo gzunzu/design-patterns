@@ -10,11 +10,13 @@ public class PracticalWorkersVehicle extends Vehicle {
     private static final String PACK_NAME = "practical workers";
 
     public PracticalWorkersVehicle(Model model, String colour) {
-        super(model, colour);
-        this.doors = DoorsCount.STANDARD;
-        this.configureExtras(Extra.NAVIGATION, Extra.PARKING_ASSISTANCE, Extra.AUTO_PILOT);
-        this.fuel = Fuel.HYBRID;
-        this.horsePower = HorsePower.MIDDLE_HIGH;
+        super(model,
+                colour,
+                DoorsCount.STANDARD,
+                new Extra[]{Extra.NAVIGATION, Extra.PARKING_ASSISTANCE, Extra.AUTO_PILOT},
+                Fuel.HYBRID,
+                HorsePower.MIDDLE_HIGH
+        );
     }
 
     @Override

@@ -12,11 +12,13 @@ public class CommonFamiliarVehicle extends Vehicle {
     private static final String PACK_NAME = "common familiar";
 
     public CommonFamiliarVehicle(Model model, String colour) {
-        super(model, colour);
-        this.doors = DoorsCount.STANDARD;
-        this.configureExtras(Extra.NAVIGATION, Extra.PARKING_ASSISTANCE);
-        this.fuel = Fuel.DIESEL;
-        this.horsePower = HorsePower.STANDARD;
+        super(model,
+                colour,
+                DoorsCount.STANDARD,
+                new Extra[]{Extra.NAVIGATION, Extra.PARKING_ASSISTANCE},
+                Fuel.DIESEL,
+                HorsePower.STANDARD
+        );
     }
 
     @Override
