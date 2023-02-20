@@ -9,7 +9,7 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
-name: "CodeQL"
+name: "Basic master branch pipeline"
 
 on:
   push:
@@ -33,6 +33,7 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'java' ]
+        languageVersion: '19.0.2'
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Use only 'java' to analyze code written in Java, Kotlin or both
         # Use only 'javascript' to analyze code written in JavaScript, TypeScript or both
@@ -46,7 +47,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
-          java-version: '19.0.2'
+          java-version: ${{ matrix.languageVersion }}
           cache: 'maven'
           check-latest: true
 
