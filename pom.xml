@@ -8,7 +8,7 @@
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <app.name>OOP-learning-app</app.name>
+        <app.name>design-patterns-app</app.name>
         <sonar.exclusions>
             **/sonar/*,
             **/configuration/*,
@@ -19,8 +19,8 @@
         </sonar.exclusions>
     </properties>
 
-    <groupId>com.gzunzu.oop-learning</groupId>
-    <artifactId>oop-learning</artifactId>
+    <groupId>com.gzunzu.design-patterns</groupId>
+    <artifactId>design-patterns</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>${project.artifactId}-${project.version}</name>
