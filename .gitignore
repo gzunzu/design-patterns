@@ -1,18 +1,36 @@
-# Compiled class file
+# Compiled class files
 *.class
 
 # Private directories
-/private/
+private/
 
 # Build directories
-/build/
+build/
+
+# Binary files
+bin/
 
 # Target directory
-/target/
+target/
 
-# .idea files.
-.idea/sonarlint/
-.idea/libraries/
-.idea/*.xml
+# GitHub files
+.github/
+
+# Sonarlint files
+sonarlint/
+
+# IntelliJ files.
+.idea/
 *.iml
 
+# Eclipse files
+*.project
+*.classpath
+.settings/
+
+# Output directory
+out/
+
+# Log directories and files
+logs/
+*.log

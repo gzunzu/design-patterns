@@ -1,6 +1,8 @@
 package visitable;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,22 +14,30 @@ import utils.Gender;
 import visitor.Visitor;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+@Log4j2
 class BabyTest {
 
     private static final int WEEKS = 3;
-
+    private static AutoCloseable autoClosable;
     private Baby baby;
-
     @Mock
     private Visitor visitor;
 
     @BeforeAll
     static void setUp() {
-        MockitoAnnotations.openMocks(BabyTest.class);
+        autoClosable = MockitoAnnotations.openMocks(BabyTest.class);
+    }
+
+    @AfterAll
+    static void tearDown() {
+        try {
+            autoClosable.close();
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
     }
 
     @BeforeEach

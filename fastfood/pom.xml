@@ -1,12 +1,32 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>com.gzunzu</groupId>
+        <groupId>com.gzunzu.oop-learning</groupId>
         <artifactId>oop-learning</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <artifactId>fastfood</artifactId>
-    <name>Archetype - fastfood</name>
-    <url>http://maven.apache.org</url>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>${project.artifactId}-${project.version}</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.gzunzu.oop-learning</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.ibm.icu/icu4j -->
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>72.1</version>
+        </dependency>
+    </dependencies>
+
 </project>

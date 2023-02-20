@@ -1,12 +1,21 @@
 package visitable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import utils.Gender;
 import visitor.Visitor;
 
+@SuppressWarnings("unused")
+@NoArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class Preschooler extends Child {
 
-    private final int numbersKnown;
+    @JsonProperty("numbersKnown")
+    private int numbersKnown;
 
     public Preschooler(String name, Gender gender, int numbersKnown) {
         super(name, gender);

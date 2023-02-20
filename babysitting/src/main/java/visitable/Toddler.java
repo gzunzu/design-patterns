@@ -1,15 +1,24 @@
 package visitable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ibm.icu.text.RuleBasedNumberFormat;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import utils.Gender;
 import visitor.Visitor;
 
 import java.util.Locale;
 
+@SuppressWarnings("unused")
+@NoArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class Toddler extends Child {
 
-    private final int teethCount;
+    @JsonProperty("teethCount")
+    private int teethCount;
 
     public Toddler(String name, Gender gender, int teethCount) {
         super(name, gender);

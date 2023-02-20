@@ -1,0 +1,29 @@
+{
+  "debitCards": [
+    {
+      "founds": 2.8,
+      "isActive": true
+    },
+    {
+      "founds": 0.9,
+      "isActive": true
+    },
+    {
+      "founds": 5.9,
+      "isActive": false
+    }
+  ],
+  "bankCheques": [
+    {
+      "debtor": "John Doe"
+    }
+  ],
+  "cashes": [
+    {
+      "change": 1.5
+    },
+    {
+      "change": 3.4
+    }
+  ]
+}
