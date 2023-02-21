@@ -1,7 +1,6 @@
 package visitable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -10,7 +9,6 @@ import visitor.Visitor;
 
 @SuppressWarnings("unused")
 @NoArgsConstructor
-@Data
 @EqualsAndHashCode(callSuper = true)
 public class Preschooler extends Child {
 

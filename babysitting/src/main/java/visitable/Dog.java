@@ -1,18 +1,18 @@
 package visitable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import visitor.Visitor;
 
 @SuppressWarnings("unused")
 @NoArgsConstructor
-@Data
 public class Dog implements Visitable {
 
     @JsonProperty("name")
     private String name;
 
+    @Getter
     @JsonProperty("isClean")
     private boolean isClean;
 
@@ -35,6 +35,6 @@ public class Dog implements Visitable {
 
     @Override
     public String toString() {
-        return this.name + " is a " + (this.isClean ? "clean" : "dirty") + " dog. ";
+        return this.name + " is a " + (this.isClean ? "clean" : "dirty") + " dog.";
     }
 }

@@ -16,13 +16,13 @@ like the [`fuel`](src/main/java/feature/Fuel.java) used, or even sometimes the n
 ### Builder
 
 If you think about it, designing –or configuring– a [`model`](src/main/java/vehicle/Model.java) is a tedious task.
-There's a lot of thing to decide; so it would be useful to have some help instantiating them. And here is when
+There's a lot of things to decide; so it would be useful to have some help instantiating them. And here is where
 the Builder class appears. As a subclass of [`Model`](src/main/java/vehicle/Model.java), we have the `ModelBuilder`class,
 with the same attributes, but just one constructor with the minimum required params for a [`Model`](src/main/java/vehicle/Model.java)
 to be operative, and `setter` methods for every other configuration we want to add, always **returning** their own instance.
 This is the key for the Builder pattern, because we can make a chain with the different `set` invocations, as they all return
-the object we are configuring; and then, when we finish, we call the `build()` method, that returns a new instance of
-the [`Model`](src/main/java/vehicle/Model.java).
+the object we are configuring; and then, when we finish, we call the `build()` method, that returns the new instance
+of [`Model`](src/main/java/vehicle/Model.java).
 
 ````java
 public static class ModelBuilder {
@@ -78,8 +78,8 @@ there's a bunch of useful tools to create or modify the specifications of the ob
 bounded and simple, but realize these could be even much more profitable when we require many `String`, `boolean`
 or numeric params, whose order could be hard to read and distinguish in a common Constructor method.
 
-It's important to remember that `ModelBuilder.build()` method invokes a [`Model`](src/main/java/vehicle/Model.java) Constructor
-method. So, you can use the same `ModelBuilder` instance to create various [`models`](src/main/java/vehicle/Model.java)
+It's important to remember that `ModelBuilder.build()` method invokes [`Model`](src/main/java/vehicle/Model.java) Constructor
+method. So, you can use the same `ModelBuilder` instance to create multiple [`models`](src/main/java/vehicle/Model.java)
 with the same attributes' values, but notice that you won't get a reference to the same object, but a new instance each time.
 
 ### Factory method
@@ -96,14 +96,14 @@ the reference to the inheritor class of[`Vehicle`](src/main/java/vehicle/Vehicle
 whose implementation has a complete set of features already defined in the Constructor method
 (no need to call setters nor specify params) and it returns an instance. As simple
 as it sounds. We can create as much "packages" as inheritors of Vehicle we want to have pre-configured. In this
-example, we let the colour election out of the pre-configuration por clients to be able to still pick that feature. As you see,
+example, we let the colour election out of the pre-configuration for clients to be able to still pick that feature. As you see,
 you can select what you want to configure automatically and what you want to ask for.
 
 Regarding the [`VehicleFactory`](src/main/java/vehicle/VehicleFactory.java) class, you have
 to know that this is not the traditional implementation of the static method for getting the desired instance.
 This is a totally parametrized version which would never be modified with upcoming new inheritors
-of [`Vehicle`](src/main/java/vehicle/Vehicle.java) –packages–, because in that case we would just
-add new values to the `VehiclePackage` subclass. It's also more «insecure» or fragile because of the possible runtime
+of [`Vehicle`](src/main/java/vehicle/Vehicle.java) –new «packages»–, because in that case we would just
+add new values to the `VehiclePackage` subclass. It's also more «insecure» or fragile due to the amount of runtime
 exceptions we can get by calling a constructor whose reference is obtained from a variable. The most popular
 way to implement this method is creating a switch loop, having one `case` clause for each type of instance/inheritor.
 For our particular example, this would have been the code:
@@ -128,7 +128,7 @@ public class VehicleFactory {
 }
 ````
 
-Of course, you can still end with a third version somewhere in the middle of these two, combining the use of
+Of course, you can still end up with a third version somewhere in the middle of these two, combining the use of
 the switch loop and the enum class.
 
 ## Subjects, technologies and contents

@@ -15,7 +15,8 @@
             **/target/*,
             *.properties,
             *.json,
-            *.md
+            *.md,
+            **dto/*
         </sonar.exclusions>
     </properties>
 

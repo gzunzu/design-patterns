@@ -19,23 +19,22 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
 @Log4j2
 @ExtendWith(MockitoExtension.class)
-class BabyTest {
+class ToddlerTest {
 
-    private static final int WEEKS = 3;
+    private static final int TEETH_COUNT = 8;
 
     private static AutoCloseable autoClosable;
 
-    private Baby baby;
+    private Toddler todder;
 
     @Mock
     private Visitor visitor;
 
     @BeforeAll
     static void setUp() {
-        autoClosable = MockitoAnnotations.openMocks(BabyTest.class);
+        autoClosable = MockitoAnnotations.openMocks(ToddlerTest.class);
     }
 
     @AfterAll
@@ -49,35 +48,34 @@ class BabyTest {
 
     @BeforeEach
     void init() {
-        this.baby = new Baby("Nombre", Gender.FEMALE, WEEKS);
+        this.todder = new Toddler("Nombre", Gender.FEMALE, TEETH_COUNT);
     }
 
     @Test
     void accept() {
         String mockedResult = "Result of the visitor.visit method";
 
-        when(this.visitor.visit(any(Baby.class))).thenReturn(mockedResult);
+        when(this.visitor.visit(any(Toddler.class))).thenReturn(mockedResult);
 
-        String result = this.baby.accept(this.visitor);
+        String result = this.todder.accept(this.visitor);
 
-        verify(this.visitor, times(1)).visit(this.baby);
+        verify(this.visitor, times(1)).visit(this.todder);
         assertThat(result).isNotBlank().isEqualTo(mockedResult);
     }
 
     @Test
-    void cradle() {
-        String result = this.baby.cradle();
+    void suckPacifier() {
+        String result = this.todder.suckPacifier();
 
-        assertThat(result).isNotBlank().containsSequence(this.baby.name, " loves being cradled.");
+        assertThat(result).isNotBlank().containsSequence(this.todder.name, " is calming down while sucking the pacifier.");
     }
 
     @Test
     void toStringTest() {
-        String result = this.baby.toString();
+        String result = this.todder.toString();
 
         assertThat(result).isNotBlank().containsSubsequence(
-                StringUtils.capitalize(this.baby.gender.getSubjectivePronoun()),
-                String.valueOf(WEEKS)
-        );
+                StringUtils.capitalize(this.todder.gender.getSubjectivePronoun()),
+                " tooth is coming out.");
     }
 }
