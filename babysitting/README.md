@@ -1,6 +1,6 @@
-## Babysitting \[Visitor pattern\]
+# Babysitting \[Visitor pattern\]
 
-#### Description
+## Description
 
 Module **Babysitting** is a simple implementation of the Visitor pattern, which allows
 us to add new operations to an existing object without modifying or even knowing about
@@ -90,7 +90,7 @@ public interface Visitor {
 }
 ```
 
-#### Subjects, technologies and contents
+## Subjects, technologies and contents
 
 - Single Responsibility Principle (S from SOLID).
 - Open/Closed principle (O from SOLID).

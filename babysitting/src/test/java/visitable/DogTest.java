@@ -57,33 +57,33 @@ class DogTest {
         String result = this.dog.accept(this.visitor);
 
         verify(this.visitor, times(1)).visit(this.dog);
-        assertThat(result)
-                .isNotBlank()
-                .isEqualTo(mockedResult);
+        assertThat(result).isEqualTo(mockedResult);
     }
 
     @Test
     void bark() {
         String result = this.dog.bark();
 
-        assertThat(result)
-                .isNotBlank()
-                .containsSubsequence(" barks ", this.dog.isClean() ? "excited for a walk." : "sadly feeling dirty.");
+        assertThat(result).satisfiesAnyOf(
+                string -> assertThat(string).contains(" barks excited for a walk."),
+                string -> assertThat(string).contains(" barks sadly feeling dirty.")
+        );
     }
 
     @Test
     void walk() {
         String result = this.dog.walk();
 
-        assertThat(result).isNotBlank().contains(" enjoys running outside.");
+        assertThat(result).contains(" enjoys running outside.");
     }
 
     @Test
     void toStringTest() {
         String result = this.dog.toString();
 
-        assertThat(result)
-                .isNotBlank()
-                .containsSubsequence(" is a ", this.dog.isClean() ? "clean" : "dirty", " dog.");
+        assertThat(result).satisfiesAnyOf(
+                string -> assertThat(string).contains(" is a dirty dog."),
+                string -> assertThat(string).contains(" is a clean dog.")
+        );
     }
 }

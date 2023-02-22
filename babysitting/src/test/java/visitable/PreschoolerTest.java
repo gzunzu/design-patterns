@@ -60,21 +60,21 @@ class PreschoolerTest {
         String result = this.preschooler.accept(this.visitor);
 
         verify(this.visitor, times(1)).visit(this.preschooler);
-        assertThat(result).isNotBlank().isEqualTo(mockedResult);
+        assertThat(result).isEqualTo(mockedResult);
     }
 
     @Test
     void play() {
         String result = this.preschooler.play();
 
-        assertThat(result).isNotBlank().containsSequence(this.preschooler.name, " is now having fun playing.");
+        assertThat(result).containsSequence(this.preschooler.name, " is now having fun playing.");
     }
 
     @Test
     void toStringTest() {
         String result = this.preschooler.toString();
 
-        assertThat(result).isNotBlank().containsSubsequence(
+        assertThat(result).containsSubsequence(
                 StringUtils.capitalize(this.preschooler.gender.getSubjectivePronoun()),
                 String.valueOf(NUMBERS_KNOWN));
     }

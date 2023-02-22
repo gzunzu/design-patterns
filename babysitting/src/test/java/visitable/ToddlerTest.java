@@ -60,14 +60,14 @@ class ToddlerTest {
         String result = this.todder.accept(this.visitor);
 
         verify(this.visitor, times(1)).visit(this.todder);
-        assertThat(result).isNotBlank().isEqualTo(mockedResult);
+        assertThat(result).isEqualTo(mockedResult);
     }
 
     @Test
     void suckPacifier() {
         String result = this.todder.suckPacifier();
 
-        assertThat(result).isNotBlank().containsSequence(this.todder.name, " is calming down while sucking the pacifier.");
+        assertThat(result).containsSequence(this.todder.name, " is calming down while sucking the pacifier.");
     }
 
     @Test

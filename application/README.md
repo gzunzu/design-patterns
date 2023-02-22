@@ -1,4 +1,4 @@
-## Application \[Main class\]
+# Application \[Main class\]
 
 ## Description
 
@@ -13,3 +13,7 @@ You can filter the example/s to execute by providing the name of the module/s as
 when you run the main class. Or, if you want to see them all, just provide no arguments at all.
 
 Have fun!
+
+## Subjects, technologies and contents
+
+- Use of Supplier<String> constants to call sample executions may be of interest.

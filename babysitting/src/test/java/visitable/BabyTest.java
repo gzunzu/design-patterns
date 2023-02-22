@@ -75,7 +75,7 @@ class BabyTest {
     void toStringTest() {
         String result = this.baby.toString();
 
-        assertThat(result).isNotBlank().containsSubsequence(
+        assertThat(result).containsSubsequence(
                 StringUtils.capitalize(this.baby.gender.getSubjectivePronoun()),
                 String.valueOf(WEEKS)
         );
