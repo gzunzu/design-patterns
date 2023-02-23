@@ -36,6 +36,7 @@ public class Toddler extends Child {
     public String toString() {
         RuleBasedNumberFormat formatter
                 = new RuleBasedNumberFormat(Locale.ENGLISH, RuleBasedNumberFormat.SPELLOUT);
+        //noinspection SpellCheckingInspection
         return super.toString() + " " + StringUtils.capitalize(this.gender.getSubjectivePronoun())
                 + " is a toddler and " + this.gender.getPossessivePronoun() + " "
                 + formatter.format(this.teethCount, "%spellout-ordinal") + " tooth is coming out.";

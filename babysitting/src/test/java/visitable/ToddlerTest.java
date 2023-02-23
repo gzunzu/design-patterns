@@ -27,7 +27,7 @@ class ToddlerTest {
 
     private static AutoCloseable autoClosable;
 
-    private Toddler todder;
+    private Toddler toddler;
 
     @Mock
     private Visitor visitor;
@@ -48,7 +48,7 @@ class ToddlerTest {
 
     @BeforeEach
     void init() {
-        this.todder = new Toddler("Nombre", Gender.FEMALE, TEETH_COUNT);
+        this.toddler = new Toddler("Nombre", Gender.FEMALE, TEETH_COUNT);
     }
 
     @Test
@@ -57,25 +57,25 @@ class ToddlerTest {
 
         when(this.visitor.visit(any(Toddler.class))).thenReturn(mockedResult);
 
-        String result = this.todder.accept(this.visitor);
+        String result = this.toddler.accept(this.visitor);
 
-        verify(this.visitor, times(1)).visit(this.todder);
+        verify(this.visitor, times(1)).visit(this.toddler);
         assertThat(result).isEqualTo(mockedResult);
     }
 
     @Test
     void suckPacifier() {
-        String result = this.todder.suckPacifier();
+        String result = this.toddler.suckPacifier();
 
-        assertThat(result).containsSequence(this.todder.name, " is calming down while sucking the pacifier.");
+        assertThat(result).containsSequence(this.toddler.name, " is calming down while sucking the pacifier.");
     }
 
     @Test
     void toStringTest() {
-        String result = this.todder.toString();
+        String result = this.toddler.toString();
 
         assertThat(result).isNotBlank().containsSubsequence(
-                StringUtils.capitalize(this.todder.gender.getSubjectivePronoun()),
+                StringUtils.capitalize(this.toddler.gender.getSubjectivePronoun()),
                 " tooth is coming out.");
     }
 }

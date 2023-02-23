@@ -1,17 +1,20 @@
 package visitor;
 
-import lombok.Data;
+import lombok.Getter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.SystemUtils;
-import visitable.*;
+import visitable.Baby;
+import visitable.Dog;
+import visitable.Preschooler;
+import visitable.Toddler;
+import visitable.Visitable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@SuppressWarnings("unused")
-@Data
+@Getter
 public class Babysitter implements Visitor {
 
     private final ArrayList<Visitable> visitables;
@@ -60,22 +63,6 @@ public class Babysitter implements Visitor {
     }
 
     @Override
-    public String visit(Toddler toddler) {
-        return String.format("%s%n[BABYSITTER] The toddler teeth hurt. I'll give %s a pacifier.%n%s%n",
-                toddler.toString(),
-                toddler.getGender().getObjectivePronoun(),
-                toddler.suckPacifier());
-    }
-
-    @Override
-    public String visit(Preschooler preschooler) {
-        return String.format("%s%n[BABYSITTER] The preschooler is bored. I'll bring %s a game.%n%s%n",
-                preschooler.toString(),
-                preschooler.getGender().getObjectivePronoun(),
-                preschooler.play());
-    }
-
-    @Override
     public String visit(Dog dog) {
         StringBuilder result = new StringBuilder(dog.toString())
                 .append(SystemUtils.LINE_SEPARATOR)
@@ -91,5 +78,21 @@ public class Babysitter implements Visitor {
         return result
                 .append(SystemUtils.LINE_SEPARATOR)
                 .toString();
+    }
+
+    @Override
+    public String visit(Preschooler preschooler) {
+        return String.format("%s%n[BABYSITTER] The preschooler is bored. I'll bring %s a game.%n%s%n",
+                preschooler.toString(),
+                preschooler.getGender().getObjectivePronoun(),
+                preschooler.play());
+    }
+
+    @Override
+    public String visit(Toddler toddler) {
+        return String.format("%s%n[BABYSITTER] The toddler teeth hurt. I'll give %s a pacifier.%n%s%n",
+                toddler.toString(),
+                toddler.getGender().getObjectivePronoun(),
+                toddler.suckPacifier());
     }
 }

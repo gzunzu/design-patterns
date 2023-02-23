@@ -7,12 +7,12 @@ import dto.VisitableDTO;
 import lombok.AllArgsConstructor;
 import management.Service;
 import office.Receptionist;
+import org.springframework.util.Assert;
 import utils.JsonHelper;
 import vehicle.VehicleFactory;
 import visitor.Babysitter;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
@@ -23,27 +23,24 @@ class Example {
     public static final Supplier<String> BABYSITTING_SUPPLIER = () -> {
         VisitableDTO visitableDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "babysitting/visitables.json", VisitableDTO.class);
-        assert Objects.nonNull(visitableDTO);
+        Assert.notNull(visitableDTO, "The VisitableDTO provided shouldn't be null.");
 
         final Babysitter babysitter = new Babysitter();
-        babysitter.admit(visitableDTO.getBabies());
-        babysitter.admit(visitableDTO.getToddlers());
-        babysitter.admit(visitableDTO.getPreschoolers());
-        babysitter.admit(visitableDTO.getDogs());
+        babysitter.admit(visitableDTO.getVisitables());
         babysitter.shuffle();
 
-        final StringBuilder result = new StringBuilder("\n---An example execution of the Babysitting module---\n ")
-                .append(babysitter.takeCare());
+        final String result = "\n---An example execution of the Babysitting module---\n "
+                .concat(babysitter.takeCare());
 
         babysitter.finishWork();
 
-        return result.toString();
+        return result;
     };
 
     public static final Supplier<String> FAST_FOOD_SUPPLIER = () -> {
         OrdersDTO ordersDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "fastfood/orders.json", OrdersDTO.class);
-        assert Objects.nonNull(ordersDTO);
+        Assert.notNull(ordersDTO, "The OrdersDTO provided shouldn't be null.");
 
         final Service service = new Service();
         service.addOrders(ordersDTO.getWebOrders());
@@ -51,12 +48,12 @@ class Example {
         service.addOrders(ordersDTO.getTakeawayOrders());
         service.shuffle();
 
-        final StringBuilder result = new StringBuilder("\n---An example execution of the Fast food module---\n ")
-                .append(service.processOrders());
+        final String result = "\n---An example execution of the Fast food module---\n "
+                .concat(service.processOrders());
 
         service.finishWork();
 
-        return result.toString();
+        return result;
     };
 
     public static final Supplier<String> VEHICLES_SUPPLIER = () -> {
@@ -68,21 +65,21 @@ class Example {
                 VehicleFactory.getVehicle(VehicleFactory.VehiclePackage.COOL_SPORTS, "RED")
         );
 
-        final StringBuilder result = new StringBuilder("\n---An example execution of the Vehicles module---\n ")
-                .append(Store.showAvailableModels())
-                .append(store.showVehicles());
+        final String result = "\n---An example execution of the Vehicles module---\n "
+                .concat(Store.showAvailableModels())
+                .concat(store.showVehicles());
 
         store.deleteVehicles();
         Store.deleteModels();
 
-        return result.toString();
+        return result;
     };
 
     public static final Supplier<String> VENDING_MACHINE_SUPPLIER = () -> {
 
         PaymentMethodsDTO paymentMethodsDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "vendingmachine/payments.json", PaymentMethodsDTO.class);
-        assert Objects.nonNull(paymentMethodsDTO);
+        Assert.notNull(paymentMethodsDTO, "The PaymentMethodsDTO provided shouldn't be null.");
 
         final Receptionist receptionist = new Receptionist();
         receptionist.add(paymentMethodsDTO.getBankCheques());
@@ -90,12 +87,12 @@ class Example {
         receptionist.add(paymentMethodsDTO.getCashes());
         receptionist.shuffle();
 
-        final StringBuilder result = new StringBuilder("\n---An example execution of the Vending machine module---\n ")
-                .append(receptionist.assistCoworkers());
+        final String result = "\n---An example execution of the Vending machine module---\n "
+                .concat(receptionist.assistCoworkers());
 
         receptionist.finishWork();
 
-        return result.toString();
+        return result;
     };
 
     @AllArgsConstructor
