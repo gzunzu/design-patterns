@@ -1,7 +1,6 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import visitable.Baby;
 import visitable.Dog;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@Data
 @SuppressWarnings("java:S1948")
 public class VisitableDTO implements Serializable {
 
