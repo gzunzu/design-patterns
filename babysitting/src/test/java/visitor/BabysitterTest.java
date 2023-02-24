@@ -1,28 +1,22 @@
 package visitor;
 
-import dto.VisitableDTO;
 import org.apache.commons.lang3.SystemUtils;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import utils.Gender;
-import utils.JsonHelper;
-import utils.Randomizer;
 import visitable.Baby;
 import visitable.Dog;
 import visitable.Preschooler;
 import visitable.Toddler;
-import visitable.Visitable;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -31,82 +25,125 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class BabysitterTest {
 
-    private static List<Visitable> sampleVisitables;
-
     private Babysitter babysitter;
+
+    private static AutoCloseable autoCloseable;
+
+    @Mock
+    private Baby baby;
+
+    @Mock
+    private Dog dog;
+
+    @Mock
+    private Preschooler preschooler;
+
+    @Mock
+    private Toddler toddler;
 
     @BeforeAll
     static void setUp() {
-        sampleVisitables = getSampleVisitables();
+        autoCloseable = MockitoAnnotations.openMocks(BabysitterTest.class);
+    }
+
+    @AfterAll
+    static void tearDown() {
+        try {
+            autoCloseable.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @BeforeEach
     void init() {
         this.babysitter = new Babysitter();
-        this.babysitter.admit(sampleVisitables);
+        this.babysitter.admit(baby, dog, preschooler);
+    }
+
+    @Test
+    void getVisitablesCount() {
+        assertThat(this.babysitter.getVisitablesCount()).isEqualTo(3);
+    }
+
+    @Test
+    void isTakingCareOf() {
+        assertThat(this.babysitter.isTakingCareOf(baby, dog, preschooler)).isTrue();
+        assertThat(this.babysitter.isTakingCareOf(toddler)).isFalse();
     }
 
     @Test
     void admit() {
-        Visitable mockedVisitable = mock(Visitable.class);
-        this.babysitter.admit(mockedVisitable);
+        int initialSize = this.babysitter.getVisitablesCount();
+        boolean previousResult = this.babysitter.isTakingCareOf(toddler);
 
-        assertThat(this.babysitter.getVisitables())
-                .hasSize(sampleVisitables.size() + 1);
-        assertThat(this.babysitter.getVisitables())
-                .contains(mockedVisitable);
+        this.babysitter.admit(toddler);
+
+        assertThat(previousResult).isFalse();
+        assertThat(this.babysitter.getVisitablesCount()).isEqualTo(initialSize + 1);
+        assertThat(this.babysitter.isTakingCareOf(toddler)).isTrue();
     }
 
     @Test
     void reject() {
-        List<Visitable> rejectedVisitables = new ArrayList<>();
-        Set<Integer> randomIndexes = Randomizer.getRandomIntegers(this.babysitter.getVisitables().size(), 2);
-        randomIndexes.forEach(index -> rejectedVisitables.add(this.babysitter.getVisitables().get(index)));
+        int initialSize = this.babysitter.getVisitablesCount();
 
-        this.babysitter.reject(rejectedVisitables.toArray(new Visitable[0]));
+        this.babysitter.reject(baby, preschooler);
 
-        assertThat(this.babysitter.getVisitables())
-                .hasSize(sampleVisitables.size() - rejectedVisitables.size());
-        assertThat(this.babysitter.getVisitables())
-                .doesNotContain(rejectedVisitables.toArray(new Visitable[0]));
+        assertThat(this.babysitter.getVisitablesCount()).isEqualTo(initialSize - 2);
+        assertThat(this.babysitter.isTakingCareOf(baby)).isFalse();
+        assertThat(this.babysitter.isTakingCareOf(preschooler)).isFalse();
+        assertThat(this.babysitter.isTakingCareOf(dog)).isTrue();
     }
 
     @Test
     void shuffle() {
+        int initialSize = this.babysitter.getVisitablesCount();
+
         this.babysitter.shuffle();
 
-        assertThat(this.babysitter.getVisitables()).hasSameElementsAs(sampleVisitables);
+        assertThat(this.babysitter.getVisitablesCount()).isEqualTo(initialSize);
+        assertThat(this.babysitter.isTakingCareOf(baby, dog, preschooler)).isTrue();
+        assertThat(this.babysitter.isTakingCareOf(toddler)).isFalse();
     }
 
     @Test
     void finishWork() {
+        int initialSize = this.babysitter.getVisitablesCount();
+
         this.babysitter.finishWork();
 
-        assertThat(this.babysitter.getVisitables()).isEmpty();
+        assertThat(initialSize).isPositive();
+        assertThat(this.babysitter.getVisitablesCount()).isZero();
     }
 
     @Test
     void takeCare() {
-        Visitable mockedVisitable = mock(Visitable.class);
-        this.babysitter.admit(mockedVisitable);
+        when(baby.accept(any(Visitor.class))).thenReturn("Mocked Baby accept value");
+        when(dog.accept(any(Visitor.class))).thenReturn("Mocked Dog accept value");
+        when(preschooler.accept(any(Visitor.class))).thenReturn("Mocked Preschooler accept value");
+
         String result = this.babysitter.takeCare();
 
-        verify(mockedVisitable, times(1)).accept(this.babysitter);
-        assertThat(result).isNotBlank();
+        verify(baby, times(1)).accept(this.babysitter);
+        verify(dog, times(1)).accept(this.babysitter);
+        verify(preschooler, times(1)).accept(this.babysitter);
+        verify(toddler, never()).accept(this.babysitter);
+        assertThat(result).containsSubsequence("Mocked Baby accept value",
+                "Mocked Dog accept value",
+                "Mocked Preschooler accept value");
     }
 
     @Test
     void visitBaby() {
-        Baby mockedBaby = mock(Baby.class);
+        when(baby.toString()).thenReturn("Mocked toString value");
+        when(baby.getGender()).thenReturn(Gender.FEMALE);
+        when(baby.cradle()).thenReturn("Mocked cradle value");
 
-        when(mockedBaby.toString()).thenReturn("Mocked toString value");
-        when(mockedBaby.getGender()).thenReturn(Gender.FEMALE);
-        when(mockedBaby.cradle()).thenReturn("Mocked cradle value");
+        String result = this.babysitter.visit(baby);
 
-        String result = this.babysitter.visit(mockedBaby);
-
-        verify(mockedBaby, times(1)).getGender();
-        verify(mockedBaby, times(1)).cradle();
+        verify(baby, times(1)).getGender();
+        verify(baby, times(1)).cradle();
         assertThat(result).containsSubsequence("Mocked toString value",
                 Gender.FEMALE.getObjectivePronoun(),
                 "Mocked cradle value");
@@ -114,17 +151,15 @@ class BabysitterTest {
 
     @Test
     void visitDog_clean() {
-        Dog mockedDog = mock(Dog.class);
+        when(dog.toString()).thenReturn("Mocked toString value");
+        when(dog.isClean()).thenReturn(true);
+        when(dog.walk()).thenReturn("Mocked walk value");
 
-        when(mockedDog.toString()).thenReturn("Mocked toString value");
-        when(mockedDog.isClean()).thenReturn(true);
-        when(mockedDog.walk()).thenReturn("Mocked walk value");
+        String result = this.babysitter.visit(dog);
 
-        String result = this.babysitter.visit(mockedDog);
-
-        verify(mockedDog, times(1)).walk();
-        verify(mockedDog, never()).bath();
-        verify(mockedDog, never()).bark();
+        verify(dog, times(1)).walk();
+        verify(dog, never()).bath();
+        verify(dog, never()).bark();
         assertThat(result).containsSequence("Mocked toString value",
                 SystemUtils.LINE_SEPARATOR,
                 "[BABYSITTER] The dog is ",
@@ -134,17 +169,15 @@ class BabysitterTest {
 
     @Test
     void visitDog_notClean() {
-        Dog mockedDog = mock(Dog.class);
+        when(dog.toString()).thenReturn("Mocked toString value");
+        when(dog.isClean()).thenReturn(false);
+        when(dog.bark()).thenReturn("Mocked bark value");
 
-        when(mockedDog.toString()).thenReturn("Mocked toString value");
-        when(mockedDog.isClean()).thenReturn(false);
-        when(mockedDog.bark()).thenReturn("Mocked bark value");
+        String result = this.babysitter.visit(dog);
 
-        String result = this.babysitter.visit(mockedDog);
-
-        verify(mockedDog, times(1)).bath();
-        verify(mockedDog, times(1)).bark();
-        verify(mockedDog, never()).walk();
+        verify(dog, times(1)).bath();
+        verify(dog, times(1)).bark();
+        verify(dog, never()).walk();
         assertThat(result).containsSequence("Mocked toString value",
                 SystemUtils.LINE_SEPARATOR,
                 "[BABYSITTER] The dog is ",
@@ -154,13 +187,11 @@ class BabysitterTest {
 
     @Test
     void visitPreschooler() {
-        Preschooler mockedPreschooler = mock(Preschooler.class);
+        when(preschooler.toString()).thenReturn("Mocked toString value");
+        when(preschooler.getGender()).thenReturn(Gender.NON_BINARY);
+        when(preschooler.play()).thenReturn("Mocked play value");
 
-        when(mockedPreschooler.toString()).thenReturn("Mocked toString value");
-        when(mockedPreschooler.getGender()).thenReturn(Gender.NON_BINARY);
-        when(mockedPreschooler.play()).thenReturn("Mocked play value");
-
-        String result = this.babysitter.visit(mockedPreschooler);
+        String result = this.babysitter.visit(preschooler);
 
         assertThat(result).contains(String.format("%s%n[BABYSITTER] The preschooler is bored. I'll bring %s a game.%n%s%n",
                 "Mocked toString value",
@@ -170,21 +201,15 @@ class BabysitterTest {
 
     @Test
     void visitToddler() {
-        Toddler mockedToddler = mock(Toddler.class);
+        when(toddler.toString()).thenReturn("Mocked toString value");
+        when(toddler.getGender()).thenReturn(Gender.MALE);
+        when(toddler.suckPacifier()).thenReturn("Mocked suckPacifier value");
 
-        when(mockedToddler.toString()).thenReturn("Mocked toString value");
-        when(mockedToddler.getGender()).thenReturn(Gender.MALE);
-        when(mockedToddler.suckPacifier()).thenReturn("Mocked suckPacifier value");
-
-        String result = this.babysitter.visit(mockedToddler);
+        String result = this.babysitter.visit(toddler);
 
         assertThat(result).contains(String.format("%s%n[BABYSITTER] The toddler teeth hurt. I'll give %s a pacifier.%n%s%n",
                 "Mocked toString value",
                 Gender.MALE.getObjectivePronoun(),
                 "Mocked suckPacifier value"));
-    }
-
-    private static List<Visitable> getSampleVisitables() {
-        return Objects.requireNonNull(JsonHelper.readJsonFile("src/test/resources/visitables.json", VisitableDTO.class)).getVisitables();
     }
 }

@@ -1,7 +1,5 @@
 package visitor;
 
-import lombok.Getter;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.SystemUtils;
 import visitable.Baby;
 import visitable.Dog;
@@ -14,7 +12,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@Getter
 public class Babysitter implements Visitor {
 
     private final ArrayList<Visitable> visitables;
@@ -23,14 +20,20 @@ public class Babysitter implements Visitor {
         this.visitables = new ArrayList<>();
     }
 
-    public <T extends Visitable> void admit(List<T> visitables) {
-        if (CollectionUtils.isNotEmpty(visitables)) {
-            this.visitables.addAll(visitables);
-        }
+    public void admit(Visitable... visitables) {
+        this.admit(Arrays.asList(visitables));
     }
 
-    public void admit(Visitable... visitables) {
-        Collections.addAll(this.visitables, visitables);
+    public <T extends Visitable> void admit(List<T> visitables) {
+        this.visitables.addAll(visitables);
+    }
+
+    public int getVisitablesCount() {
+        return this.visitables.size();
+    }
+
+    public boolean isTakingCareOf(Visitable... visitables) {
+        return this.visitables.containsAll(Arrays.asList(visitables));
     }
 
     public void reject(Visitable... visitables) {
