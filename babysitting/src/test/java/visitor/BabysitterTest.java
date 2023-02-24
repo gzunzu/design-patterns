@@ -1,5 +1,6 @@
 package visitor;
 
+import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,6 +23,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@Log4j2
 @ExtendWith(MockitoExtension.class)
 class BabysitterTest {
 
@@ -51,7 +53,7 @@ class BabysitterTest {
         try {
             autoCloseable.close();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            log.error(e.getMessage(), e);
         }
     }
 
