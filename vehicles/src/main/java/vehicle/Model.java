@@ -1,8 +1,15 @@
 package vehicle;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import feature.*;
-import lombok.*;
+import feature.Colour;
+import feature.DoorsCount;
+import feature.Extra;
+import feature.Fuel;
+import feature.HorsePower;
+import feature.Style;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import utils.Printer;
 
@@ -13,10 +20,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class Model {
+@Getter
+public final class Model {
 
     @NotBlank
     @JsonProperty("name")
@@ -50,7 +56,7 @@ public class Model {
     @JsonProperty("availableHorsePowers")
     private List<HorsePower> availableHorsePowers;
 
-    public Model(ModelBuilder modelBuilder) {
+    public Model(final @NotNull ModelBuilder modelBuilder) {
         this.name = modelBuilder.getName();
         this.style = modelBuilder.getStyle();
         this.basePrice = modelBuilder.getBasePrice();

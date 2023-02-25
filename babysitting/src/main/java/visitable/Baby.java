@@ -1,14 +1,13 @@
 package visitable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.EqualsAndHashCode;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import utils.Gender;
 import visitor.Visitor;
 
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Baby extends Child {
 
     @JsonProperty("weeks")

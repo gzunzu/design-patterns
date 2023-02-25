@@ -2,7 +2,7 @@ package visitable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ibm.icu.text.RuleBasedNumberFormat;
-import lombok.EqualsAndHashCode;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import utils.Gender;
@@ -11,8 +11,7 @@ import visitor.Visitor;
 import java.util.Locale;
 
 @SuppressWarnings("unused")
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Toddler extends Child {
 
     @JsonProperty("teethCount")

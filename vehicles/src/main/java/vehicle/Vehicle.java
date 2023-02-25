@@ -1,7 +1,11 @@
 package vehicle;
 
 import business.PlateGenerator;
-import feature.*;
+import feature.Colour;
+import feature.DoorsCount;
+import feature.Extra;
+import feature.Fuel;
+import feature.HorsePower;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 import utils.Printer;
@@ -29,12 +33,12 @@ public abstract class Vehicle {
     private final HorsePower horsePower;
 
     protected Vehicle(
-            Model model,
-            String colour,
-            DoorsCount doorsCount,
-            Extra[] extras,
-            Fuel fuel,
-            HorsePower horsePower) {
+            final Model model,
+            final String colour,
+            final DoorsCount doorsCount,
+            final Extra[] extras,
+            final Fuel fuel,
+            final HorsePower horsePower) {
         this.model = model;
         this.validateConfiguration(
                 Colour.valueOf(colour.toUpperCase()),
@@ -63,7 +67,7 @@ public abstract class Vehicle {
 
     protected abstract String getFeaturesConfigurationPackName();
 
-    protected void validateConfiguration(
+    private void validateConfiguration(
             Colour colour,
             DoorsCount doorsCount,
             Extra[] extras,
@@ -150,10 +154,9 @@ public abstract class Vehicle {
         }
         return extrasTotalPrice;
     }
-
-    @SuppressWarnings("MalformedFormatString")
+    
     @Override
-    public String toString() {
+    public final String toString() {
         return String.format("VEHICLE:%n%-20s%s%n%-20s%s%n%-20s%s%n%-15s%s [%s]%n%-15s%s%n"
                         + "%-15s%s%n%-15s%s%n%-15s%s%n%-15s%s%n",
                 "Plate ID:",

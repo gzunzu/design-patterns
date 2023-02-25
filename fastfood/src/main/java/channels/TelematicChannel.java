@@ -14,13 +14,13 @@ abstract class TelematicChannel implements Channel {
     protected String location;
 
     @Override
-    public String serveClient() {
+    public final String serveClient() {
         return this.getCommand().concat(this.confirmShipment());
     }
 
-    abstract String getCommand();
-
-    String confirmShipment() {
+    private String confirmShipment() {
         return String.format("Your order will be sent to %s.%n", this.location);
     }
+
+    abstract String getCommand();
 }

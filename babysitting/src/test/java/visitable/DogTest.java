@@ -49,6 +49,12 @@ class DogTest {
     }
 
     @Test
+    void isClean() {
+        boolean result = dog.isClean();
+        assertThat(result).isTrue();
+    }
+
+    @Test
     void accept() {
         String mockedResult = "Result of the visitor.visit method";
 
