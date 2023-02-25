@@ -2,8 +2,8 @@ package app;
 
 import app.Example.Module;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import utils.TextUtils;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class Application {
 
     private static void manageArgs(String[] args) {
-        if (ArrayUtils.isEmpty(args)) {
+        if (TextUtils.allEmptyStrings(args)) {
             Arrays.stream(Module.values()).forEach(module -> log.info(module.getFunctionResult()));
         } else {
             Arrays.stream(args).forEach(arg -> {

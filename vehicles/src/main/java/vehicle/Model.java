@@ -11,7 +11,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import utils.Printer;
+import utils.TextUtils;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -73,11 +73,11 @@ public final class Model {
                         + "Available extras: %s%nAvailable fuels: %s%nAvailable horsepowers: %s%n",
                 this.name,
                 StringUtils.capitalize(this.style.toString()),
-                Printer.getAsString(this.availableColours),
-                Printer.getAsString(this.availableDoorsCount),
-                Printer.getAsString(this.availableExtras),
-                Printer.getAsString(this.availableFuels),
-                Printer.getAsString(this.availableHorsePowers)
+                TextUtils.getListAsPrettyString(this.availableColours),
+                TextUtils.getListAsPrettyString(this.availableDoorsCount),
+                TextUtils.getListAsPrettyString(this.availableExtras),
+                TextUtils.getListAsPrettyString(this.availableFuels),
+                TextUtils.getListAsPrettyString(this.availableHorsePowers)
         );
     }
 

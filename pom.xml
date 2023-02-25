@@ -5,34 +5,47 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>19</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <character-encoding>UTF-8</character-encoding>
+        <project.build.sourceEncoding>${character-encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${character-encoding}</project.reporting.outputEncoding>
         <app.name>design-patterns-app</app.name>
-        <sonar.exclusions>
-            **/sonar/*,
-            **/configuration/*,
-            **/target/*,
-            *.properties,
-            *.json,
-            *.md,
-            **dto/*
-        </sonar.exclusions>
+        <sonar.exclusions>**/sonar/*, **/configuration/*, **/target/*, *.properties, *.json, *.md, **dto/*</sonar.exclusions>
+        <springboot.version>3.0.2</springboot.version>
+        <mockito-junit-jupiter.version>5.1.1</mockito-junit-jupiter.version>
+        <junit-jupiter-engine.version>5.9.1</junit-jupiter-engine.version>
+        <module.application.version>0.1.0</module.application.version>
+        <module.babysitting.version>1.0.0</module.babysitting.version>
+        <module.common.version>0.1.0</module.common.version>
+        <module.fastfood.version>0.1.0</module.fastfood.version>
+        <module.vehicles.version>0.1.0</module.vehicles.version>
+        <module.vendingmachine.version>0.1.0</module.vendingmachine.version>
+        <child-modules.packaging>jar</child-modules.packaging>
     </properties>
 
+    <!-- Project general data -->
     <groupId>com.gzunzu.design-patterns</groupId>
     <artifactId>design-patterns</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>${project.artifactId}-${project.version}</name>
+    <description>Parent module of multi module project design-patterns</description>
+    <developers>
+        <developer>
+            <id>gzunzu</id>
+            <name>Germán Zunzunegui</name>
+            <email>gerzunzu@gmail.com</email>
+        </developer>
+    </developers>
 
     <modules>
-        <module>fastfood</module>
-        <module>babysitting</module>
         <module>application</module>
+        <module>babysitting</module>
         <module>common</module>
-        <module>vendingmachine</module>
+        <module>fastfood</module>
         <module>vehicles</module>
+        <module>vendingmachine</module>
     </modules>
 
     <dependencies>
@@ -40,7 +53,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.0.2</version>
+            <version>${springboot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -48,6 +61,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -68,14 +82,18 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.24.2</version>
-            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>5.1.1</version>
-            <scope>test</scope>
+            <version>${mockito-junit-jupiter.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
@@ -104,13 +122,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.14.2</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-report-plugin -->
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-report-plugin</artifactId>
-            <version>3.0.0-M9</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -118,25 +129,25 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <version>3.0.0-M9</version>
                 <configuration>
                     <includes>
+                        <include>**/*Test.java</include>
                         <include>**/*_IT.java</include>
                     </includes>
                     <excludes>
                         <exclude>**/*TestUtil*.java</exclude>
                     </excludes>
                 </configuration>
-                <dependencies>
-                    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
-                    <dependency>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-engine</artifactId>
-                        <version>5.9.2</version>
-                    </dependency>
-                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>

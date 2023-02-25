@@ -8,7 +8,7 @@ import feature.Fuel;
 import feature.HorsePower;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
-import utils.Printer;
+import utils.TextUtils;
 
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -85,7 +85,7 @@ public abstract class Vehicle {
                 String.format("Colour %s is not among %s model available colours: %s",
                         StringUtils.capitalize(colour.toString()),
                         this.model.getName(),
-                        Printer.getAsString(this.model.getAvailableColours()
+                        TextUtils.getListAsPrettyString(this.model.getAvailableColours()
                         )
                 )
         );
@@ -96,7 +96,7 @@ public abstract class Vehicle {
                 String.format("%s door set is not among %s model door sets available: %s",
                         StringUtils.capitalize(doorsCount.toString()),
                         this.model.getName(),
-                        Printer.getAsString(this.model.getAvailableDoorsCount()
+                        TextUtils.getListAsPrettyString(this.model.getAvailableDoorsCount()
                         )
                 )
         );
@@ -108,7 +108,7 @@ public abstract class Vehicle {
                         String.format("Extra %s is not among %s model available extras: %s",
                                 StringUtils.capitalize(extra.toString()),
                                 this.model.getName(),
-                                Printer.getAsString(this.model.getAvailableExtras()
+                                TextUtils.getListAsPrettyString(this.model.getAvailableExtras()
                                 )
                         )
                 )
@@ -120,7 +120,7 @@ public abstract class Vehicle {
                 String.format("Fuel %s is not among %s model available fuels: %s",
                         StringUtils.capitalize(fuel.toString()),
                         this.model.getName(),
-                        Printer.getAsString(this.model.getAvailableFuels()
+                        TextUtils.getListAsPrettyString(this.model.getAvailableFuels()
                         )
                 )
         );
@@ -131,7 +131,7 @@ public abstract class Vehicle {
                 String.format("Horspower %s is not among %s model available horsepowers: %s",
                         horsePower,
                         this.model.getName(),
-                        Printer.getAsString(this.model.getAvailableHorsePowers()
+                        TextUtils.getListAsPrettyString(this.model.getAvailableHorsePowers()
                         )
                 )
         );
@@ -154,7 +154,7 @@ public abstract class Vehicle {
         }
         return extrasTotalPrice;
     }
-    
+
     @Override
     public final String toString() {
         return String.format("VEHICLE:%n%-20s%s%n%-20s%s%n%-20s%s%n%-15s%s [%s]%n%-15s%s%n"
@@ -171,7 +171,7 @@ public abstract class Vehicle {
                 "\tDoor set:",
                 StringUtils.capitalize(this.doors.toString()),
                 "\tExtras:",
-                Printer.getAsString(this.extras),
+                TextUtils.getListAsPrettyString(this.extras),
                 "\tFuel:",
                 StringUtils.capitalize(this.fuel.getName()),
                 "\tHorsepower:",

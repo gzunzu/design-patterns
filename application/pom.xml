@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--suppress MavenRedundantGroupId -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -11,58 +10,55 @@
     </parent>
 
     <artifactId>application</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>${project.artifactId}-${project.version}</name>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>app.Application</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <version>${module.application.version}</version>
 
     <dependencies>
         <dependency>
             <groupId>com.gzunzu.design-patterns</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.gzunzu.design-patterns</groupId>
             <artifactId>babysitting</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
+            <version>${module.babysitting.version}</version>
         </dependency>
         <dependency>
             <groupId>com.gzunzu.design-patterns</groupId>
-            <artifactId>vehicles</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.gzunzu.design-patterns</groupId>
-            <artifactId>vendingmachine</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
+            <artifactId>common</artifactId>
+            <version>${module.common.version}</version>
         </dependency>
         <dependency>
             <groupId>com.gzunzu.design-patterns</groupId>
             <artifactId>fastfood</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
+            <version>${module.fastfood.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gzunzu.design-patterns</groupId>
+            <artifactId>vehicles</artifactId>
+            <version>${module.vehicles.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gzunzu.design-patterns</groupId>
+            <artifactId>vendingmachine</artifactId>
+            <version>${module.vendingmachine.version}</version>
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <mainClass>app.Application</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <id>sample-execution</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
