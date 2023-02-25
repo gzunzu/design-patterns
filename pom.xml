@@ -12,8 +12,8 @@
         <project.build.sourceEncoding>${character-encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${character-encoding}</project.reporting.outputEncoding>
         <app.name>design-patterns-app</app.name>
-        <sonar.exclusions>**/sonar/*, **/configuration/*, **/target/*, *.properties, *.json, *.md, **dto/*</sonar.exclusions>
-        <springboot.version>3.0.2</springboot.version>
+        <sonar.exclusions>**/sonar/*,**/configuration/*,**/utils/*,**dto/*,**/target/*,*.properties,*.json,*.md</sonar.exclusions>
+        <springboot.starter.version>3.0.2</springboot.starter.version>
         <mockito-junit-jupiter.version>5.1.1</mockito-junit-jupiter.version>
         <junit-jupiter-engine.version>5.9.1</junit-jupiter-engine.version>
         <module.application.version>0.1.0</module.application.version>
@@ -53,7 +53,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${springboot.version}</version>
+            <version>${springboot.starter.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
-            <version>3.0.2</version>
+            <version>${springboot.starter.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->

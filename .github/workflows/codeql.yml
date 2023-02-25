@@ -78,8 +78,8 @@ jobs:
         run: mvn -B package --file pom.xml
 
       #   Runs a sample execution of the application.
-      - name: Run sample execution
-        run: java -jar application/target/application-0.1.0.jar
+      - name: Run sample execution with Maven
+        run: mvn verify -Dexec.mainClass=app.Application
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2

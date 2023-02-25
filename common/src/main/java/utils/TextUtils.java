@@ -2,7 +2,6 @@ package utils;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.ComparatorUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
@@ -35,9 +34,6 @@ public class TextUtils {
     }
 
     private static boolean allEmptyStrings(List<String> list) {
-        if (CollectionUtils.isEmpty(list)) {
-            return false;
-        }
         return list.stream().allMatch(StringUtils::isBlank);
     }
 }

@@ -3,6 +3,7 @@ package app;
 import app.Example.Module;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import utils.LoggerHelper;
 import utils.TextUtils;
 
 import java.util.Arrays;
@@ -30,5 +31,6 @@ public class Application {
 
     public static void main(String[] args) {
         manageArgs(args);
+        LoggerHelper.shutDownLogs(Application.class);
     }
 }
