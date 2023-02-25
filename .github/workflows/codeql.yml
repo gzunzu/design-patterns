@@ -77,8 +77,9 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - name: Run test set with Maven
-        run: mvn test
+      #   Runs a sample execution of the application.
+      - name: Run sample execution
+        run: java -jar application/target/application-0.1.0.jar
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
