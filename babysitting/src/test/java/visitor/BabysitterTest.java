@@ -1,5 +1,6 @@
 package visitor;
 
+import dto.VisitablesDTO;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.AfterAll;
@@ -15,9 +16,11 @@ import visitable.Baby;
 import visitable.Dog;
 import visitable.Preschooler;
 import visitable.Toddler;
+import visitable.Visitable;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -27,9 +30,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class BabysitterTest {
 
-    private Babysitter babysitter;
-
     private static AutoCloseable autoCloseable;
+
+    private Babysitter babysitter;
 
     @Mock
     private Baby baby;
@@ -75,7 +78,19 @@ class BabysitterTest {
     }
 
     @Test
-    void admit() {
+    void admitVisitablesDTO() {
+        int initialSize = this.babysitter.getVisitablesCount();
+        VisitablesDTO visitablesDTO = mock(VisitablesDTO.class);
+
+        this.babysitter.admit(visitablesDTO);
+
+        verify(visitablesDTO, times(1)).getVisitables();
+        assertThat(this.babysitter.getVisitablesCount()).isEqualTo(initialSize + visitablesDTO.getVisitables().size());
+        assertThat(this.babysitter.isTakingCareOf(visitablesDTO.getVisitables().toArray(new Visitable[0]))).isTrue();
+    }
+
+    @Test
+    void admitArray() {
         int initialSize = this.babysitter.getVisitablesCount();
         boolean previousResult = this.babysitter.isTakingCareOf(toddler);
 
@@ -195,6 +210,8 @@ class BabysitterTest {
 
         String result = this.babysitter.visit(preschooler);
 
+        verify(preschooler, times(1)).getGender();
+        verify(preschooler, times(1)).play();
         assertThat(result).contains(String.format("%s%n[BABYSITTER] The preschooler is bored. I'll bring %s a game.%n%s%n",
                 "Mocked toString value",
                 Gender.NON_BINARY.getObjectivePronoun(),
@@ -209,6 +226,8 @@ class BabysitterTest {
 
         String result = this.babysitter.visit(toddler);
 
+        verify(toddler, times(1)).getGender();
+        verify(toddler, times(1)).suckPacifier();
         assertThat(result).contains(String.format("%s%n[BABYSITTER] The toddler teeth hurt. I'll give %s a pacifier.%n%s%n",
                 "Mocked toString value",
                 Gender.MALE.getObjectivePronoun(),

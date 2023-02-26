@@ -1,9 +1,9 @@
 package app;
 
 import business.Store;
-import dto.OrdersDTO;
+import dto.ChannelsDTO;
 import dto.PaymentMethodsDTO;
-import dto.VisitableDTO;
+import dto.VisitablesDTO;
 import lombok.AllArgsConstructor;
 import management.Service;
 import office.Receptionist;
@@ -21,12 +21,12 @@ class Example {
     private static final String BASE_RESOURCES_PATH = "application/src/main/resources/";
 
     public static final Supplier<String> BABYSITTING_SUPPLIER = () -> {
-        VisitableDTO visitableDTO =
-                JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "babysitting/visitables.json", VisitableDTO.class);
-        Assert.notNull(visitableDTO, "The VisitableDTO provided shouldn't be null.");
+        VisitablesDTO visitablesDTO =
+                JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "babysitting/visitables.json", VisitablesDTO.class);
+        Assert.notNull(visitablesDTO, "The VisitablesDTO provided shouldn't be null.");
 
         final Babysitter babysitter = new Babysitter();
-        babysitter.admit(visitableDTO.getVisitables());
+        babysitter.admit(visitablesDTO);
         babysitter.shuffle();
 
         final String result = "\n---An example execution of the Babysitting module---\n "
@@ -38,14 +38,12 @@ class Example {
     };
 
     public static final Supplier<String> FAST_FOOD_SUPPLIER = () -> {
-        OrdersDTO ordersDTO =
-                JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "fastfood/orders.json", OrdersDTO.class);
-        Assert.notNull(ordersDTO, "The OrdersDTO provided shouldn't be null.");
+        ChannelsDTO channelsDTO =
+                JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "fastfood/orders.json", ChannelsDTO.class);
+        Assert.notNull(channelsDTO, "The ChannelsDTO provided shouldn't be null.");
 
         final Service service = new Service();
-        service.addOrders(ordersDTO.getWebOrders());
-        service.addOrders(ordersDTO.getTelephoneOrders());
-        service.addOrders(ordersDTO.getTakeawayOrders());
+        service.addChannels(channelsDTO);
         service.shuffle();
 
         final String result = "\n---An example execution of the Fast food module---\n "
@@ -82,9 +80,7 @@ class Example {
         Assert.notNull(paymentMethodsDTO, "The PaymentMethodsDTO provided shouldn't be null.");
 
         final Receptionist receptionist = new Receptionist();
-        receptionist.add(paymentMethodsDTO.getBankCheques());
-        receptionist.add(paymentMethodsDTO.getDebitCards());
-        receptionist.add(paymentMethodsDTO.getCashes());
+        receptionist.add(paymentMethodsDTO);
         receptionist.shuffle();
 
         final String result = "\n---An example execution of the Vending machine module---\n "

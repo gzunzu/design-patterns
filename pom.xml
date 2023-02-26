@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>${character-encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${character-encoding}</project.reporting.outputEncoding>
         <app.name>design-patterns-app</app.name>
-        <sonar.exclusions>**/sonar/*,**/configuration/*,**/utils/*,**dto/*,**/target/*,*.properties,*.json,*.md</sonar.exclusions>
+        <sonar.exclusions>**/sonar/*,**/configuration/*,**/utils/*,**/target/*,*.properties,*.json,*.md</sonar.exclusions>
         <springboot.starter.version>3.0.2</springboot.starter.version>
         <mockito-junit-jupiter.version>5.1.1</mockito-junit-jupiter.version>
         <junit-jupiter-engine.version>5.9.1</junit-jupiter-engine.version>
@@ -123,6 +123,15 @@
             <version>2.14.2</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>base</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>

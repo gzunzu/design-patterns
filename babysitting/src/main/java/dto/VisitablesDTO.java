@@ -8,13 +8,11 @@ import visitable.Preschooler;
 import visitable.Toddler;
 import visitable.Visitable;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@SuppressWarnings("java:S1948")
-public class VisitableDTO implements Serializable {
+public class VisitablesDTO {
 
     @JsonProperty("babies")
     private List<Baby> babies;

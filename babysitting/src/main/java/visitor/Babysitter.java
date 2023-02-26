@@ -1,5 +1,6 @@
 package visitor;
 
+import dto.VisitablesDTO;
 import org.apache.commons.lang3.SystemUtils;
 import visitable.Baby;
 import visitable.Dog;
@@ -18,6 +19,10 @@ public class Babysitter implements Visitor {
 
     public Babysitter() {
         this.visitables = new ArrayList<>();
+    }
+
+    public void admit(VisitablesDTO visitablesDTO) {
+        this.admit(visitablesDTO.getVisitables());
     }
 
     public void admit(Visitable... visitables) {

@@ -1,17 +1,18 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import payment.BankCheque;
 import payment.Cash;
 import payment.DebitCard;
+import payment.ElectronicPayment;
+import payment.NonElectronicPayment;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @NoArgsConstructor
-@Data
-@SuppressWarnings("java:S1948")
 public class PaymentMethodsDTO {
 
     @JsonProperty("bankCheques")
@@ -22,4 +23,12 @@ public class PaymentMethodsDTO {
 
     @JsonProperty("debitCards")
     private List<DebitCard> debitCards;
+
+    public List<NonElectronicPayment> getNonElectronicPaymentMethods() {
+        return Stream.concat(this.bankCheques.stream(), this.cashes.stream()).toList();
+    }
+
+    public List<ElectronicPayment> getElectronicPaymentMethods() {
+        return new ArrayList<>(this.debitCards);
+    }
 }

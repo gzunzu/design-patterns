@@ -52,6 +52,13 @@ class ToddlerTest {
     }
 
     @Test
+    void getGender() {
+        Gender result = this.toddler.getGender();
+
+        assertThat(result).isEqualTo(Gender.FEMALE);
+    }
+
+    @Test
     void accept() {
         String mockedResult = "Result of the visitor.visit method";
 

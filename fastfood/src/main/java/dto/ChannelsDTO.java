@@ -1,19 +1,17 @@
 package dto;
 
+import channels.Channel;
 import channels.Takeaway;
 import channels.Telephone;
 import channels.Web;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@Data
-@SuppressWarnings("java:S1948")
-public class OrdersDTO implements Serializable {
+public class ChannelsDTO {
 
     @JsonProperty("web")
     private List<Web> webOrders;
@@ -23,4 +21,12 @@ public class OrdersDTO implements Serializable {
 
     @JsonProperty("takeaway")
     private List<Takeaway> takeawayOrders;
+
+    public List<Channel> getChannels() {
+        ArrayList<Channel> channels = new ArrayList<>();
+        channels.addAll(this.webOrders);
+        channels.addAll(this.telephoneOrders);
+        channels.addAll(this.takeawayOrders);
+        return channels;
+    }
 }

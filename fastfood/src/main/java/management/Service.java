@@ -1,7 +1,7 @@
 package management;
 
 import channels.Channel;
-import org.apache.commons.collections4.CollectionUtils;
+import dto.ChannelsDTO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,18 +16,18 @@ public class Service {
         this.orders = new ArrayList<>();
     }
 
-    @SuppressWarnings("unused")
-    public void addOrders(Channel... channels) {
+    public void addChannels(ChannelsDTO channelsDTO) {
+        this.addChannels(channelsDTO.getChannels());
+    }
+
+    public void addChannels(Channel... channels) {
         Arrays.asList(channels).forEach(channel -> this.orders.add(new Order(channel)));
     }
 
-    public <T extends Channel> void addOrders(List<T> chanelList) {
-        if (CollectionUtils.isNotEmpty(chanelList)) {
-            chanelList.forEach(channel -> this.orders.add(new Order(channel)));
-        }
+    public <T extends Channel> void addChannels(List<T> channelList) {
+        channelList.forEach(channel -> this.orders.add(new Order(channel)));
     }
 
-    @SuppressWarnings("unused")
     public void reject(Order... orders) {
         this.orders.removeAll(Arrays.asList(orders));
     }

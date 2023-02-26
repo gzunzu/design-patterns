@@ -1,7 +1,7 @@
 package office;
 
 import adapter.MoneyConverter;
-import org.apache.commons.collections4.CollectionUtils;
+import dto.PaymentMethodsDTO;
 import org.apache.commons.lang3.tuple.Pair;
 import payment.ElectronicPayment;
 import payment.NonElectronicPayment;
@@ -21,15 +21,11 @@ public class Receptionist {
         this.vendingMachine = new VendingMachine();
     }
 
-    public void add(List<?> payers) {
-        if (CollectionUtils.isNotEmpty(payers)) {
-            payers.stream()
-                    .filter(ElectronicPayment.class::isInstance)
-                    .forEach(payer -> this.add(Product.getRandomProduct(), (ElectronicPayment) payer));
-            payers.stream()
-                    .filter(NonElectronicPayment.class::isInstance)
-                    .forEach(payer -> this.add(Product.getRandomProduct(), (NonElectronicPayment) payer));
-        }
+    public void add(PaymentMethodsDTO paymentMethodsDTO) {
+        paymentMethodsDTO.getElectronicPaymentMethods()
+                .forEach(element -> this.add(Product.getRandomProduct(), element));
+        paymentMethodsDTO.getNonElectronicPaymentMethods()
+                .forEach(element -> this.add(Product.getRandomProduct(), element));
     }
 
     private void add(Product product, ElectronicPayment electronicPayer) {

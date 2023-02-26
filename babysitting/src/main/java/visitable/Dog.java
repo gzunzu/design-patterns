@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import visitor.Visitor;
 
-@SuppressWarnings("unused")
 @NoArgsConstructor
 public class Dog implements Visitable {
 
