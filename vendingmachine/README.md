@@ -3,7 +3,7 @@
 ## Description
 
 Module Vending machine is a simple implementation of the Adapter pattern. This is one of the most simple
-design patterns: it acts as a bridge between two incompatible interfaces.
+**structural** design patterns: it acts as a bridge between two incompatible interfaces.
 
 Our office recently acquired a new [`vending machine`](src/main/java/office/VendingMachine.java). It's
 one of the ultimate ones and offers great products, but its `buy` method only

@@ -18,6 +18,7 @@
         <junit-jupiter-engine.version>5.9.1</junit-jupiter-engine.version>
         <module.application.version>0.1.0</module.application.version>
         <module.babysitting.version>1.0.0</module.babysitting.version>
+        <module.cocktails.version>0.1.0</module.cocktails.version>
         <module.common.version>0.1.0</module.common.version>
         <module.fastfood.version>0.1.0</module.fastfood.version>
         <module.vehicles.version>0.1.0</module.vehicles.version>
@@ -42,6 +43,7 @@
     <modules>
         <module>application</module>
         <module>babysitting</module>
+        <module>cocktails</module>
         <module>common</module>
         <module>fastfood</module>
         <module>vehicles</module>

@@ -2,7 +2,7 @@
 
 ## Description
 
-Module **Babysitting** is a simple implementation of the Visitor pattern, which allows
+Module **Babysitting** is a simple implementation of the Visitor pattern. This is **behavioural** type pattern which allows
 us to add new operations to an existing object without modifying or even knowing about
 the already implemented ones.
 

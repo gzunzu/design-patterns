@@ -4,7 +4,9 @@ import business.Store;
 import dto.ChannelsDTO;
 import dto.PaymentMethodsDTO;
 import dto.VisitablesDTO;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import management.Service;
 import office.Receptionist;
 import org.springframework.util.Assert;
@@ -29,7 +31,7 @@ class Example {
         babysitter.admit(visitablesDTO);
         babysitter.shuffle();
 
-        final String result = "\n---An example execution of the Babysitting module---\n "
+        final String result = getExampleIntroPhrase(Module.BABYSITTING)
                 .concat(babysitter.takeCare());
 
         babysitter.finishWork();
@@ -46,7 +48,7 @@ class Example {
         service.addChannels(channelsDTO);
         service.shuffle();
 
-        final String result = "\n---An example execution of the Fast food module---\n "
+        final String result = getExampleIntroPhrase(Module.FAST_FOOD)
                 .concat(service.processOrders());
 
         service.finishWork();
@@ -63,7 +65,7 @@ class Example {
                 VehicleFactory.getVehicle(VehicleFactory.VehiclePackage.COOL_SPORTS, "RED")
         );
 
-        final String result = "\n---An example execution of the Vehicles module---\n "
+        final String result = getExampleIntroPhrase(Module.VEHICLES)
                 .concat(Store.showAvailableModels())
                 .concat(store.showVehicles());
 
@@ -83,13 +85,17 @@ class Example {
         receptionist.add(paymentMethodsDTO);
         receptionist.shuffle();
 
-        final String result = "\n---An example execution of the Vending machine module---\n "
+        final String result = getExampleIntroPhrase(Module.VENDING_MACHINE)
                 .concat(receptionist.assistCoworkers());
 
         receptionist.finishWork();
 
         return result;
     };
+
+    private static String getExampleIntroPhrase(Module module) {
+        return String.format("%n<--An example execution of the %s module--->%n", module.getName());
+    }
 
     @AllArgsConstructor
     enum Module {
@@ -98,6 +104,7 @@ class Example {
         VEHICLES("vehicles", VEHICLES_SUPPLIER),
         VENDING_MACHINE("vendingmachine", VENDING_MACHINE_SUPPLIER);
 
+        @Getter(AccessLevel.PRIVATE)
         private final String name;
 
         private final Supplier<String> function;
