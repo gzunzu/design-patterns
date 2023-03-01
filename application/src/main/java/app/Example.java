@@ -1,7 +1,9 @@
 package app;
 
+import business.Barman;
 import business.Store;
 import dto.ChannelsDTO;
+import dto.CocktailsDTO;
 import dto.PaymentMethodsDTO;
 import dto.VisitablesDTO;
 import lombok.AccessLevel;
@@ -23,7 +25,7 @@ class Example {
     private static final String BASE_RESOURCES_PATH = "application/src/main/resources/";
 
     public static final Supplier<String> BABYSITTING_SUPPLIER = () -> {
-        VisitablesDTO visitablesDTO =
+        final VisitablesDTO visitablesDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "babysitting/visitables.json", VisitablesDTO.class);
         Assert.notNull(visitablesDTO, "The VisitablesDTO provided shouldn't be null.");
 
@@ -39,8 +41,22 @@ class Example {
         return result;
     };
 
+    public static final Supplier<String> COCKTAILS_SUPPLIER = () -> {
+        final CocktailsDTO cocktailsDTO = new CocktailsDTO(1, 1, 1);
+
+        final Barman barman = new Barman();
+        barman.getCocktailOrders(cocktailsDTO.getCocktails());
+
+        final String result = getExampleIntroPhrase(Module.COCKTAILS)
+                .concat(barman.openBar());
+
+        barman.closeBar();
+
+        return result;
+    };
+
     public static final Supplier<String> FAST_FOOD_SUPPLIER = () -> {
-        ChannelsDTO channelsDTO =
+        final ChannelsDTO channelsDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "fastfood/orders.json", ChannelsDTO.class);
         Assert.notNull(channelsDTO, "The ChannelsDTO provided shouldn't be null.");
 
@@ -57,7 +73,7 @@ class Example {
     };
 
     public static final Supplier<String> VEHICLES_SUPPLIER = () -> {
-        Store store = new Store();
+        final Store store = new Store();
 
         store.addVehicles(
                 VehicleFactory.getVehicle(VehicleFactory.VehiclePackage.COMMON_FAMILIAR, "BLUE"),
@@ -76,8 +92,7 @@ class Example {
     };
 
     public static final Supplier<String> VENDING_MACHINE_SUPPLIER = () -> {
-
-        PaymentMethodsDTO paymentMethodsDTO =
+        final PaymentMethodsDTO paymentMethodsDTO =
                 JsonHelper.readJsonFile(BASE_RESOURCES_PATH + "vendingmachine/payments.json", PaymentMethodsDTO.class);
         Assert.notNull(paymentMethodsDTO, "The PaymentMethodsDTO provided shouldn't be null.");
 
@@ -94,12 +109,13 @@ class Example {
     };
 
     private static String getExampleIntroPhrase(Module module) {
-        return String.format("%n<--An example execution of the %s module--->%n", module.getName());
+        return String.format("%n<--An example execution of the %s module--->%n%n", module.getName());
     }
 
     @AllArgsConstructor
     enum Module {
         BABYSITTING("babysitting", BABYSITTING_SUPPLIER),
+        COCKTAILS("cocktails", COCKTAILS_SUPPLIER),
         FAST_FOOD("fastfood", FAST_FOOD_SUPPLIER),
         VEHICLES("vehicles", VEHICLES_SUPPLIER),
         VENDING_MACHINE("vendingmachine", VENDING_MACHINE_SUPPLIER);

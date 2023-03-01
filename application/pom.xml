@@ -20,6 +20,11 @@
         </dependency>
         <dependency>
             <groupId>com.gzunzu.design-patterns</groupId>
+            <artifactId>cocktails</artifactId>
+            <version>${module.cocktails.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.gzunzu.design-patterns</groupId>
             <artifactId>common</artifactId>
             <version>${module.common.version}</version>
         </dependency>

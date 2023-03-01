@@ -5,15 +5,19 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public enum OtherDrinks implements Ingredient {
-    MILK(false),
-    TEA(true);
+public enum UncategorizedDrink implements Ingredient {
+    GRENADINE(true, true),
+    ICED_TEA(true, true),
+    MILK(false, false),
+    TEA(true, false);
+
+    private static final float BASE_PRICE = 0.002f;
+
+    private static final MeasurementUnit MEASUREMENT_UNIT = MeasurementUnit.MILLILITERS;
 
     private final boolean isVegan;
 
-    private static final float BASE_PRICE = 0.5f;
-
-    private static final String MEASUREMENT_UNIT = "ml";
+    private final boolean hasAddedSugar;
 
     @Override
     public String getName() {
@@ -22,7 +26,7 @@ public enum OtherDrinks implements Ingredient {
 
     @Override
     public boolean hasAddedSugar() {
-        return false;
+        return this.hasAddedSugar;
     }
 
     @Override
@@ -36,7 +40,7 @@ public enum OtherDrinks implements Ingredient {
     }
 
     @Override
-    public String getMeasurementUnit() {
+    public MeasurementUnit getMeasurementUnit() {
         return MEASUREMENT_UNIT;
     }
 }

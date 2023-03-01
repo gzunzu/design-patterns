@@ -11,20 +11,21 @@ public enum Juice implements Ingredient {
     MANGO,
     MORA,
     ORANGE,
+    PEACH,
     PINEAPPLE,
     POMEGRANATE,
     RASPBERRY,
     STRAWBERRY,
     TOMATO;
 
+    private static final float BASE_PRICE = 0.002f;
+
+    private static final MeasurementUnit MEASUREMENT_UNIT = MeasurementUnit.MILLILITERS;
+
     @Override
     public String getName() {
         return this.name().toLowerCase().replace("_", " ").concat(" juice");
     }
-
-    private static final float BASE_PRICE = 1f;
-
-    private static final String MEASUREMENT_UNIT = "ml";
 
     @Override
     public float getCostPerUnit() {
@@ -32,7 +33,7 @@ public enum Juice implements Ingredient {
     }
 
     @Override
-    public String getMeasurementUnit() {
+    public MeasurementUnit getMeasurementUnit() {
         return MEASUREMENT_UNIT;
     }
 

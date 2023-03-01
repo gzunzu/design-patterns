@@ -9,19 +9,28 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @SuppressWarnings("java:S1192")
 public enum Decoration implements Ingredient {
-    LEMON_PEEL("lemon", "peel(s)"),
-    LEMON_SLICE("lemon", "slice(s)"),
-    MINT("mint", "leaf(s)"),
-    OLIVES("olives", "piece(s)"),
-    ORANGE_PEEL("orange", "peel(s)"),
-    ORANGE_SLICE("orange", "slice(s)"),
-    PEPPERMINT("peppermint", "leaf(s)"),
-    RASPBERRY("raspberry", "piece(s)"),
-    STRAWBERRY("strawberry", "piece(s)");
+    CELERY_STALK("celery stalk", MeasurementUnit.UNIT),
+    LEMON_PEEL("lemon", MeasurementUnit.PEEL),
+    LEMON_SLICE("lemon", MeasurementUnit.SLICE),
+    LEMON_WEDGE("lemon", MeasurementUnit.WEDGE),
+    LIME_WEDGE("lime", MeasurementUnit.WEDGE),
+    MINT("mint", MeasurementUnit.LEAF),
+    OLIVES("olives", MeasurementUnit.UNIT),
+    ORANGE_PEEL("orange", MeasurementUnit.PEEL),
+    ORANGE_SLICE("orange", MeasurementUnit.SLICE),
+    PARSLEY("parsley", MeasurementUnit.SPRIG),
+    PEPPERMINT("peppermint", MeasurementUnit.LEAF),
+    PINEAPPLE_WEDGE("pineapple", MeasurementUnit.WEDGE),
+    RASPBERRY("raspberry", MeasurementUnit.UNIT),
+    STRAW("straw", MeasurementUnit.UNIT),
+    STRAWBERRY("strawberry", MeasurementUnit.UNIT),
+    UMBRELLA("decorative umbrella", MeasurementUnit.UNIT);
+
+    private static final float BASE_PRICE = 0f;
 
     private final String name;
 
-    private final String measurementUnit;
+    private final MeasurementUnit measurementUnit;
 
     @Override
     public boolean hasAddedSugar() {
@@ -32,8 +41,6 @@ public enum Decoration implements Ingredient {
     public boolean hasGluten() {
         return false;
     }
-
-    private static final float BASE_PRICE = 0.2f;
 
     @Override
     public float getCostPerUnit() {

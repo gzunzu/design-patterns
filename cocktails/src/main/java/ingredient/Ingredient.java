@@ -6,7 +6,7 @@ public interface Ingredient {
 
     float getCostPerUnit();
 
-    String getMeasurementUnit();
+    MeasurementUnit getMeasurementUnit();
 
     boolean isVegan();
 

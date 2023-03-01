@@ -1,13 +1,14 @@
-package cocktails;
+package cocktail;
 
 import ingredient.AlcoholicBeverage;
+import ingredient.Condiment;
 import ingredient.Decoration;
 import ingredient.Ice;
 import ingredient.Ingredient;
 import ingredient.Juice;
 import ingredient.Soda;
-import ingredient.Spice;
-import org.apache.commons.lang3.StringUtils;
+import ingredient.UncategorizedDrink;
+import org.apache.commons.lang3.SystemUtils;
 
 import java.util.ArrayList;
 
@@ -17,8 +18,8 @@ public class Recipe {
 
     private final ArrayList<Step> steps = new ArrayList<>();
 
-    public Recipe addAlcoholicBeverage(AlcoholicBeverage alcoholicBeverage, float amount, String description) {
-        this.steps.add(new Step(alcoholicBeverage, amount, description));
+    public Recipe addAlcoholicBeverage(AlcoholicBeverage alcoholicBeverage, float amount, String instructions) {
+        this.steps.add(new Step(alcoholicBeverage, amount, instructions));
         return this;
     }
 
@@ -27,18 +28,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addIce(Ice ice, float amount, String description) {
-        this.steps.add(new Step(ice, amount, description));
-        return this;
-    }
-
-    public Recipe addIce(Ice ice, float amount) {
-        this.steps.add(new Step(ice, amount));
-        return this;
-    }
-
-    public Recipe addDecoration(Decoration decoration, float amount, String description) {
-        this.steps.add(new Step(decoration, amount, description));
+    public Recipe addDecoration(Decoration decoration, float amount, String instructions) {
+        this.steps.add(new Step(decoration, amount, instructions));
         return this;
     }
 
@@ -47,8 +38,28 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addJuice(Juice juice, float amount, String description) {
-        this.steps.add(new Step(juice, amount, description));
+    public Recipe addIce(Ice ice, float amount, String instructions) {
+        this.steps.add(new Step(ice, amount, instructions));
+        return this;
+    }
+
+    public Recipe addIce(Ice ice, float amount) {
+        this.steps.add(new Step(ice, amount));
+        return this;
+    }
+
+    public Recipe addIce(Ice ice, String instructions) {
+        this.steps.add(new Step(ice, instructions));
+        return this;
+    }
+
+    public Recipe addIce(Ice ice) {
+        this.steps.add(new Step(ice));
+        return this;
+    }
+
+    public Recipe addJuice(Juice juice, float amount, String instructions) {
+        this.steps.add(new Step(juice, amount, instructions));
         return this;
     }
 
@@ -57,8 +68,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addSoda(Soda soda, float amount, String description) {
-        this.steps.add(new Step(soda, amount, description));
+    public Recipe addSoda(Soda soda, float amount, String instructions) {
+        this.steps.add(new Step(soda, amount, instructions));
         return this;
     }
 
@@ -67,13 +78,23 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addSpice(Spice spice, String description) {
-        this.steps.add(new Step(spice, description));
+    public Recipe addCondiment(Condiment condiment, String instructions) {
+        this.steps.add(new Step(condiment, instructions));
         return this;
     }
 
-    public Recipe addSpice(Spice spice) {
-        this.steps.add(new Step(spice));
+    public Recipe addCondiment(Condiment condiment) {
+        this.steps.add(new Step(condiment));
+        return this;
+    }
+
+    public Recipe addUncategorizedDrink(UncategorizedDrink uncategorizedDrink, float amount, String instructions) {
+        this.steps.add(new Step(uncategorizedDrink, amount, instructions));
+        return this;
+    }
+
+    public Recipe addUncategorizedDrink(UncategorizedDrink uncategorizedDrink, float amount) {
+        this.steps.add(new Step(uncategorizedDrink, amount));
         return this;
     }
 
@@ -92,7 +113,7 @@ public class Recipe {
     public boolean containsAnyNonVeganIngredient() {
         return this.steps.stream()
                 .map(Step::getIngredient)
-                .anyMatch(not(not(Ingredient::isVegan)));
+                .anyMatch(not(Ingredient::isVegan));
     }
 
     public boolean containsAddedSugar() {
@@ -108,20 +129,17 @@ public class Recipe {
     }
 
     public String follow() {
-        StringBuilder result = new StringBuilder();
-        this.steps.forEach(step -> result.append(String.format("[Step %d] Adding %s%s of %s.%s",
+        StringBuilder result = new StringBuilder(SystemUtils.LINE_SEPARATOR);
+        this.steps.forEach(step -> result.append(String.format("[Step %d] %s%n",
                 this.steps.indexOf(step) + 1,
-                step.getAmount() > 0 ? String.format("%f", step.getAmount()) : "a little",
-                StringUtils.isEmpty(step.getIngredient().getMeasurementUnit()) ? StringUtils.EMPTY : StringUtils.leftPad(step.getIngredient().getMeasurementUnit(), 1),
-                step.getIngredient().getName(),
-                step.getInstructions())));
+                step.toString())));
         return result.toString();
     }
 
     public float getCost() {
         float result = 0;
         for (Step step : this.steps) {
-            result += step.getIngredient().getCostPerUnit() * step.getAmount();
+            result += step.getIngredient().getCostPerUnit() * step.getQuantity();
         }
         return result;
     }

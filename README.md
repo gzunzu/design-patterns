@@ -17,6 +17,7 @@ you will find at the root directory of every module.
 |                   Module                    |        Design pattern         |
 |:-------------------------------------------:|:-----------------------------:|
 |    [Babysitting](babysitting/README.md)     |            Visitor            |
+|      [Cocktails](cocktails/README.md)       |        Template method        |
 |       [Fast food](fastfood/README.md)       |     Dependency injection      |
 |       [Vehicles](vehicles/README.md)        | Builder &#124; Factory method |
 | [Vending machine](vendingmachine/README.md) |            Adapter            |

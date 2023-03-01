@@ -16,13 +16,13 @@ public enum Soda implements Ingredient {
     SPRITE("sprite", true),
     TONIC("tonic", true);
 
+    private static final float BASE_PRICE = 0.001f;
+
+    private static final MeasurementUnit MEASUREMENT_UNIT = MeasurementUnit.MILLILITERS;
+
     private final String name;
 
     private final boolean isVegan;
-
-    private static final float BASE_PRICE = 0.8f;
-
-    private static final String MEASUREMENT_UNIT = "ml";
 
     @Override
     public float getCostPerUnit() {
@@ -30,7 +30,7 @@ public enum Soda implements Ingredient {
     }
 
     @Override
-    public String getMeasurementUnit() {
+    public MeasurementUnit getMeasurementUnit() {
         return MEASUREMENT_UNIT;
     }
 

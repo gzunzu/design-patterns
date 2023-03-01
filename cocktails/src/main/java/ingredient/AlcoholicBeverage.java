@@ -17,9 +17,9 @@ public enum AlcoholicBeverage implements Ingredient {
     WHISKEY(true, false),
     WINE(true, false);
 
-    private static final float BASE_PRICE = 0.3f;
+    private static final float BASE_PRICE = 0.01f;
 
-    private static final String MEASUREMENT_UNIT = "ml";
+    private static final MeasurementUnit MEASUREMENT_UNIT = MeasurementUnit.MILLILITERS;
 
     private final boolean hasSugar;
 
@@ -46,7 +46,7 @@ public enum AlcoholicBeverage implements Ingredient {
     }
 
     @Override
-    public String getMeasurementUnit() {
+    public MeasurementUnit getMeasurementUnit() {
         return MEASUREMENT_UNIT;
     }
 
