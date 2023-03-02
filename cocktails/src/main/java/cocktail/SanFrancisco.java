@@ -1,7 +1,9 @@
 package cocktail;
 
+import business.Recipe;
+import business.Vessel;
 import ingredient.Condiment;
-import ingredient.Decoration;
+import ingredient.Garnish;
 import ingredient.Ice;
 import ingredient.Juice;
 import ingredient.UncategorizedDrink;
@@ -37,10 +39,10 @@ public class SanFrancisco extends Cocktail {
                         Condiment.WHITE_SUGAR.getName(),
                         this.getVessel().getName(),
                         Condiment.WHITE_SUGAR.getName()))
-                .addDecoration(Decoration.ORANGE_PEEL,
+                .addGarnish(Garnish.ORANGE_PEEL,
                         1f,
-                        String.format("Curl the %s and put it on top of the floating %s. ", Decoration.ORANGE_PEEL.getName(), Ice.CRASHED.getName()))
-                .addDecoration(Decoration.STRAW, 1f);
+                        String.format("Curl the %s and put it on top of the floating %s. ", Garnish.ORANGE_PEEL.getName(), Ice.CRASHED.getName()))
+                .addGarnish(Garnish.STRAW, 1f);
     }
 
     @Override

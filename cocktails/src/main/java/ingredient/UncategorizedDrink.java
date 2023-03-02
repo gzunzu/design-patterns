@@ -6,16 +6,19 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum UncategorizedDrink implements Ingredient {
-    GRENADINE(true, true),
-    ICED_TEA(true, true),
-    MILK(false, false),
-    TEA(true, false);
+    GRENADINE(true, false, true),
+    ICED_TEA(true, false, true),
+    MILK(false, false, false),
+    ORGEAT_SYRUP(true, false, true),
+    TEA(true, false, false);
 
     private static final float BASE_PRICE = 0.002f;
 
     private static final MeasurementUnit MEASUREMENT_UNIT = MeasurementUnit.MILLILITERS;
 
     private final boolean isVegan;
+
+    private final boolean hasGluten;
 
     private final boolean hasAddedSugar;
 
@@ -31,7 +34,7 @@ public enum UncategorizedDrink implements Ingredient {
 
     @Override
     public boolean hasGluten() {
-        return false;
+        return this.hasGluten;
     }
 
     @Override

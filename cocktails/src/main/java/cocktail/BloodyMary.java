@@ -1,8 +1,10 @@
 package cocktail;
 
+import business.Recipe;
+import business.Vessel;
 import ingredient.AlcoholicBeverage;
 import ingredient.Condiment;
-import ingredient.Decoration;
+import ingredient.Garnish;
 import ingredient.Ice;
 import ingredient.Juice;
 
@@ -28,16 +30,18 @@ public class BloodyMary extends Cocktail {
     @Override
     protected Recipe getRecipe() {
         return new Recipe()
-                .addDecoration(Decoration.LEMON_WEDGE,
+                .addGarnish(Garnish.LEMON_WEDGE,
                         1f,
-                        String.format("Rub the %s along the rim of a %s.", Decoration.LEMON_WEDGE.getName(), this.getVessel().getName()))
+                        String.format("Rub the %s along the rim of a %s.", Garnish.LEMON_WEDGE.getName(), this.getVessel().getName()))
                 .addCondiment(Condiment.CELERY_SALT,
                         String.format("Roll the outer edge of the %s in %s until fully coated.", this.getVessel().getName(), Condiment.CELERY_SALT.getName()))
                 .addIce(Ice.CRASHED, String.format("Fill the %s with %s.", this.getVessel().getName(), Ice.CRASHED.getName()))
-                .addDecoration(Decoration.LEMON_WEDGE, 1f)
-                .addDecoration(Decoration.LIME_WEDGE,
+                .addGarnish(Garnish.LEMON_WEDGE,
                         1f,
-                        String.format("Squeeze the %s and the %s into a shaker and drop them in.", Decoration.LEMON_WEDGE.getName(), Decoration.LIME_WEDGE.getName()))
+                        String.format("Squeeze the %s into a shaker and drop it in.", Garnish.LEMON_WEDGE.getName()))
+                .addGarnish(Garnish.LIME_WEDGE,
+                        1f,
+                        String.format("Squeeze the %s into a shaker and drop it in.", Garnish.LIME_WEDGE.getName()))
                 .addAlcoholicBeverage(AlcoholicBeverage.VODKA, 60f)
                 .addJuice(Juice.TOMATO, 120f)
                 .addCondiment(Condiment.HORSERADISH)
@@ -46,11 +50,12 @@ public class BloodyMary extends Cocktail {
                 .addCondiment(Condiment.BLACK_PEPPER)
                 .addCondiment(Condiment.PAPRIKA)
                 .addCondiment(Condiment.CELERY_SALT)
-                .addIce(Ice.CUBES, 3f, "Put all the above into the shaker and shake gently.")
-                .addDecoration(Decoration.PARSLEY, 3f)
-                .addDecoration(Decoration.OLIVES, 2f)
-                .addDecoration(Decoration.LIME_WEDGE, 1f)
-                .addDecoration(Decoration.CELERY_STALK, 1f);
+                .addIce(Ice.CUBES, 3f)
+                .addInstruction("Put all the above into the shaker and shake gently.")
+                .addGarnish(Garnish.PARSLEY, 3f)
+                .addGarnish(Garnish.OLIVES, 2f)
+                .addGarnish(Garnish.LIME_WEDGE, 1f)
+                .addGarnish(Garnish.CELERY_STALK, 1f);
     }
 
     @Override

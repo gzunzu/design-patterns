@@ -42,7 +42,7 @@ class Example {
     };
 
     public static final Supplier<String> COCKTAILS_SUPPLIER = () -> {
-        final CocktailsDTO cocktailsDTO = new CocktailsDTO(1, 1, 1);
+        final CocktailsDTO cocktailsDTO = new CocktailsDTO(1, 1, 1, 1);
 
         final Barman barman = new Barman();
         barman.getCocktailOrders(cocktailsDTO.getCocktails());

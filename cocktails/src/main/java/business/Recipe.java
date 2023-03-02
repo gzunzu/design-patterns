@@ -1,18 +1,15 @@
-package cocktail;
+package business;
 
 import ingredient.AlcoholicBeverage;
 import ingredient.Condiment;
-import ingredient.Decoration;
+import ingredient.Garnish;
 import ingredient.Ice;
-import ingredient.Ingredient;
 import ingredient.Juice;
 import ingredient.Soda;
 import ingredient.UncategorizedDrink;
 import org.apache.commons.lang3.SystemUtils;
 
 import java.util.ArrayList;
-
-import static java.util.function.Predicate.not;
 
 public class Recipe {
 
@@ -28,13 +25,13 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addDecoration(Decoration decoration, float amount, String instructions) {
-        this.steps.add(new Step(decoration, amount, instructions));
+    public Recipe addGarnish(Garnish garnish, float amount, String instructions) {
+        this.steps.add(new Step(garnish, amount, instructions));
         return this;
     }
 
-    public Recipe addDecoration(Decoration decoration, float amount) {
-        this.steps.add(new Step(decoration, amount));
+    public Recipe addGarnish(Garnish garnish, float amount) {
+        this.steps.add(new Step(garnish, amount));
         return this;
     }
 
@@ -55,6 +52,11 @@ public class Recipe {
 
     public Recipe addIce(Ice ice) {
         this.steps.add(new Step(ice));
+        return this;
+    }
+
+    public Recipe addInstruction(String instruction) {
+        this.steps.add(new Step(instruction));
         return this;
     }
 
@@ -100,32 +102,27 @@ public class Recipe {
 
     public boolean containsAlcohol() {
         return this.steps.stream()
-                .map(Step::getIngredient)
-                .anyMatch(AlcoholicBeverage.class::isInstance);
+                .anyMatch(Step::hasAlcohol);
     }
 
     public boolean containsIce() {
         return this.steps.stream()
-                .map(Step::getIngredient)
-                .anyMatch(Ice.class::isInstance);
+                .anyMatch(Step::hasIce);
     }
 
     public boolean containsAnyNonVeganIngredient() {
         return this.steps.stream()
-                .map(Step::getIngredient)
-                .anyMatch(not(Ingredient::isVegan));
+                .anyMatch(Step::hasAnimalSourceComponents);
     }
 
     public boolean containsAddedSugar() {
         return this.steps.stream()
-                .map(Step::getIngredient)
-                .anyMatch(Ingredient::hasAddedSugar);
+                .anyMatch(Step::hasAddedSugar);
     }
 
     public boolean containsGluten() {
         return this.steps.stream()
-                .map(Step::getIngredient)
-                .anyMatch(Ingredient::hasGluten);
+                .anyMatch(Step::hasGluten);
     }
 
     public String follow() {
@@ -136,11 +133,9 @@ public class Recipe {
         return result.toString();
     }
 
-    public float getCost() {
-        float result = 0;
-        for (Step step : this.steps) {
-            result += step.getIngredient().getCostPerUnit() * step.getQuantity();
-        }
-        return result;
+    public double getCost() {
+        return this.steps.stream()
+                .mapToDouble(Step::getCost)
+                .sum();
     }
 }

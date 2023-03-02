@@ -1,8 +1,10 @@
 package cocktail;
 
+import business.Recipe;
+import business.Vessel;
 import ingredient.AlcoholicBeverage;
 import ingredient.Condiment;
-import ingredient.Decoration;
+import ingredient.Garnish;
 import org.apache.commons.lang3.StringUtils;
 
 @SuppressWarnings("java:S1845")
@@ -29,9 +31,9 @@ public class TequilaShot extends Cocktail {
         return new Recipe()
                 .addAlcoholicBeverage(AlcoholicBeverage.TEQUILA, 40f)
                 .addCondiment(Condiment.SALT, String.format("Put some %s in your hand and get ready to lick it after taking the shot.", Condiment.SALT.getName()))
-                .addDecoration(Decoration.LEMON_SLICE,
+                .addGarnish(Garnish.LEMON_SLICE,
                         1f,
-                        String.format("You have to bite the %s after taking the shot and licking the salt. Be quick!", Decoration.LEMON_SLICE.getName()));
+                        String.format("You have to bite the %s after taking the shot and licking the salt. Be quick!", Garnish.LEMON_SLICE.getName()));
     }
 
     @Override

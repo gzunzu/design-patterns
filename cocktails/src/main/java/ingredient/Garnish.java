@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 @SuppressWarnings("java:S1192")
-public enum Decoration implements Ingredient {
+public enum Garnish implements Ingredient {
+    CHERRY("cherry", MeasurementUnit.UNIT),
     CELERY_STALK("celery stalk", MeasurementUnit.UNIT),
     LEMON_PEEL("lemon", MeasurementUnit.PEEL),
     LEMON_SLICE("lemon", MeasurementUnit.SLICE),
@@ -20,6 +21,7 @@ public enum Decoration implements Ingredient {
     ORANGE_SLICE("orange", MeasurementUnit.SLICE),
     PARSLEY("parsley", MeasurementUnit.SPRIG),
     PEPPERMINT("peppermint", MeasurementUnit.LEAF),
+    PINEAPPLE_SLICE("pineapple", MeasurementUnit.SLICE),
     PINEAPPLE_WEDGE("pineapple", MeasurementUnit.WEDGE),
     RASPBERRY("raspberry", MeasurementUnit.UNIT),
     STRAW("straw", MeasurementUnit.UNIT),

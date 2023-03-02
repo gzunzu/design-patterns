@@ -1,11 +1,10 @@
 package business;
 
 import cocktail.Cocktail;
+import org.apache.commons.lang3.CharUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.SystemUtils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Barman {
@@ -18,10 +17,6 @@ public class Barman {
         this.cocktails = new ArrayList<>();
     }
 
-    public void getCocktailOrders(Cocktail... cocktails) {
-        this.getCocktailOrders(Arrays.asList(cocktails));
-    }
-
     public void getCocktailOrders(List<Cocktail> cocktails) {
         this.cocktails.addAll(cocktails);
     }
@@ -32,23 +27,23 @@ public class Barman {
 
     public String openBar() {
         StringBuilder result = new StringBuilder("Bar is now open. Come in and order your drinks!")
-                .append(SystemUtils.LINE_SEPARATOR)
-                .append(SystemUtils.LINE_SEPARATOR);
+                .append(CharUtils.LF)
+                .append(CharUtils.LF);
         this.cocktails.forEach(cocktail ->
-                result.append(String.format("What can I tell you about %s?", StringUtils.capitalize(cocktail.getName()))
-                        .concat(SystemUtils.LINE_SEPARATOR)
-                        .concat(cocktail.getInfo())
-                        .concat(SystemUtils.LINE_SEPARATOR)
-                        .concat(SystemUtils.LINE_SEPARATOR)
-                        .concat("Wanna try? Let's follow the recipe!")
-                        .concat(cocktail.prepare())
-                        .concat(String.format("It's just %.2f €. Tips are welcome. Hope you like it!", this.getRetailPrice(cocktail)))
-                        .concat(SystemUtils.LINE_SEPARATOR)
-                        .concat(SystemUtils.LINE_SEPARATOR)));
+                result.append(String.format("What can I tell you about %s?", StringUtils.capitalize(cocktail.getName())))
+                        .append(CharUtils.LF)
+                        .append(cocktail.getInfo())
+                        .append(CharUtils.LF)
+                        .append(CharUtils.LF)
+                        .append("Wanna try? Let's take a look at the recipe!")
+                        .append(cocktail.prepare())
+                        .append(String.format("It's just %.2f €. Tips are welcome. Hope you like it!", this.getRetailPrice(cocktail)))
+                        .append(CharUtils.LF)
+                        .append(CharUtils.LF));
         return result.toString();
     }
 
-    private float getRetailPrice(Cocktail cocktail) {
+    private double getRetailPrice(Cocktail cocktail) {
         return Math.round(cocktail.getCost() * (PROFIT_MARGIN_PERCENTAGE / 100));
     }
 }

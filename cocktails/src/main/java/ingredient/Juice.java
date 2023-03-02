@@ -8,6 +8,7 @@ public enum Juice implements Ingredient {
     CUCUMBER,
     CRANBERRY,
     LEMON,
+    LIME,
     MANGO,
     MORA,
     ORANGE,

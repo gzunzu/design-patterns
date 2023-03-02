@@ -8,6 +8,7 @@ public enum AlcoholicBeverage implements Ingredient {
     BEER(false, true),
     BRANDY(true, false),
     COGNAC(true, false),
+    COINTREAU(true, false),
     GIN(false, false),
     RUM(true, false),
     SAKE(false, false),

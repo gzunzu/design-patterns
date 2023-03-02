@@ -1,5 +1,7 @@
 package cocktail;
 
+import business.Recipe;
+import business.Vessel;
 import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
@@ -123,7 +125,7 @@ public abstract class Cocktail {
                 .concat(this.wannaTellJokeAfterServing() ? this.tellJoke().concat(SystemUtils.LINE_SEPARATOR) : StringUtils.EMPTY);
     }
 
-    public final float getCost() {
+    public final double getCost() {
         return (this.basePrice + this.recipe.getCost());
     }
 }
