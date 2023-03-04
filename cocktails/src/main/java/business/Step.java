@@ -3,45 +3,38 @@ package business;
 import ingredient.AlcoholicBeverage;
 import ingredient.Ice;
 import ingredient.Ingredient;
-import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
 public class Step {
 
-    @Getter
     private final Ingredient ingredient;
 
-    @Getter
     private final float quantity;
 
-    private final String instructions;
+    private final String instruction;
 
-    public Step(Ingredient ingredient, float quantity, String instructions) {
+    public Step(Ingredient ingredient, float quantity, String instruction) {
         this.ingredient = ingredient;
         this.quantity = quantity;
-        this.instructions = instructions;
+        this.instruction = instruction;
     }
 
     public Step(Ingredient ingredient, float quantity) {
         this(ingredient, quantity, null);
     }
 
-    public Step(Ingredient ingredient, String instructions) {
-        this(ingredient, 0f, instructions);
+    public Step(Ingredient ingredient, String instruction) {
+        this(ingredient, 0f, instruction);
     }
 
     public Step(Ingredient ingredient) {
         this(ingredient, 0f);
     }
 
-    public Step(String instructions) {
-        this(null, 0f, instructions);
-    }
-
-    public String getHowTo() {
-        return StringUtils.isBlank(this.instructions) ? StringUtils.EMPTY : " | How to: ".concat(this.instructions);
+    public Step(String instruction) {
+        this(null, 0f, instruction);
     }
 
     public boolean hasAlcohol() {
@@ -68,10 +61,14 @@ public class Step {
         return Objects.nonNull(this.ingredient) ? this.ingredient.getCostPerUnit() * this.quantity : 0f;
     }
 
+    private String getHowTo() {
+        return StringUtils.isBlank(this.instruction) ? StringUtils.EMPTY : " | How to: ".concat(this.instruction);
+    }
+
     @Override
     public String toString() {
         if (Objects.isNull(this.ingredient)) {
-            return this.instructions;
+            return this.instruction;
         } else {
             return String.format("Add %s %s of %s.%s",
                     this.quantity > 0 ? String.format("%.0f", this.quantity) : "a little",

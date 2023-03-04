@@ -15,8 +15,8 @@ public class Recipe {
 
     private final ArrayList<Step> steps = new ArrayList<>();
 
-    public Recipe addAlcoholicBeverage(AlcoholicBeverage alcoholicBeverage, float amount, String instructions) {
-        this.steps.add(new Step(alcoholicBeverage, amount, instructions));
+    public Recipe addAlcoholicBeverage(AlcoholicBeverage alcoholicBeverage, float amount, String instruction) {
+        this.steps.add(new Step(alcoholicBeverage, amount, instruction));
         return this;
     }
 
@@ -25,8 +25,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addGarnish(Garnish garnish, float amount, String instructions) {
-        this.steps.add(new Step(garnish, amount, instructions));
+    public Recipe addGarnish(Garnish garnish, float amount, String instruction) {
+        this.steps.add(new Step(garnish, amount, instruction));
         return this;
     }
 
@@ -35,8 +35,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addIce(Ice ice, float amount, String instructions) {
-        this.steps.add(new Step(ice, amount, instructions));
+    public Recipe addIce(Ice ice, float amount, String instruction) {
+        this.steps.add(new Step(ice, amount, instruction));
         return this;
     }
 
@@ -45,8 +45,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addIce(Ice ice, String instructions) {
-        this.steps.add(new Step(ice, instructions));
+    public Recipe addIce(Ice ice, String instruction) {
+        this.steps.add(new Step(ice, instruction));
         return this;
     }
 
@@ -60,8 +60,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addJuice(Juice juice, float amount, String instructions) {
-        this.steps.add(new Step(juice, amount, instructions));
+    public Recipe addJuice(Juice juice, float amount, String instruction) {
+        this.steps.add(new Step(juice, amount, instruction));
         return this;
     }
 
@@ -70,8 +70,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addSoda(Soda soda, float amount, String instructions) {
-        this.steps.add(new Step(soda, amount, instructions));
+    public Recipe addSoda(Soda soda, float amount, String instruction) {
+        this.steps.add(new Step(soda, amount, instruction));
         return this;
     }
 
@@ -80,8 +80,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addCondiment(Condiment condiment, String instructions) {
-        this.steps.add(new Step(condiment, instructions));
+    public Recipe addCondiment(Condiment condiment, String instruction) {
+        this.steps.add(new Step(condiment, instruction));
         return this;
     }
 
@@ -90,8 +90,8 @@ public class Recipe {
         return this;
     }
 
-    public Recipe addUncategorizedDrink(UncategorizedDrink uncategorizedDrink, float amount, String instructions) {
-        this.steps.add(new Step(uncategorizedDrink, amount, instructions));
+    public Recipe addUncategorizedDrink(UncategorizedDrink uncategorizedDrink, float amount, String instruction) {
+        this.steps.add(new Step(uncategorizedDrink, amount, instruction));
         return this;
     }
 
