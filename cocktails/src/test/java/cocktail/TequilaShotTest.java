@@ -2,65 +2,65 @@ package cocktail;
 
 import business.Vessel;
 
-class SanFranciscoTest extends BaseCocktailTest {
+class TequilaShotTest extends BaseCocktailTest {
 
     @Override
     protected Cocktail getTestedCocktailInstance() {
-        return new SanFrancisco();
+        return new TequilaShot();
     }
 
     @Override
     protected String getTestedCocktailName() {
-        return "san francisco";
+        return "tequila shot";
     }
 
     @Override
     protected Vessel getTestedCocktailVesselTest() {
-        return Vessel.COLLINS_GLASS;
+        return Vessel.SHOT_GLASS;
     }
 
     @Override
     protected String TestedCocktailDescription() {
-        return "A fruity, large and very sweet sip.";
+        return "Just tequila, salt and lemon. Simple, classic and hot.";
     }
 
     @Override
     protected float getTestedCocktailProcessingMinutes() {
-        return 4f;
-    }
-
-    @Override
-    protected float getTestedCocktailCost() {
         return 1.5f;
     }
 
     @Override
+    protected float getTestedCocktailCost() {
+        return 0.5f;
+    }
+
+    @Override
     protected boolean isTestedCocktailShaken() {
-        return true;
+        return false;
     }
 
     @Override
     protected boolean isTestedCocktailFlamed() {
-        return false;
-    }
-
-    @Override
-    protected boolean isTestedCocktailServedWithAcrobatics() {
         return true;
     }
 
     @Override
-    protected boolean doesTestedCocktailHaveJoke() {
+    protected boolean isTestedCocktailServedWithAcrobatics() {
         return false;
+    }
+
+    @Override
+    protected boolean doesTestedCocktailHaveJoke() {
+        return true;
     }
 
     @Override
     protected boolean doesTestedCocktailHaveCuriousFacts() {
-        return false;
+        return true;
     }
 
     @Override
     protected boolean doesTestedCocktailHaveRecommendation() {
-        return false;
+        return true;
     }
 }

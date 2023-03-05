@@ -2,26 +2,26 @@ package cocktail;
 
 import business.Vessel;
 
-class SanFranciscoTest extends BaseCocktailTest {
+class MaiTaiTest extends BaseCocktailTest {
 
     @Override
     protected Cocktail getTestedCocktailInstance() {
-        return new SanFrancisco();
+        return new MaiTai();
     }
 
     @Override
     protected String getTestedCocktailName() {
-        return "san francisco";
+        return "mai tai";
     }
 
     @Override
     protected Vessel getTestedCocktailVesselTest() {
-        return Vessel.COLLINS_GLASS;
+        return Vessel.ROCKS_GLASS;
     }
 
     @Override
     protected String TestedCocktailDescription() {
-        return "A fruity, large and very sweet sip.";
+        return "A tropical flavour with the sweetest and most juicy touch.";
     }
 
     @Override
@@ -31,7 +31,7 @@ class SanFranciscoTest extends BaseCocktailTest {
 
     @Override
     protected float getTestedCocktailCost() {
-        return 1.5f;
+        return 2f;
     }
 
     @Override
@@ -46,7 +46,7 @@ class SanFranciscoTest extends BaseCocktailTest {
 
     @Override
     protected boolean isTestedCocktailServedWithAcrobatics() {
-        return true;
+        return false;
     }
 
     @Override
@@ -56,7 +56,7 @@ class SanFranciscoTest extends BaseCocktailTest {
 
     @Override
     protected boolean doesTestedCocktailHaveCuriousFacts() {
-        return false;
+        return true;
     }
 
     @Override

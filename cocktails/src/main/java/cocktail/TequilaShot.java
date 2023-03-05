@@ -14,7 +14,7 @@ public class TequilaShot extends Cocktail {
 
     private static final String DESCRIPTION = "Just tequila, salt and lemon. Simple, classic and hot.";
 
-    private static final float BASE_PRICE = 1f;
+    private static final float BASE_PRICE = 0.5f;
 
     private static final float PROCESSING_MINUTES = 1.5f;
 
@@ -44,7 +44,7 @@ public class TequilaShot extends Cocktail {
 
     @Override
     protected boolean isFlamed() {
-        return false;
+        return true;
     }
 
     @Override

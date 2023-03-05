@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Getter
+@SuppressWarnings("unused")
 public enum MeasurementUnit {
     BALL("ball", "ball(s)"),
     BIT("bit", "bit"),
@@ -19,7 +19,9 @@ public enum MeasurementUnit {
     UNIT("unit", "unit(s)"),
     WEDGE("wedge", "wedge(s)");
 
+    @SuppressWarnings("unused")
     private final String name;
 
+    @Getter
     private final String symbol;
 }
