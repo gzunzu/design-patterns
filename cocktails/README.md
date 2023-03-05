@@ -18,8 +18,8 @@ actions –methods– than should be invoked or not in each case.
 But what if we could make a basic «template» considering every possible action, and let inheritors rewrite
 that template to adjust to their specific needing? That's our solution here. We create an abstract [`Cocktail`](src/main/java/cocktail/Cocktail.java)
 class with the common attributes for every drink, and we also declare as abstract methods the actions that could
-require its making of. Eg: some cocktails are flamed after served to burn some alcohol –pretty spectacular–, but
-this is not the case. Then, let's add the following code to the [`Cocktail`](src/main/java/cocktail/Cocktail.java) class:
+require its making of. Eg: some cocktails are flamed after served to burn alcohol –pretty spectacular–, but
+this is not always the case. Then, we should add the following code to the [`Cocktail`](src/main/java/cocktail/Cocktail.java) class:
 
 ````java
 public abstract class Cocktail {

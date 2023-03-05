@@ -1,14 +1,10 @@
 package channels;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-@SuppressWarnings("unused")
-@NoArgsConstructor
-@Data
-@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Web extends TelematicChannel implements Promoted {
 
     private static final String CHANNEL_NAME = "online";

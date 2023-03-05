@@ -3,8 +3,6 @@ package management;
 import channels.Channel;
 import channels.Promoted;
 import com.ibm.icu.text.RuleBasedNumberFormat;
-import lombok.AccessLevel;
-import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -14,7 +12,6 @@ import java.util.Locale;
 public class Order {
 
     private static final HashMap<String, Integer> ORDERS_COUNTER = new HashMap<>();
-    @Getter(AccessLevel.PACKAGE)
     private final Channel channel;
     private int globalOrderId;
     private int channelOrderId;

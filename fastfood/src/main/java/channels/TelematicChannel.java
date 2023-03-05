@@ -1,17 +1,19 @@
 package channels;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 abstract class TelematicChannel implements Channel {
 
     @JsonProperty("location")
     protected String location;
+
+    protected TelematicChannel(String location) {
+        this();
+        this.location = location;
+    }
 
     @Override
     public final String serveClient() {

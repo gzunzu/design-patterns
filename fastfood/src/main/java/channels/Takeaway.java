@@ -1,20 +1,21 @@
 package channels;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import utils.Salute;
 
-@SuppressWarnings("unused")
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Takeaway implements Channel, Promoted {
 
     private static final String CHANNEL_NAME = "physical";
 
     private static final boolean PROMOTED = true;
+
+    public Takeaway(String clientName) {
+        this();
+        this.clientName = clientName;
+    }
 
     @JsonProperty("clientName")
     private String clientName;

@@ -28,10 +28,6 @@ public class Service {
         channelList.forEach(channel -> this.orders.add(new Order(channel)));
     }
 
-    public void reject(Order... orders) {
-        this.orders.removeAll(Arrays.asList(orders));
-    }
-
     public void shuffle() {
         Collections.shuffle(this.orders);
     }
