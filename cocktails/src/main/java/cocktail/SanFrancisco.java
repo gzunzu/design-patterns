@@ -63,7 +63,7 @@ public class SanFrancisco extends Cocktail {
 
     @Override
     protected String doAcrobatics() {
-        return "Watch me while I do some tricks throwing the shaker over the air to mix everything perfectly! ";
+        return super.doAcrobatics().concat(" Woooooohuuuuuuh!");
     }
 
     @Override

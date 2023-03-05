@@ -206,11 +206,7 @@ abstract public class BaseCocktailTest {
         } else {
             assertThat(isPropertyActive).isFalse();
         }
-        if (isPropertyActive) {
-            assertThat(resultOfPropertyMethod).isNotBlank();
-        } else {
-            assertThat(resultOfPropertyMethod).isNullOrEmpty();
-        }
+        assertThat(resultOfPropertyMethod).isNotBlank();
     }
 
     protected abstract boolean isTestedCocktailServedWithAcrobatics();

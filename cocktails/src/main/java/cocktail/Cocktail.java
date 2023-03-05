@@ -68,7 +68,9 @@ public abstract class Cocktail {
 
     protected abstract boolean isServedWithAcrobatics();
 
-    protected abstract String doAcrobatics();
+    protected String doAcrobatics() {
+        return "Watch me while I do some tricks throwing the shaker over the air to mix everything perfectly!";
+    }
 
     protected abstract boolean wannaTellJokeAfterServing();
 

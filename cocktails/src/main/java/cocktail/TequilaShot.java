@@ -53,11 +53,6 @@ public class TequilaShot extends Cocktail {
     }
 
     @Override
-    protected String doAcrobatics() {
-        return null;
-    }
-
-    @Override
     protected boolean wannaTellJokeAfterServing() {
         return true;
     }

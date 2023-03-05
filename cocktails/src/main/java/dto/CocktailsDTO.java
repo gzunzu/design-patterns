@@ -7,18 +7,23 @@ import cocktail.SanFrancisco;
 import cocktail.TequilaShot;
 import lombok.RequiredArgsConstructor;
 
+import javax.validation.constraints.PositiveOrZero;
 import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
 public class CocktailsDTO {
 
+    @PositiveOrZero
     final int bloodyMaryCount;
 
+    @PositiveOrZero
     final int maiTaiCount;
 
+    @PositiveOrZero
     final int sanFranciscoCount;
 
+    @PositiveOrZero
     final int tequilaShotCount;
 
     public List<Cocktail> getCocktails() {
