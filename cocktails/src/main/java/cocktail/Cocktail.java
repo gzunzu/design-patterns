@@ -21,20 +21,13 @@ public abstract class Cocktail {
 
     private final Vessel vessel;
 
-    private final String specialRequest;
-
-    protected Cocktail(String name, String description, float basePrice, float processingMinutes, String specialRequest) {
+    protected Cocktail(String name, String description, float basePrice, float processingMinutes) {
         this.name = name;
         this.description = description;
         this.basePrice = basePrice;
         this.processingMinutes = processingMinutes;
-        this.specialRequest = specialRequest;
         this.recipe = this.getRecipe();
         this.vessel = this.getVessel();
-    }
-
-    protected Cocktail(String name, String description, float basePrice, float processingMinutes) {
-        this(name, description, basePrice, processingMinutes, null);
     }
 
     protected final boolean isMocktail() {
@@ -89,12 +82,8 @@ public abstract class Cocktail {
 
     protected abstract String recommend();
 
-    private boolean hasSpecialRequest() {
-        return StringUtils.isNotBlank(this.specialRequest);
-    }
-
-    private String complySpecialRequest() {
-        return String.format("I will also attend your special request for: «%s».", this.specialRequest);
+    private String complySpecialRequest(String specialRequest) {
+        return String.format("I will also attend your special request for: «%s».", specialRequest);
     }
 
     public final String getInfo() {
@@ -116,9 +105,13 @@ public abstract class Cocktail {
     }
 
     public final String prepare() {
+        return this.prepare(StringUtils.EMPTY);
+    }
+
+    public final String prepare(String specialRequest) {
         return this.recipe.follow()
                 .concat(this.isShaken() ? this.shake().concat(SystemUtils.LINE_SEPARATOR) : StringUtils.EMPTY)
-                .concat(this.hasSpecialRequest() ? this.complySpecialRequest().concat(SystemUtils.LINE_SEPARATOR) : StringUtils.EMPTY)
+                .concat(StringUtils.isNotBlank(specialRequest) ? this.complySpecialRequest(specialRequest).concat(SystemUtils.LINE_SEPARATOR) : StringUtils.EMPTY)
                 .concat(this.isServedWithAcrobatics() ? this.doAcrobatics().concat(SystemUtils.LINE_SEPARATOR) : StringUtils.EMPTY)
                 .concat(String.format("Now we pour your drink into a %s.%n", this.vessel.getName()))
                 .concat(this.isFlamed() ? this.flame().concat(SystemUtils.LINE_SEPARATOR) : StringUtils.EMPTY)

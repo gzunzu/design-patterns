@@ -30,7 +30,7 @@ public class CocktailsDTO {
             cocktails.add(new MaiTai());
         }
         for (int i = 0; i < this.sanFranciscoCount; i++) {
-            cocktails.add(new SanFrancisco("Can I have your phone number, cutie? <3"));
+            cocktails.add(new SanFrancisco());
         }
         for (int i = 0; i < this.tequilaShotCount; i++) {
             cocktails.add(new TequilaShot());

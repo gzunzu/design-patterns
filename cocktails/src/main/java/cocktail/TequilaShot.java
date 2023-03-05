@@ -22,10 +22,6 @@ public class TequilaShot extends Cocktail {
         super(NAME, DESCRIPTION, BASE_PRICE, PROCESSING_MINUTES);
     }
 
-    public TequilaShot(String specialRequest) {
-        super(NAME, DESCRIPTION, BASE_PRICE, PROCESSING_MINUTES, specialRequest);
-    }
-
     @Override
     protected Recipe getRecipe() {
         return new Recipe()

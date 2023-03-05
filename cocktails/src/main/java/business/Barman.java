@@ -1,6 +1,7 @@
 package business;
 
 import cocktail.Cocktail;
+import cocktail.SanFrancisco;
 import org.apache.commons.lang3.CharUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -36,7 +37,7 @@ public class Barman {
                         .append(CharUtils.LF)
                         .append(CharUtils.LF)
                         .append("Wanna try? Let's take a look at the recipe!")
-                        .append(cocktail.prepare())
+                        .append(cocktail.prepare(cocktail instanceof SanFrancisco ? "Can I have your phone number, cutie? <3" : StringUtils.EMPTY))
                         .append(String.format("It's just %.2f €. Tips are welcome. Hope you like it!", this.getRetailPrice(cocktail)))
                         .append(CharUtils.LF)
                         .append(CharUtils.LF));

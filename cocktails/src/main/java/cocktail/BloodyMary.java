@@ -23,10 +23,6 @@ public class BloodyMary extends Cocktail {
         super(NAME, DESCRIPTION, BASE_PRICE, PROCESSING_MINUTES);
     }
 
-    public BloodyMary(String specialRequest) {
-        super(NAME, DESCRIPTION, BASE_PRICE, PROCESSING_MINUTES, specialRequest);
-    }
-
     @Override
     protected Recipe getRecipe() {
         return new Recipe()

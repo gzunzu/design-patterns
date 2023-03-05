@@ -39,12 +39,12 @@ class RecipeTest {
     private MeasurementUnit measurementUnit;
 
     @BeforeAll
-    static void init() {
+    static void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(RecipeTest.class);
     }
 
     @AfterAll
-    static void shutDown() {
+    static void tearDown() {
         try {
             autoCloseable.close();
         } catch (Exception e) {

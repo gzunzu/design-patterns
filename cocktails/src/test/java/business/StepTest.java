@@ -35,12 +35,12 @@ class StepTest {
     private MeasurementUnit measurementUnit;
 
     @BeforeAll
-    static void init() {
+    static void setUp() {
         autoCloseable = MockitoAnnotations.openMocks(StepTest.class);
     }
 
     @AfterAll
-    static void shutDown() {
+    static void tearDown() {
         try {
             autoCloseable.close();
         } catch (Exception e) {
@@ -49,7 +49,7 @@ class StepTest {
     }
 
     @BeforeEach
-    void setUp() {
+    void init() {
         this.step = new Step(ingredient, QUANTITY, INSTRUCTION);
     }
 
