@@ -27,9 +27,7 @@ public class Store {
         this.vehicles = new ArrayList<>();
     }
 
-
     public static void createModels(List<Model> modelList) {
-
         modelList.forEach(model ->
                 AVAILABLE_MODELS.add(new Model.ModelBuilder(model.getName(), model.getStyle(), model.getBasePrice())
                         .setAvailableColours(model.getAvailableColours())

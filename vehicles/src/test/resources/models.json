@@ -1,0 +1,214 @@
+[
+  {
+    "name": "Country Titan",
+    "style": "PICKUP",
+    "basePrice": 18000,
+    "availableColours": [
+      "BLACK",
+      "BROWN",
+      "GREEN",
+      "GREY"
+    ],
+    "availableDoorsCount": [
+      "BASIC",
+      "STANDARD"
+    ],
+    "availableExtras": [
+      "LIGHTER",
+      "NAVIGATION"
+    ],
+    "availableFuels": [
+      "DIESEL",
+      "GASOLINE"
+    ],
+    "availableHorsePowers": [
+      "MIDDLE_HIGH",
+      "HIGH"
+    ]
+  },
+  {
+    "name": "City Princess",
+    "style": "HATCHBACK",
+    "basePrice": 9500,
+    "availableColours": [
+      "BLUE",
+      "GREEN",
+      "ORANGE",
+      "PURPLE",
+      "YELLOW"
+    ],
+    "availableDoorsCount": [
+      "BASIC",
+      "STANDARD"
+    ],
+    "availableExtras": [
+      "LIGHTER",
+      "OFFTRACK_DETECTION",
+      "PARKING_ASSISTANCE",
+      "STEREO"
+    ],
+    "availableFuels": [
+      "DIESEL",
+      "HYBRID"
+    ],
+    "availableHorsePowers": [
+      "MINIMUM",
+      "LOW",
+      "BASIC"
+    ]
+  },
+  {
+    "name": "Hot Player",
+    "style": "CONVERTIBLE",
+    "basePrice": 23800,
+    "availableColours": [
+      "BLACK",
+      "BLUE",
+      "ORANGE",
+      "RED",
+      "YELLOW"
+    ],
+    "availableDoorsCount": [
+      "NO_TRUNK_DOOR"
+    ],
+    "availableExtras": [
+      "AUTO_PILOT",
+      "EMERGENCY_BREAKING",
+      "LIGHTER",
+      "NAVIGATION",
+      "OFFTRACK_DETECTION",
+      "PARKING_ASSISTANCE",
+      "STEREO"
+    ],
+    "availableFuels": [
+      "DIESEL",
+      "GASOLINE"
+    ],
+    "availableHorsePowers": [
+      "HIGH",
+      "SUPER",
+      "ULTRA"
+    ]
+  },
+  {
+    "name": "Soothsayer",
+    "style": "SEDAN",
+    "basePrice": 15000,
+    "availableColours": [
+      "BLACK",
+      "GREY",
+      "WHITE"
+    ],
+    "availableDoorsCount": [
+      "BASIC",
+      "STANDARD"
+    ],
+    "availableExtras": [
+      "AUTO_PILOT",
+      "EMERGENCY_BREAKING",
+      "NAVIGATION",
+      "OFFTRACK_DETECTION",
+      "PARKING_ASSISTANCE",
+      "STEREO"
+    ],
+    "availableFuels": [
+      "ELECTRIC"
+    ],
+    "availableHorsePowers": [
+      "BASIC",
+      "STANDARD",
+      "MIDDLE_HIGH"
+    ]
+  },
+  {
+    "name": "Friendly Traveler",
+    "style": "VAN",
+    "basePrice": 28000,
+    "availableColours": [
+      "BLUE",
+      "BROWN",
+      "GREY",
+      "WHITE"
+    ],
+    "availableDoorsCount": [
+      "STANDARD",
+      "MULTI"
+    ],
+    "availableExtras": [
+      "NAVIGATION",
+      "PARKING_ASSISTANCE",
+      "STEREO"
+    ],
+    "availableFuels": [
+      "GASOLINE",
+      "DIESEL"
+    ],
+    "availableHorsePowers": [
+      "MIDDLE_HIGH",
+      "HIGH"
+    ]
+  },
+  {
+    "name": "Hard Labourer",
+    "style": "CARGO",
+    "basePrice": 14250,
+    "availableColours": [
+      "BLACK",
+      "GREY",
+      "WHITE"
+    ],
+    "availableDoorsCount": [
+      "STANDARD",
+      "MULTI"
+    ],
+    "availableExtras": [
+      "AUTO_PILOT",
+      "EMERGENCY_BREAKING",
+      "NAVIGATION",
+      "PARKING_ASSISTANCE"
+    ],
+    "availableFuels": [
+      "DIESEL",
+      "HYBRID"
+    ],
+    "availableHorsePowers": [
+      "STANDARD",
+      "MIDDLE_HIGH"
+    ]
+  },
+  {
+    "name": "Urban Family",
+    "style": "SUV",
+    "basePrice": 12600,
+    "availableColours": [
+      "BLACK",
+      "BLUE",
+      "GREEN",
+      "ORANGE",
+      "RED",
+      "WHITE",
+      "YELLOW"
+    ],
+    "availableDoorsCount": [
+      "STANDARD",
+      "MULTI"
+    ],
+    "availableExtras": [
+      "AUTO_PILOT",
+      "EMERGENCY_BREAKING",
+      "NAVIGATION",
+      "PARKING_ASSISTANCE",
+      "STEREO"
+    ],
+    "availableFuels": [
+      "DIESEL",
+      "HYBRID",
+      "ELECTRIC"
+    ],
+    "availableHorsePowers": [
+      "BASIC",
+      "STANDARD",
+      "MIDDLE_HIGH"
+    ]
+  }
+]

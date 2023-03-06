@@ -6,6 +6,7 @@ import feature.DoorsCount;
 import feature.Extra;
 import feature.Fuel;
 import feature.HorsePower;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 import utils.TextUtils;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
 public abstract class Vehicle {
 
     @NotBlank

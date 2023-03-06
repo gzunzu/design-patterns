@@ -1,26 +1,28 @@
 package vehicle;
 
 import business.Store;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.util.Assert;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 @Log4j2
 public class VehicleFactory {
 
-    public static Vehicle getVehicle(@NotNull VehiclePackage vehiclePackage, @NotBlank String colour) {
-
+    public static Vehicle getVehicle(VehiclePackage vehiclePackage, String colour) {
         try {
+            Assert.notNull(vehiclePackage, "Vehicle package should not be null");
             Constructor<?> constructor = Class.forName(vehiclePackage.getClazz().getName()).getConstructor(
                     Model.class,
                     String.class
             );
             return (Vehicle) constructor.newInstance(Store.getModelByName(vehiclePackage.getModelName()), colour);
+        } catch (IllegalArgumentException e) {
+            log.error(e.getCause(), e);
         } catch (NoSuchMethodException e) {
             log.error("Unrecognized constructor for {} class.", vehiclePackage.getClazz().getName(), e);
         } catch (ClassNotFoundException e) {
@@ -36,13 +38,11 @@ public class VehicleFactory {
     }
 
     @AllArgsConstructor
-    @Getter
+    @Getter(AccessLevel.PACKAGE)
     public enum VehiclePackage {
-        COMMON_FAMILIAR("common familiar", CommonFamiliarVehicle.class, "Urban Family"),
-        PRACTICAL_WORKERS("practical workers", PracticalWorkersVehicle.class, "Hard Labourer"),
-        COOL_SPORTS("cool sports", CoolSportsVehicle.class, "Hot Player");
-
-        private final String packageName;
+        COMMON_FAMILIAR(CommonFamiliarVehicle.class, "Urban Family"),
+        PRACTICAL_WORKERS(PracticalWorkersVehicle.class, "Hard Labourer"),
+        COOL_SPORTS(CoolSportsVehicle.class, "Hot Player");
 
         private final Class<? extends Vehicle> clazz;
 

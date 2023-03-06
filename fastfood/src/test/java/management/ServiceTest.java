@@ -17,12 +17,12 @@ import static org.mockito.Mockito.when;
 
 class ServiceTest {
 
-    private Service service;
-
     private static ChannelsDTO channelsDTO;
     private static Takeaway takeaway;
     private static Telephone telephone;
     private static Web web;
+
+    private Service service;
 
     @BeforeEach
     void init() {
@@ -56,6 +56,10 @@ class ServiceTest {
 
         String result = this.service.processOrders();
 
+        assertThat(previousResult)
+                .doesNotContain("takeaway welcome", "takeaway serveClient", "takeaway farewell")
+                .doesNotContain("telephone welcome", "telephone serveClient", "telephone farewell")
+                .doesNotContain("web welcome", "web serveClient", "web farewell");
         assertThat(result)
                 .isNotEqualTo(previousResult)
                 .contains("takeaway welcome", "takeaway serveClient", "takeaway farewell")
@@ -71,6 +75,10 @@ class ServiceTest {
 
         String result = this.service.processOrders();
 
+        assertThat(previousResult)
+                .doesNotContain("takeaway welcome", "takeaway serveClient", "takeaway farewell")
+                .doesNotContain("telephone welcome", "telephone serveClient", "telephone farewell")
+                .doesNotContain("web welcome", "web serveClient", "web farewell");
         assertThat(result)
                 .isNotEqualTo(previousResult)
                 .contains("takeaway welcome", "takeaway serveClient", "takeaway farewell")

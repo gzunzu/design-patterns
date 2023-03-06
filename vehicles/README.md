@@ -103,9 +103,10 @@ Regarding the [`VehicleFactory`](src/main/java/vehicle/VehicleFactory.java) clas
 to know that this is not the traditional implementation of the static method for getting the desired instance.
 This is a totally parametrized version which would never be modified with upcoming new inheritors
 of [`Vehicle`](src/main/java/vehicle/Vehicle.java) –new «packages»–, because in that case we would just
-add new values to the `VehiclePackage` subclass. It's also more «insecure» or fragile due to the amount of runtime
-exceptions we can get by calling a constructor whose reference is obtained from a variable. The most popular
-way to implement this method is creating a switch loop, having one `case` clause for each type of instance/inheritor.
+add new values to the `VehiclePackage` subclass. It uses reflection to access the required class names and constructor
+methods, and you should know that implies a significant cost in processing resources during runtime. It's also more «insecure»
+exceptions we have to prevent while calling a method whose reference is obtained from a variable. The most popular
+way to implement this pattern is creating a switch loop, having one `case` clause for each type of instance/inheritor.
 For our particular example, this would have been the code:
 
 ````java
