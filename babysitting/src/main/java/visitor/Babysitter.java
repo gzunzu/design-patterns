@@ -54,7 +54,7 @@ public class Babysitter implements Visitor {
     }
 
     public String takeCare() {
-        StringBuilder result = new StringBuilder(SystemUtils.LINE_SEPARATOR);
+        StringBuilder result = new StringBuilder();
         for (Visitable visitable : visitables) {
             result.append(visitable.accept(this))
                     .append(SystemUtils.LINE_SEPARATOR);

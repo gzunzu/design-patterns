@@ -29,7 +29,7 @@ public class Store {
 
     public static void createModels(List<Model> modelList) {
         modelList.forEach(model ->
-                AVAILABLE_MODELS.add(new Model.ModelBuilder(model.getName(), model.getStyle(), model.getBasePrice())
+                AVAILABLE_MODELS.add(Model.builder(model.getName(), model.getStyle(), model.getBasePrice())
                         .setAvailableColours(model.getAvailableColours())
                         .setAvailableDoorsCount(model.getAvailableDoorsCount())
                         .setAvailableExtras(model.getAvailableExtras())

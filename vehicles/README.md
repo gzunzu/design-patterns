@@ -35,15 +35,16 @@ public static class ModelBuilder {
 }
 ````
 
-The last piece of these pattern is to add that Constructor to the [`Model`](src/main/java/vehicle/Model.java) class,
-which is the only alteration it will get while implementing this pattern:
+The last piece of these pattern is to add that Constructor with the ModelBuilder arg to the
+[`Model`](src/main/java/vehicle/Model.java) class, and also a public static `builder` method to
+make it accesible.
 
 ````java
 public class Model {
 
     // Other attributes and methods.
 
-    public Model(ModelBuilder modelBuilder) {
+    private Model(final @NotNull ModelBuilder modelBuilder) {
         this.name = modelBuilder.getName();
         this.style = modelBuilder.getStyle();
         this.basePrice = modelBuilder.getBasePrice();
@@ -52,6 +53,10 @@ public class Model {
         this.availableExtras = modelBuilder.getAvailableExtras();
         this.availableFuels = modelBuilder.getAvailableFuels();
         this.availableHorsePowers = modelBuilder.getAvailableHorsePowers();
+    }
+
+    public static ModelBuilder builder(final String name, final Style style, final float basePrice) {
+        return new ModelBuilder(name, style, basePrice);
     }
 }
 ````
@@ -63,7 +68,7 @@ the body of this improvised `createModel()` method:
 public class ModelCreator {
 
     public static Model createModel() {
-        return model = new ModelBuilder("Model name", Style.CARGO, 5850f)
+        return model = Model.builder("Model name", Style.CARGO, 5850f)
                 .setAvailableColours(Colour.BLACK, Colour.BLUE, Colour.BROWN)
                 .setAvailableFuels(Fuel.GASOLINE, Fuel.DIESEL)
                 // Other additional features desired.

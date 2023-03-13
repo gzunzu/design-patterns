@@ -7,7 +7,6 @@ import feature.Extra;
 import feature.Fuel;
 import feature.HorsePower;
 import feature.Style;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -56,15 +55,19 @@ public final class Model {
     @JsonProperty("availableHorsePowers")
     private List<HorsePower> availableHorsePowers;
 
-    public Model(final @NotNull ModelBuilder modelBuilder) {
-        this.name = modelBuilder.getName();
-        this.style = modelBuilder.getStyle();
-        this.basePrice = modelBuilder.getBasePrice();
-        this.availableColours = modelBuilder.getAvailableColours();
-        this.availableDoorsCount = modelBuilder.getAvailableDoorsCount();
-        this.availableExtras = modelBuilder.getAvailableExtras();
-        this.availableFuels = modelBuilder.getAvailableFuels();
-        this.availableHorsePowers = modelBuilder.getAvailableHorsePowers();
+    private Model(final @NotNull ModelBuilder modelBuilder) {
+        this.name = modelBuilder.name;
+        this.style = modelBuilder.style;
+        this.basePrice = modelBuilder.basePrice;
+        this.availableColours = modelBuilder.availableColours;
+        this.availableDoorsCount = modelBuilder.availableDoorsCount;
+        this.availableExtras = modelBuilder.availableExtras;
+        this.availableFuels = modelBuilder.availableFuels;
+        this.availableHorsePowers = modelBuilder.availableHorsePowers;
+    }
+
+    public static ModelBuilder builder(final String name, final Style style, final float basePrice) {
+        return new ModelBuilder(name, style, basePrice);
     }
 
     @Override
@@ -81,8 +84,6 @@ public final class Model {
         );
     }
 
-    @SuppressWarnings("unused")
-    @Getter(AccessLevel.PRIVATE)
     public static class ModelBuilder {
 
         @NotBlank
@@ -109,7 +110,7 @@ public final class Model {
         @NotNull
         private List<HorsePower> availableHorsePowers;
 
-        public ModelBuilder(String name, Style style, float basePrice) {
+        private ModelBuilder(String name, Style style, float basePrice) {
             this.name = name;
             this.style = style;
             this.basePrice = basePrice;
@@ -129,30 +130,12 @@ public final class Model {
             return this;
         }
 
-        public ModelBuilder addAvailableColours(Colour... colours) {
-            return this.addAvailableColours(Arrays.asList(colours));
-        }
-
-        public ModelBuilder addAvailableColours(List<Colour> colourList) {
-            this.availableColours.addAll(colourList);
-            return this;
-        }
-
         public ModelBuilder setAvailableDoorsCount(DoorsCount... doorsCounts) {
             return this.setAvailableDoorsCount(Arrays.asList(doorsCounts));
         }
 
         public ModelBuilder setAvailableDoorsCount(List<DoorsCount> doorsCountList) {
             this.availableDoorsCount = new ArrayList<>(doorsCountList);
-            return this;
-        }
-
-        public ModelBuilder addAvailableDoorsCount(DoorsCount... doorsCounts) {
-            return this.addAvailableDoorsCount(Arrays.asList(doorsCounts));
-        }
-
-        public ModelBuilder addAvailableDoorsCount(List<DoorsCount> doorsCountList) {
-            this.availableDoorsCount.addAll(doorsCountList);
             return this;
         }
 
@@ -165,15 +148,6 @@ public final class Model {
             return this;
         }
 
-        public ModelBuilder addAvailableExtras(Extra... extras) {
-            return this.addAvailableExtras(Arrays.asList(extras));
-        }
-
-        public ModelBuilder addAvailableExtras(List<Extra> extraList) {
-            this.availableExtras.addAll(extraList);
-            return this;
-        }
-
         public ModelBuilder setAvailableFuels(Fuel... fuels) {
             return this.setAvailableFuels(Arrays.asList(fuels));
         }
@@ -183,30 +157,12 @@ public final class Model {
             return this;
         }
 
-        public ModelBuilder addAvailableFuels(Fuel... fuels) {
-            return this.addAvailableFuels(Arrays.asList(fuels));
-        }
-
-        public ModelBuilder addAvailableFuels(List<Fuel> fuelList) {
-            this.availableFuels.addAll(fuelList);
-            return this;
-        }
-
         public ModelBuilder setAvailableHorsePowers(HorsePower... horsePowers) {
             return this.setAvailableHorsePowers(Arrays.asList(horsePowers));
         }
 
         public ModelBuilder setAvailableHorsePowers(List<HorsePower> horsePowers) {
             this.availableHorsePowers = new ArrayList<>(horsePowers);
-            return this;
-        }
-
-        public ModelBuilder addAvailableHorsePowers(HorsePower... horsePowers) {
-            return this.addAvailableHorsePowers(Arrays.asList(horsePowers));
-        }
-
-        public ModelBuilder addAvailableHorsePowers(List<HorsePower> horsePowers) {
-            this.availableHorsePowers.addAll(horsePowers);
             return this;
         }
 
