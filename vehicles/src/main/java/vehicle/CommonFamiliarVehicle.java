@@ -4,9 +4,7 @@ import feature.DoorsCount;
 import feature.Extra;
 import feature.Fuel;
 import feature.HorsePower;
-import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(callSuper = true)
 public class CommonFamiliarVehicle extends Vehicle {
 
     private static final String PACK_NAME = "common familiar";
